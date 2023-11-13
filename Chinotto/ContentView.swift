@@ -44,7 +44,9 @@ struct ContentView: View {
             .onChange(of: viewModel?.directory, { oldValue, newValue in
                 if let viewModel {
                     viewModel.reloadContents()
-                    viewModel.calculateDirectorySize()
+                    Task {
+                        await viewModel.calculateDirectorySize()
+                    }
                 }
             })
         } content: {
@@ -59,9 +61,9 @@ struct ContentView: View {
                         .navigationTitle(viewModel.directory.url.lastPathComponent)
                     }
                 }
-                .task(priority: .userInitiated) {
-                    viewModel.calculateDirectorySize()
-                }
+//                .task(priority: .userInitiated) {
+//                    viewModel.calculateDirectorySize()
+//                }
             } else {
                 Text("Select an item")
                     .navigationTitle("Chinotto")
