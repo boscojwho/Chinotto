@@ -1,8 +1,64 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.1f GB" : {
+
+    },
+    "%@" : {
+
+    },
+    "%@ (%lld files)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$lld files)"
+          }
+        }
+      }
+    },
+    "%@ of %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ of %2$@"
+          }
+        }
+      }
+    },
+    "Add Item" : {
+
+    },
+    "All Directories" : {
+
+    },
+    "By Directory" : {
+
+    },
+    "Chinotto" : {
+
+    },
+    "Data Category" : {
+
+    },
+    "Directory Size" : {
+
+    },
+    "Disk Space Used" : {
+
+    },
+    "Home" : {
+
+    },
+    "Inspector View" : {
+
+    },
     "Show in Finder" : {
       "extractionState" : "manual"
+    },
+    "Size: %@" : {
+
     }
   },
   "version" : "1.0"
