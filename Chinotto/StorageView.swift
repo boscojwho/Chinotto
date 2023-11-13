@@ -17,6 +17,8 @@ final class StorageViewModel {
         self.volumeTotalCapacity = URL(filePath: directory.path, directoryHint: .isDirectory).volumeTotalCapacity()
     }
     
+    @ObservationIgnored
+    private var performedInitialLoad = false
     var isCalculating = false
     
     var volumeTotalCapacity: Int?
@@ -45,11 +47,15 @@ final class StorageViewModel {
     }
 
     /// - Parameter initial: If `true`, only calculates size if not yet calculated.
-    func calculateSize(initial: Bool) {
-        if initial {
-            if dirSize != 0 {
-                return
-            }
+    func calculateSize(initial: Bool, recalculate: Bool) {
+        defer { performedInitialLoad = true }
+        
+        if initial, performedInitialLoad == true {
+            return
+        }
+        
+        if !recalculate, dirSize != 0 {
+            return
         }
         
         isCalculating = true
@@ -75,7 +81,7 @@ struct StorageView: View {
         _viewModel = .init(wrappedValue: .init(directory: directory))
     }
     
-    @State private var viewModel: StorageViewModel = .init(directory: .coreSimulator)
+    @State private var viewModel: StorageViewModel
     
     var body: some View {
         VStack {
@@ -83,8 +89,27 @@ struct StorageView: View {
                 Text("\(viewModel.directory.dirName)")
                 Spacer()
                 Text("\(viewModel.dirSizeFormattedString) of \(viewModel.volumeTotalCapacityFormattedString)")
+                                
+                Button {
+                    reload()
+                } label: {
+                    if viewModel.isCalculating {
+                        ProgressView()
+                            .controlSize(.small)
+                    } else {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                }
+                .disabled(viewModel.isCalculating)
             }
+            
             chartView()
+        }
+    }
+    
+    private func reload() {
+        Task(priority: .background) {
+            viewModel.calculateSize(initial: false, recalculate: true)
         }
     }
     
@@ -137,7 +162,7 @@ struct StorageView: View {
         .chartLegend(.hidden)
         .frame(height: 64)
         .onAppear {
-            viewModel.calculateSize(initial: true)
+            viewModel.calculateSize(initial: true, recalculate: false)
         }
     }
 }
