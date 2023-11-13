@@ -66,6 +66,9 @@
     "Inspector View" : {
 
     },
+    "Last Updated: %@" : {
+
+    },
     "Show in Finder" : {
       "extractionState" : "manual"
     },

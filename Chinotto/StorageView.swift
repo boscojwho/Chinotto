@@ -17,6 +17,19 @@ final class StorageViewModel: Identifiable {
         self.volumeTotalCapacity = URL(filePath: directory.path, directoryHint: .isDirectory).volumeTotalCapacity()
     }
     
+    /// timeIntervalSinceReferenceDate
+    var lastUpdated: TimeInterval {
+        get {
+            access(keyPath: \.lastUpdated)
+            return UserDefaults.standard.double(forKey: "\(directory.dirName).dirSize.lastUpdated.appStorage.key")
+        }
+        set {
+            withMutation(keyPath: \.lastUpdated) {
+                UserDefaults.standard.setValue(newValue, forKey: "\(directory.dirName).dirSize.lastUpdated.appStorage.key")
+            }
+        }
+    }
+    
     @ObservationIgnored
     private var performedInitialLoad = false
     var isCalculating = false
@@ -76,6 +89,7 @@ final class StorageViewModel: Identifiable {
         let size = URL.directorySize(url: .init(filePath: directory.path, directoryHint: .isDirectory))
         self.dirSize = size
         isCalculating = false
+        lastUpdated = Date().timeIntervalSinceReferenceDate
     }
     
     private let byteCountFormatter = ByteCountFormatter()
@@ -98,26 +112,38 @@ struct StorageView: View {
     @State private var viewModel: StorageViewModel
     
     var body: some View {
-        VStack {
+        Group {
             HStack {
-                Text("\(viewModel.directory.dirName) (\(viewModel.dirFileCount) files)")
                 Spacer()
-                Text("\(viewModel.dirSizeFormattedString) of \(viewModel.volumeTotalCapacityFormattedString)")
-                                
-                Button {
-                    reload()
-                } label: {
-                    if viewModel.isCalculating {
-                        ProgressView()
-                            .controlSize(.small)
-                    } else {
-                        Image(systemName: "arrow.clockwise")
-                    }
-                }
-                .disabled(viewModel.isCalculating)
+                Text("Last Updated: \(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative)")
+                    .font(.headline)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
             }
-            
-            chartView()
+            .offset(y: 8)
+            GroupBox {
+                VStack {
+                    HStack {
+                        Text("\(viewModel.directory.dirName) (\(viewModel.dirFileCount) files)")
+                        Spacer()
+                        Text("\(viewModel.dirSizeFormattedString) of \(viewModel.volumeTotalCapacityFormattedString)")
+                        
+                        Button {
+                            reload()
+                        } label: {
+                            if viewModel.isCalculating {
+                                ProgressView()
+                                    .controlSize(.small)
+                            } else {
+                                Image(systemName: "arrow.clockwise")
+                            }
+                        }
+                        .disabled(viewModel.isCalculating)
+                    }
+                    
+                    chartView()
+                }
+            }
         }
     }
     

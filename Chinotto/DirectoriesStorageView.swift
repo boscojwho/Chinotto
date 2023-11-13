@@ -28,9 +28,7 @@ struct DirectoriesStorageView: View {
                 
                 Section {
                     ForEach(Directories.allCases) { value in
-                        GroupBox {
-                            StorageView(directory: value)
-                        }
+                        StorageView(directory: value)
                         .contextMenu {
                             Button("Show in Finder") {
                                 let url = URL(filePath: value.path, directoryHint: .isDirectory)

@@ -21,35 +21,35 @@ struct UnifiedStorageView: View {
     @State private var viewModels: [StorageViewModel]
     
     var body: some View {
-        VStack {
-            HStack {
-                let files = viewModels.reduce(0) { $0 + $1.dirFileCount }
-                Text("All Directories (\(files) files)")
-                Spacer()
-                let storage = viewModels.reduce(0) { $0 + $1.dirSize }
-                Text("\(ByteCountFormatter.string(fromByteCount: Int64(storage), countStyle: .decimal)) of \(ByteCountFormatter.string(fromByteCount: Int64(viewModels.first?.volumeTotalCapacity ?? 0), countStyle: .decimal))")
-                
-//                Button {
-//                    reload()
-//                } label: {
-//                    if viewModel.isCalculating {
-//                        ProgressView()
-//                            .controlSize(.small)
-//                    } else {
-//                        Image(systemName: "arrow.clockwise")
-//                    }
-//                }
-//                .disabled(viewModel.isCalculating)
-            }
-            
-            GroupBox {
-                chartView()
-            }
-            .contextMenu {
-                Button("Show in Finder") {
-                    let url = URL(filePath: Directories.basePath, directoryHint: .isDirectory)
-                    NSWorkspace.shared.activateFileViewerSelecting([url])
+        GroupBox {
+            VStack {
+                HStack {
+                    let files = viewModels.reduce(0) { $0 + $1.dirFileCount }
+                    Text("All Directories (\(files) files)")
+                    Spacer()
+                    let storage = viewModels.reduce(0) { $0 + $1.dirSize }
+                    Text("\(ByteCountFormatter.string(fromByteCount: Int64(storage), countStyle: .decimal)) of \(ByteCountFormatter.string(fromByteCount: Int64(viewModels.first?.volumeTotalCapacity ?? 0), countStyle: .decimal))")
+                    
+                    //                Button {
+                    //                    reload()
+                    //                } label: {
+                    //                    if viewModel.isCalculating {
+                    //                        ProgressView()
+                    //                            .controlSize(.small)
+                    //                    } else {
+                    //                        Image(systemName: "arrow.clockwise")
+                    //                    }
+                    //                }
+                    //                .disabled(viewModel.isCalculating)
                 }
+                
+                chartView()
+                    .contextMenu {
+                        Button("Show in Finder") {
+                            let url = URL(filePath: Directories.basePath, directoryHint: .isDirectory)
+                            NSWorkspace.shared.activateFileViewerSelecting([url])
+                        }
+                    }
             }
         }
     }
