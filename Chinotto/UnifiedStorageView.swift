@@ -22,6 +22,26 @@ struct UnifiedStorageView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                let files = viewModels.reduce(0) { $0 + $1.dirFileCount }
+                Text("All Directories (\(files) files)")
+                Spacer()
+                let storage = viewModels.reduce(0) { $0 + $1.dirSize }
+                Text("\(ByteCountFormatter.string(fromByteCount: Int64(storage), countStyle: .decimal)) of \(ByteCountFormatter.string(fromByteCount: Int64(viewModels.first?.volumeTotalCapacity ?? 0), countStyle: .decimal))")
+                
+//                Button {
+//                    reload()
+//                } label: {
+//                    if viewModel.isCalculating {
+//                        ProgressView()
+//                            .controlSize(.small)
+//                    } else {
+//                        Image(systemName: "arrow.clockwise")
+//                    }
+//                }
+//                .disabled(viewModel.isCalculating)
+            }
+            
             GroupBox {
                 chartView()
             }
@@ -41,8 +61,24 @@ struct UnifiedStorageView: View {
                 BarMark(
                     x: .value("Directory Size", value.dirSize)
                 )
+//                .foregroundStyle(value.directory.accentColor)
                 .foregroundStyle(by: .value("Data Category", value.directory.dirName))
             }
+            .accessibilityLabel(value.directory.dirName)
+        }
+        .chartForegroundStyleScale(
+            domain: Directories.allCases,
+            range: Directories.allCases.compactMap { $0.accentColor }
+        )
+        .chartXScale(domain: [0, viewModels.first?.volumeTotalCapacity ?? 0])
+        .chartXAxis {
+            AxisMarks(
+                format: .byteCount(style: .memory, allowedUnits: .all, spellsOutZero: true, includesActualByteCount: false),
+                values: viewModels.first?.axisValues ?? []
+            )
+        }
+        .chartXAxisLabel(position: .top) {
+            Text("Disk Space Used")
         }
         .chartPlotStyle { plotArea in
             plotArea
@@ -53,7 +89,8 @@ struct UnifiedStorageView: View {
 #endif
                 .cornerRadius(8)
         }
-        .frame(height: 64)
+        .chartLegend(.visible)
+        .frame(height: 80)
         .onAppear {
             viewModels.forEach { $0.calculateSize(initial: false, recalculate: false) }
         }

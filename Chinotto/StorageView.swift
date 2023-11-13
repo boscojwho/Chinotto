@@ -167,7 +167,7 @@ struct StorageView: View {
             )
         }
         .chartXScale(domain: [0, viewModel.volumeTotalCapacity ?? viewModel.dirSize])
-        .chartXAxisLabel {
+        .chartXAxisLabel(position: .top) {
             Text("Disk Space Used")
         }
         .chartYAxis(.hidden)

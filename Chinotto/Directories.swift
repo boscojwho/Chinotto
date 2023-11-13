@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Charts
 
 enum Directories: CaseIterable, Identifiable {
     case coreSimulator
@@ -67,11 +68,29 @@ extension Directories {
         case .xcode:
             Color.blue
         case .xcPGDevices:
-            Color.primary
+            Color.pink
         case .xcTestDevices:
-            Color.secondary
+            Color.mint
         }
     }
+}
+
+extension Directories: Plottable {
+    var primitivePlottable: String {
+        dirName
+    }
+    
+    init?(primitivePlottable: String) {
+        if let match = Directories.allCases.first(where: { $0.dirName == primitivePlottable }) {
+            self = match
+        } else {
+            return nil
+        }
+    }
+    
+    typealias PrimitivePlottable = String
+    
+    
 }
 
 final class Directory: Equatable {
