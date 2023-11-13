@@ -216,6 +216,48 @@ extension URL {
 
 extension URL {
     
+    /// Counts the number of files at this path, including files in all sub-directories.
+    static func directoryContentsCount(url: URL) -> Int {
+        let contents: [URL]
+        do {
+            contents = try FileManager.default.contentsOfDirectory(
+                at: url,
+                includingPropertiesForKeys: [.isRegularFileKey, .isDirectoryKey],
+                options: .skipsPackageDescendants /// Not sure if `.skipsPackageDescendants` is wise here.
+            )
+        } catch {
+            return 0
+        }
+        
+        var count = 0
+        
+        for url in contents {
+            let isDirectoryResourceValue: URLResourceValues
+            do {
+                isDirectoryResourceValue = try url.resourceValues(forKeys: [.isDirectoryKey])
+            } catch {
+                continue
+            }
+            
+            if isDirectoryResourceValue.isDirectory == true {
+                count += directoryContentsCount(url: url)
+            } else {
+                let isRegularFileResourceValue: URLResourceValues
+                do {
+                    isRegularFileResourceValue = try url.resourceValues(forKeys: [.isRegularFileKey])
+                } catch {
+                    continue
+                }
+                
+                if isRegularFileResourceValue.isRegularFile == true {
+                    count += 1
+                }
+            }
+        }
+        
+        return count
+    }
+    
     /// This is way faster and uses less memory than using FileManager's enumerator.
     static func directorySize(url: URL) -> Int {
         let contents: [URL]

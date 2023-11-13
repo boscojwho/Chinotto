@@ -22,6 +22,17 @@ final class StorageViewModel {
     var isCalculating = false
     
     var volumeTotalCapacity: Int?
+    var dirFileCount: Int {
+        get {
+            access(keyPath: \.dirFileCount)
+            return UserDefaults.standard.integer(forKey: "\(directory.dirName).dirFileCount.appStorage.key")
+        }
+        set {
+            withMutation(keyPath: \.dirFileCount) {
+                UserDefaults.standard.setValue(newValue, forKey: "\(directory.dirName).dirFileCount.appStorage.key")
+            }
+        }
+    }
     var dirSize: Int {
         get {
             access(keyPath: \.dirSize)
@@ -58,7 +69,10 @@ final class StorageViewModel {
             return
         }
         
+        // TODO: Pre-calculating dir count doesn't yield faster performance. See if there's a faster way to calculate file count.
         isCalculating = true
+        let count = URL.directoryContentsCount(url: .init(filePath: directory.path, directoryHint: .isDirectory))
+        self.dirFileCount = count
         let size = URL.directorySize(url: .init(filePath: directory.path, directoryHint: .isDirectory))
         self.dirSize = size
         isCalculating = false
@@ -86,7 +100,7 @@ struct StorageView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("\(viewModel.directory.dirName)")
+                Text("\(viewModel.directory.dirName) (\(viewModel.dirFileCount) files)")
                 Spacer()
                 Text("\(viewModel.dirSizeFormattedString) of \(viewModel.volumeTotalCapacityFormattedString)")
                                 
