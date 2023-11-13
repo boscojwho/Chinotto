@@ -9,7 +9,7 @@ import SwiftUI
 import Charts
 
 @Observable
-final class StorageViewModel {
+final class StorageViewModel: Identifiable {
     
     let directory: Directories
     init(directory: Directories) {

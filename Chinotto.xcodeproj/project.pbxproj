@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E4205D562B01FE8D0026D4A0 /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D552B01FE8D0026D4A0 /* StorageView.swift */; };
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
+		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A882B00D24700BE5444 /* ChinottoApp.swift */; };
 		E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A8A2B00D24700BE5444 /* ContentView.swift */; };
 		E4A30A8D2B00D24700BE5444 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A8C2B00D24700BE5444 /* Item.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		E4205D552B01FE8D0026D4A0 /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoriesStorageView.swift; sourceTree = "<group>"; };
+		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4A30A852B00D24700BE5444 /* Chinotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A30A882B00D24700BE5444 /* ChinottoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoApp.swift; sourceTree = "<group>"; };
 		E4A30A8A2B00D24700BE5444 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				E4A30A882B00D24700BE5444 /* ChinottoApp.swift */,
 				E4A30A8A2B00D24700BE5444 /* ContentView.swift */,
 				E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */,
+				E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */,
 				E4205D552B01FE8D0026D4A0 /* StorageView.swift */,
 				E4A30A8C2B00D24700BE5444 /* Item.swift */,
 				E4A30AB52B00D32800BE5444 /* Directories.swift */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */,
 				E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */,
 				E4205D562B01FE8D0026D4A0 /* StorageView.swift in Sources */,
 				E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */,
