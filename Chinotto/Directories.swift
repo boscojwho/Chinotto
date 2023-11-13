@@ -192,6 +192,7 @@ extension URL {
 
 extension URL {
     
+    /// This is way faster and uses less memory than using FileManager's enumerator.
     static func directorySize(url: URL) -> Int64 {
         let contents: [URL]
         do {
