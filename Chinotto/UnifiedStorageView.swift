@@ -25,6 +25,12 @@ struct UnifiedStorageView: View {
             GroupBox {
                 chartView()
             }
+            .contextMenu {
+                Button("Show in Finder") {
+                    let url = URL(filePath: Directories.basePath, directoryHint: .isDirectory)
+                    NSWorkspace.shared.activateFileViewerSelecting([url])
+                }
+            }
         }
     }
     
