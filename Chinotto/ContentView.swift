@@ -20,13 +20,22 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(Directories.allCases) { value in
-                    Button(value.dirName, systemImage: value.systemImage) {
-                        selectedDir = value
+                Section {
+                    Button("Home", systemImage: "house.fill") {
+                        viewModel = nil
                     }
-                    .containerRelativeFrame(.horizontal)
+                    .containerRelativeFrame(.horizontal, alignment: .leading)
                 }
-                .onDelete(perform: deleteItems)
+                
+                Section {
+                    ForEach(Directories.allCases) { value in
+                        Button(value.dirName, systemImage: value.systemImage) {
+                            selectedDir = value
+                        }
+                        .containerRelativeFrame(.horizontal, alignment: .leading)
+                    }
+                    .onDelete(perform: deleteItems)
+                }
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
             .toolbar {
