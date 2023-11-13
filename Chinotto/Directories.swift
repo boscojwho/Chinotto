@@ -196,7 +196,11 @@ extension URL {
     static func directorySize(url: URL) -> Int64 {
         let contents: [URL]
         do {
-            contents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey])
+            contents = try FileManager.default.contentsOfDirectory(
+                at: url,
+                includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey],
+                options: .skipsPackageDescendants /// Not sure if `.skipsPackageDescendants` is wise here.
+            )
         } catch {
             return 0
         }
