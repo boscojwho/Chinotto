@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var selectedDetailItem: URL?
     @State private var selectedInspectorItem: URL?
     
+    @State private var isPresentingDownloadsPopover: Bool = false
+    
     var body: some View {
         NavigationSplitView {
             List {
@@ -27,6 +29,8 @@ struct ContentView: View {
                     .containerRelativeFrame(.horizontal, alignment: .leading)
                 }
                 
+                Divider()
+                
                 Section {
                     ForEach(Directories.allCases) { value in
                         Button(value.dirName, systemImage: value.systemImage) {
@@ -35,6 +39,74 @@ struct ContentView: View {
                         .containerRelativeFrame(.horizontal, alignment: .leading)
                     }
                     .onDelete(perform: deleteItems)
+                }
+                
+                Divider()
+                
+                Section {
+                    HStack(alignment: .center) {
+                        Button("Downloads", systemImage: "square.and.arrow.down.on.square.fill") {
+                            let url = URL(filePath: "/Library/Developer/CoreSimulator/Cryptex/Images/Inbox", directoryHint: .isDirectory)
+                            NSWorkspace.shared.activateFileViewerSelecting([url])
+                        }
+                        
+                        Button("", systemImage: "questionmark.circle") {
+                            isPresentingDownloadsPopover = true
+                        }
+                        .buttonStyle(.plain)
+                        .controlSize(.regular)
+                        .popover(isPresented: $isPresentingDownloadsPopover) {
+                            ScrollView {
+                                VStack {
+                                    HStack(spacing: 0) {
+                                        Text("Downloads")
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(nil)
+                                            .fontWeight(.bold)
+                                            .foregroundStyle(.primary)
+                                        Spacer()
+                                    }
+                                    HStack(spacing: 0) {
+                                        Text("This is where simulator images are stored when downloaded via Xcode.")
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(nil)
+                                            .font(.subheadline)
+                                            .foregroundStyle(.primary)
+                                        Spacer()
+                                    }
+                                    Divider()
+                                    
+                                    HStack {
+                                        Image(systemName: "lightbulb.max")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 24)
+                                            .symbolEffect(
+                                                .variableColor.iterative,
+                                                options: .repeat(4),
+                                                isActive: isPresentingDownloadsPopover
+                                            )
+                                            .symbolRenderingMode(.palette)
+                                            .foregroundStyle(Color.yellow, Color.blue)
+                                        Text("Tip")
+                                            .fontWeight(.black)
+                                            .foregroundStyle(.primary)
+                                        Spacer()
+                                    }
+                                    .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                                    
+                                    HStack(spacing: 0) {
+                                        Text("If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is time-consuming.")
+                                            .multilineTextAlignment(.leading)
+                                            .lineLimit(nil)
+                                            .foregroundStyle(.primary)
+                                    }
+                                }
+                                .frame(width: 240)
+                                .padding(10)
+                            }
+                        }
+                    }
                 }
             }
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)

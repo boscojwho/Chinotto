@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%.1f GB" : {
 
     },
@@ -48,7 +51,13 @@
     "Disk Space Used" : {
 
     },
+    "Downloads" : {
+
+    },
     "Home" : {
+
+    },
+    "If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is time-consuming." : {
 
     },
     "Inspector View" : {
@@ -58,6 +67,12 @@
       "extractionState" : "manual"
     },
     "Size: %@" : {
+
+    },
+    "This is where simulator images are stored when downloaded via Xcode." : {
+
+    },
+    "Tip" : {
 
     }
   },
