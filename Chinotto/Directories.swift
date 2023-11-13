@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Directories: CaseIterable, Identifiable {
     case coreSimulator
@@ -51,6 +52,24 @@ enum Directories: CaseIterable, Identifiable {
             "circle.filled.iphone"
         case .xcTestDevices:
             "circle.filled.iphone.fill"
+        }
+    }
+}
+
+extension Directories {
+    
+    var accentColor: Color {
+        switch self {
+        case .coreSimulator:
+            Color.orange
+        case .developerDiskImages:
+            Color.purple
+        case .xcode:
+            Color.blue
+        case .xcPGDevices:
+            Color.primary
+        case .xcTestDevices:
+            Color.secondary
         }
     }
 }
@@ -188,12 +207,17 @@ extension URL {
         return byteCount + " on disk"
     }
     private static let byteCountFormatter = ByteCountFormatter()
+    
+    func volumeTotalCapacity() -> Int? {
+        let value = try? self.resourceValues(forKeys: [.volumeTotalCapacityKey])
+        return value?.volumeTotalCapacity
+    }
 }
 
 extension URL {
     
     /// This is way faster and uses less memory than using FileManager's enumerator.
-    static func directorySize(url: URL) -> Int64 {
+    static func directorySize(url: URL) -> Int {
         let contents: [URL]
         do {
             contents = try FileManager.default.contentsOfDirectory(
@@ -205,7 +229,7 @@ extension URL {
             return 0
         }
         
-        var size: Int64 = 0
+        var size: Int = 0
         
         for url in contents {
             let isDirectoryResourceValue: URLResourceValues
@@ -225,7 +249,7 @@ extension URL {
                     continue
                 }
                 
-                size += Int64(fileSizeResourceValue.fileSize ?? 0)
+                size += fileSizeResourceValue.fileSize ?? 0
             }
         }
         return size

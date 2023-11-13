@@ -74,7 +74,7 @@ struct ContentView: View {
 //                    viewModel.calculateDirectorySize()
 //                }
             } else {
-                Text("Select an item")
+               DirectoriesStorageView()
                     .navigationTitle("Chinotto")
             }
         } detail: {
