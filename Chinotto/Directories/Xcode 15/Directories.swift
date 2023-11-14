@@ -18,8 +18,14 @@ enum Directories: CaseIterable, Identifiable {
     
     var id: String { dirName }
     
-    static var basePath: String {
+    /// Base path for `/Developer` directory in current user's directory.
+    static var userBasePath: String {
         "/Users/\(NSUserName())/Library/Developer"
+    }
+    
+    /// Base path for `/Developer` directory not associated with any user.
+    static var systemBasePath: String {
+        "/Library/Developer"
     }
     
     var dirName: String {
@@ -38,7 +44,7 @@ enum Directories: CaseIterable, Identifiable {
     }
     
     var path: String {
-        "\(Self.basePath)/\(dirName)"
+        "\(Self.userBasePath)/\(dirName)"
     }
     
     var systemImage: String {

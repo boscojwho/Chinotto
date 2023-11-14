@@ -40,7 +40,7 @@ struct UnifiedStorageView: View {
                 chartView()
                     .contextMenu {
                         Button("Show in Finder") {
-                            let url = URL(filePath: Directories.basePath, directoryHint: .isDirectory)
+                            let url = URL(filePath: Directories.userBasePath, directoryHint: .isDirectory)
                             NSWorkspace.shared.activateFileViewerSelecting([url])
                         }
                     }

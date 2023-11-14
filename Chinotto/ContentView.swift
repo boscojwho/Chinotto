@@ -122,40 +122,16 @@ struct ContentView: View {
                     viewModel = .init(directory: .init(directory: newValue))
                 }
             })
-//            .onChange(of: viewModel?.directory, { oldValue, newValue in
-//                if let viewModel {
-//                    viewModel.reloadContents()
-//                    Task {
-//                        await viewModel.calculateDirectorySize()
-//                    }
-//                }
-//            })
         } content: {
-            if let viewModel {
-                List(selection: $selectedDetailItem) {
-                    Section("Size: \(viewModel.byteSize())") {
-                        ForEach(viewModel.contents, id: \.hashValue) { value in
-                            NavigationLink(value: value) {
-                                Text(value.absoluteString)
-                            }
-                        }
-                        .navigationTitle(viewModel.directory.url.lastPathComponent)
-                    }
-                }
-//                .task(priority: .userInitiated) {
-//                    viewModel.calculateDirectorySize()
-//                }
-            } else {
-               DirectoriesStorageView()
-                    .navigationTitle("Chinotto")
-            }
+            DirectoriesStorageView()
+                .navigationTitle("Chinotto")
         } detail: {
-            if let selectedDetailItem {
-                Button(action: {
-                    selectedInspectorItem = selectedDetailItem
-                }, label: {
-                    Text(selectedDetailItem.absoluteString)
-                })
+            if let selectedDir {
+                makeSelectedDirectoryView(selectedDir)
+            } else {
+                GroupBox {
+                    Text("Select a directory from sidebar.")
+                }
             }
         }
         .inspector(
@@ -189,6 +165,22 @@ struct ContentView: View {
 //                modelContext.delete(items[index])
 //            }
 //        }
+    }
+    
+    @ViewBuilder
+    private func makeSelectedDirectoryView(_ directory: Directories) -> some View {
+        switch directory {
+        case .coreSimulator:
+            CoreSimulatorView(directoryScope: .user)
+        case .developerDiskImages:
+            Text("\(directory.dirName)")
+        case .xcode:
+            Text("\(directory.dirName)")
+        case .xcPGDevices:
+            Text("\(directory.dirName)")
+        case .xcTestDevices:
+            Text("\(directory.dirName)")
+        }
     }
 }
 

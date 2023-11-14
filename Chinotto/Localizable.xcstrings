@@ -4,6 +4,21 @@
     "" : {
 
     },
+    "_CoreSimulatorSystemCachesView" : {
+
+    },
+    "_CoreSimulatorSystemView" : {
+
+    },
+    "_CoreSimulatorUserCachesView" : {
+
+    },
+    "/%@" : {
+
+    },
+    "/CoreSimulator" : {
+
+    },
     "%.1f GB" : {
 
     },
@@ -69,11 +84,11 @@
     "Last Updated: %@" : {
 
     },
+    "Select a directory from sidebar." : {
+
+    },
     "Show in Finder" : {
       "extractionState" : "manual"
-    },
-    "Size: %@" : {
-
     },
     "This is where simulator images are stored when downloaded via Xcode." : {
 
