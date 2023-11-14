@@ -250,27 +250,9 @@ extension URL {
         
         var count = 0
         
-        for url in contents {
-            let isDirectoryResourceValue: URLResourceValues
-            do {
-                isDirectoryResourceValue = try url.resourceValues(forKeys: [.isDirectoryKey])
-            } catch {
-                continue
-            }
-            
-            if isDirectoryResourceValue.isDirectory == true {
-                count += directoryContentsCount(url: url)
-            } else {
-                let isRegularFileResourceValue: URLResourceValues
-                do {
-                    isRegularFileResourceValue = try url.resourceValues(forKeys: [.isRegularFileKey])
-                } catch {
-                    continue
-                }
-                
-                if isRegularFileResourceValue.isRegularFile == true {
-                    count += 1
-                }
+        autoreleasepool {
+            for url in contents {
+                count += url.hasDirectoryPath ? directoryContentsCount(url: url) : 1
             }
         }
         
@@ -292,27 +274,23 @@ extension URL {
         
         var size: Int = 0
         
-        for url in contents {
-            let isDirectoryResourceValue: URLResourceValues
-            do {
-                isDirectoryResourceValue = try url.resourceValues(forKeys: [.isDirectoryKey])
-            } catch {
-                continue
-            }
-            
-            if isDirectoryResourceValue.isDirectory == true {
-                size += directorySize(url: url)
-            } else {
-                let fileSizeResourceValue: URLResourceValues
-                do {
-                    fileSizeResourceValue = try url.resourceValues(forKeys: [.fileSizeKey])
-                } catch {
-                    continue
+        autoreleasepool {
+            for url in contents {
+                if url.hasDirectoryPath {
+                    size += directorySize(url: url)
+                } else {
+                    let fileSizeResourceValue: URLResourceValues
+                    do {
+                        fileSizeResourceValue = try url.resourceValues(forKeys: [.fileSizeKey])
+                    } catch {
+                        continue
+                    }
+                    
+                    size += fileSizeResourceValue.fileSize ?? 0
                 }
-                
-                size += fileSizeResourceValue.fileSize ?? 0
             }
         }
+        
         return size
     }
 }
