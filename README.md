@@ -5,6 +5,8 @@
 # Chinotto
 A sweet little tool for managing the bitter taste of Xcode using up your Mac's storage space.
 
+<img width="320" alt="Screenshot 2023-11-13 at 5 13 08 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/b770ddd9-46e9-46cc-a240-0a8bd089b088">
+
 ## Why?
 One of the pain points of using macOS is seeing half of your Mac's storage consumed by some unknown force called "System Data". Apple does provide some tools in System Settings to help manage this issue, but it could be much better, especially for Xcode users.
 
