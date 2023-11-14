@@ -64,7 +64,8 @@ struct UnifiedStorageView: View {
 //                .foregroundStyle(value.directory.accentColor)
                 .foregroundStyle(by: .value("Data Category", value.directory.dirName))
             }
-            .accessibilityLabel(value.directory.dirName)
+            /// This causes crash on scroll, why? [2023.11]
+//            .accessibilityLabel(value.directory.dirName)
         }
         .chartForegroundStyleScale(
             domain: Directories.allCases,
