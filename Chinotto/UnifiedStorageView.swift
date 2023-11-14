@@ -11,14 +11,8 @@ import Charts
 /// Shows storage consumed for all directories in a unified view.
 struct UnifiedStorageView: View {
     
-    init() {
-        let viewModels = Directories.allCases.map {
-            StorageViewModel(directory: $0)
-        }
-        _viewModels = .init(wrappedValue: viewModels)
-    }
-    
-    @State private var viewModels: [StorageViewModel]
+    @Binding var viewModels: [StorageViewModel]
+    @State private var isReloading = false
     
     var body: some View {
         GroupBox {
@@ -30,17 +24,17 @@ struct UnifiedStorageView: View {
                     let storage = viewModels.reduce(0) { $0 + $1.dirSize }
                     Text("\(ByteCountFormatter.string(fromByteCount: Int64(storage), countStyle: .decimal)) of \(ByteCountFormatter.string(fromByteCount: Int64(viewModels.first?.volumeTotalCapacity ?? 0), countStyle: .decimal))")
                     
-                    //                Button {
-                    //                    reload()
-                    //                } label: {
-                    //                    if viewModel.isCalculating {
-                    //                        ProgressView()
-                    //                            .controlSize(.small)
-                    //                    } else {
-                    //                        Image(systemName: "arrow.clockwise")
-                    //                    }
-                    //                }
-                    //                .disabled(viewModel.isCalculating)
+                    Button {
+                        reload()
+                    } label: {
+                        if isReloading {
+                            ProgressView()
+                                .controlSize(.small)
+                        } else {
+                            Image(systemName: "arrow.clockwise")
+                        }
+                    }
+                    .disabled(isReloading)
                 }
                 
                 chartView()
@@ -50,6 +44,18 @@ struct UnifiedStorageView: View {
                             NSWorkspace.shared.activateFileViewerSelecting([url])
                         }
                     }
+            }
+        }
+    }
+    
+    private func reload() {
+        isReloading = true
+        Task(priority: .background) {
+            viewModels.forEach { $0.beginCalculating() }
+            viewModels.forEach { $0.calculateSize(initial: false, recalculate: true) }
+            viewModels.forEach { $0.endCalculating() }
+            Task { @MainActor in
+                isReloading = false
             }
         }
     }
@@ -99,5 +105,5 @@ struct UnifiedStorageView: View {
 }
 
 #Preview {
-    UnifiedStorageView()
+    UnifiedStorageView(viewModels: .constant([.init(directory: .developerDiskImages)]))
 }

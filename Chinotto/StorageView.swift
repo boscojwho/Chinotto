@@ -70,6 +70,14 @@ final class StorageViewModel: Identifiable {
         return values
     }
 
+    func beginCalculating() {
+        isCalculating = true
+    }
+    
+    func endCalculating() {
+        isCalculating = false
+    }
+    
     /// - Parameter initial: If `true`, only calculates size if not yet calculated.
     func calculateSize(initial: Bool, recalculate: Bool) {
         defer { performedInitialLoad = true }
@@ -105,11 +113,7 @@ final class StorageViewModel: Identifiable {
 
 struct StorageView: View {
     
-    init(directory: Directories) {
-        _viewModel = .init(wrappedValue: .init(directory: directory))
-    }
-    
-    @State private var viewModel: StorageViewModel
+    @Bindable var viewModel: StorageViewModel
     
     var body: some View {
         Group {
@@ -201,12 +205,9 @@ struct StorageView: View {
 //        .chartLegend(position: .top, spacing: 8)
         .chartLegend(.hidden)
         .frame(height: 64)
-        .onAppear {
-            viewModel.calculateSize(initial: true, recalculate: false)
-        }
     }
 }
 
 #Preview {
-    StorageView(directory: .developerDiskImages)
+    StorageView(viewModel: .init(directory: .developerDiskImages))
 }

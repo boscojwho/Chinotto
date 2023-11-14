@@ -9,11 +9,21 @@ import SwiftUI
 
 /// Shows the storage consumed for each directory, separately.
 struct DirectoriesStorageView: View {
+    
+    @State private var viewModels: [StorageViewModel]
+    
+    init() {
+        let viewModels = Directories.allCases.map {
+            StorageViewModel(directory: $0)
+        }
+        _viewModels = .init(wrappedValue: viewModels)
+    }
+    
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 12, pinnedViews: .sectionHeaders) {
                 Section {
-                    UnifiedStorageView()
+                    UnifiedStorageView(viewModels: $viewModels)
                 } header: {
                     HStack {
                         Text("All Directories")
@@ -27,14 +37,14 @@ struct DirectoriesStorageView: View {
                 Divider()
                 
                 Section {
-                    ForEach(Directories.allCases) { value in
-                        StorageView(directory: value)
-                        .contextMenu {
-                            Button("Show in Finder") {
-                                let url = URL(filePath: value.path, directoryHint: .isDirectory)
-                                NSWorkspace.shared.activateFileViewerSelecting([url])
+                    ForEach(viewModels) { value in
+                        StorageView(viewModel: value)
+                            .contextMenu {
+                                Button("Show in Finder") {
+                                    let url = URL(filePath: value.directory.path, directoryHint: .isDirectory)
+                                    NSWorkspace.shared.activateFileViewerSelecting([url])
+                                }
                             }
-                        }
                     }
                 } header: {
                     HStack {
