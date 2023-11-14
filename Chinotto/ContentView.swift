@@ -122,14 +122,14 @@ struct ContentView: View {
                     viewModel = .init(directory: .init(directory: newValue))
                 }
             })
-            .onChange(of: viewModel?.directory, { oldValue, newValue in
-                if let viewModel {
-                    viewModel.reloadContents()
-                    Task {
-                        await viewModel.calculateDirectorySize()
-                    }
-                }
-            })
+//            .onChange(of: viewModel?.directory, { oldValue, newValue in
+//                if let viewModel {
+//                    viewModel.reloadContents()
+//                    Task {
+//                        await viewModel.calculateDirectorySize()
+//                    }
+//                }
+//            })
         } content: {
             if let viewModel {
                 List(selection: $selectedDetailItem) {
