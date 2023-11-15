@@ -112,7 +112,8 @@ struct _CoreSimulatorUserView: View {
             case .caches:
                 Text("")
             case .devices:
-                _CoreSimulatorDevicesView(dirScope: .user)
+                @Bindable var vm = storageViewModel
+                _CoreSimulatorDevicesView(dirScope: .user, storageViewModel: $vm)
                     .inspectorColumnWidth(min: 320, ideal: 600)
             case .temp:
                 Text("")
