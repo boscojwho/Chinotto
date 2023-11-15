@@ -160,15 +160,15 @@ struct ContentView: View {
         case .coreSimulator:
             CoreSimulatorView(directoryScope: .user)
         case .developerDiskImages:
-            Text("\(directory.dirName)")
+            DeveloperDiskImagesView()
         case .toolchains:
-            Text("\(directory.dirName)")
+            ToolchainsView()
         case .xcode:
-            Text("\(directory.dirName)")
+            XcodeView()
         case .xcPGDevices:
-            Text("\(directory.dirName)")
+            XCPGDevicesView()
         case .xcTestDevices:
-            Text("\(directory.dirName)")
+            XCTestDevicesView()
         }
     }
 }

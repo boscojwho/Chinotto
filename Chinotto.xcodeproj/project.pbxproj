@@ -27,6 +27,11 @@
 		E4A30AA72B00D24800BE5444 /* ChinottoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AA62B00D24800BE5444 /* ChinottoUITests.swift */; };
 		E4A30AA92B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */; };
 		E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AB52B00D32800BE5444 /* Directories.swift */; };
+		E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */; };
+		E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */; };
+		E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */; };
+		E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */; };
+		E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,11 @@
 		E4A30AA62B00D24800BE5444 /* ChinottoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoUITests.swift; sourceTree = "<group>"; };
 		E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E4A30AB52B00D32800BE5444 /* Directories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directories.swift; sourceTree = "<group>"; };
+		E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperDiskImagesView.swift; sourceTree = "<group>"; };
+		E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolchainsView.swift; sourceTree = "<group>"; };
+		E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeView.swift; sourceTree = "<group>"; };
+		E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPGDevicesView.swift; sourceTree = "<group>"; };
+		E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestDevicesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,12 +121,9 @@
 			children = (
 				E4A30AB52B00D32800BE5444 /* Directories.swift */,
 				E475191C2B03A2E800C360DD /* Subdirectories.swift */,
-				E47519242B03AAF600C360DD /* CoreSimulatorView.swift */,
-				E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */,
-				E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */,
-				E475191E2B03A8ED00C360DD /* CachesView.swift */,
-				E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */,
-				E47519222B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift */,
+				E4F8ECC42B0453EE0075AB04 /* User Scope */,
+				E4F8ECC52B0454050075AB04 /* System Scope */,
+				E4F8ECB92B0452F50075AB04 /* Scoped Directory Views */,
 			);
 			path = "Xcode 15";
 			sourceTree = "<group>";
@@ -182,6 +189,38 @@
 				E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */,
 			);
 			path = ChinottoUITests;
+			sourceTree = "<group>";
+		};
+		E4F8ECB92B0452F50075AB04 /* Scoped Directory Views */ = {
+			isa = PBXGroup;
+			children = (
+				E475191E2B03A8ED00C360DD /* CachesView.swift */,
+				E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */,
+				E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */,
+				E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */,
+				E47519222B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift */,
+			);
+			path = "Scoped Directory Views";
+			sourceTree = "<group>";
+		};
+		E4F8ECC42B0453EE0075AB04 /* User Scope */ = {
+			isa = PBXGroup;
+			children = (
+				E47519242B03AAF600C360DD /* CoreSimulatorView.swift */,
+				E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */,
+				E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */,
+				E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */,
+				E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */,
+				E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */,
+			);
+			path = "User Scope";
+			sourceTree = "<group>";
+		};
+		E4F8ECC52B0454050075AB04 /* System Scope */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "System Scope";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,12 +361,17 @@
 				E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */,
 				E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */,
 				E4205D562B01FE8D0026D4A0 /* StorageView.swift in Sources */,
+				E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */,
 				E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */,
 				E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */,
 				E4A30A8D2B00D24700BE5444 /* Item.swift in Sources */,
 				E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */,
+				E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */,
+				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,
 				E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */,
 				E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */,
+				E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */,
+				E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */,
 				E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
