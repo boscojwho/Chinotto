@@ -49,6 +49,7 @@ public struct CoreSimDeviceView: View {
                                 let total = contents.metadata.reduce(0) { $0 + $1.size }
                                 LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
                                     .fontWeight(.heavy)
+                                    .font(.title3)
                             } else {
                                 ContentUnavailableView {
                                     Text("Failed to load device contents.")
