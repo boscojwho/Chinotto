@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import CoreSimulatorTools
 
 @main
 struct ChinottoApp: App {
