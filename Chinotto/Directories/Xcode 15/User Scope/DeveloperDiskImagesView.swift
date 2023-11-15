@@ -6,15 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct SizeMetadata: Identifiable {
+@Model
+final class SizeMetadata: Identifiable {
     var id: String { key.absoluteString }
     
+    @Attribute(.unique)
     let key: URL
     let value: String
+    
+    init(key: URL, value: String) {
+        self.key = key
+        self.value = value
+    }
 }
 
 struct DeveloperDiskImagesView: View {
+    
+    @Query
+    var files: [SizeMetadata]
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .developerDiskImages)
     
@@ -42,7 +53,7 @@ struct DeveloperDiskImagesView: View {
             .listStyle(.inset)
             
             Table(
-                storageViewModel.fileSizeMetadata,
+                self.files,
                 selection: $selectedFiles
             ) {
                 TableColumn("Size", value: \.value)

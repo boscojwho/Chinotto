@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import Charts
 
 @Observable
@@ -147,6 +148,8 @@ final class StorageViewModel: Identifiable {
 
 struct StorageView: View {
     
+    @Environment(\.modelContext) private var modelContext
+    
     @Bindable var viewModel: StorageViewModel
     
     var body: some View {
@@ -188,6 +191,18 @@ struct StorageView: View {
     private func reload() {
         Task(priority: .background) {
             viewModel.calculateSize(initial: false, recalculate: true)
+            viewModel.fileSizeMetadata.forEach {
+                modelContext.insert($0)
+            }
+            viewModel.dirSizeMetadata.forEach {
+                modelContext.insert($0)
+            }
+            
+            do {
+                try modelContext.save()
+            } catch {
+                fatalError()
+            }
         }
     }
     
