@@ -6,61 +6,7 @@
 //
 
 import SwiftUI
-
-struct DevicePlist: Codable, Identifiable {
-    let UDID: String
-    let deviceType: String
-    let isDeleted: Bool
-    let isEphemeral: Bool
-    let name: String
-    let runtime: String
-    let runtimePolicy: String
-    let state: Int
-    
-    var id: String { UDID }
-}
-
-@Observable
-final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
-    static func == (lhs: CoreSimulatorDevice, rhs: CoreSimulatorDevice) -> Bool {
-        lhs.uuid == rhs.uuid
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
-    }
-    
-    let uuid: UUID
-    let plist: URL
-    let data: URL
-  
-    init(uuid: UUID, plist: URL, data: URL) {
-        self.uuid = uuid
-        self.plist = plist
-        self.data = data
-        
-        Task {
-            await decodePlist()
-        }
-    }
-    
-    var devicePlist: DevicePlist?
-    
-    private func decodePlist() async {
-        guard let plistData = FileManager.default.contents(atPath: plist.path()) else {
-            return
-        }
-        
-        do {
-            let value = try PropertyListDecoder().decode(DevicePlist.self, from: plistData)
-            Task { @MainActor in
-                devicePlist = value
-            }
-        } catch {
-            print(error)
-        }
-    }
-}
+import CoreSimulatorTools
 
 @Observable
 final class CoreSimulatorDevicesViewModel {

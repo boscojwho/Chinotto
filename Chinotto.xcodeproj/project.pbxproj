@@ -11,6 +11,7 @@
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
+		E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */ = {isa = PBXBuildFile; productRef = E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */; };
 		E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */; };
 		E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191C2B03A2E800C360DD /* Subdirectories.swift */; };
 		E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191E2B03A8ED00C360DD /* CachesView.swift */; };
@@ -58,6 +59,7 @@
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorDevicesView.swift; sourceTree = "<group>"; };
+		E466741E2B04CCC100782359 /* CoreSimulatorTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreSimulatorTools; path = Packages/CoreSimulatorTools; sourceTree = "<group>"; };
 		E475191C2B03A2E800C360DD /* Subdirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subdirectories.swift; sourceTree = "<group>"; };
 		E475191E2B03A8ED00C360DD /* CachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachesView.swift; sourceTree = "<group>"; };
 		E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserCachesView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +113,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E45A70A72B04CD6200AC8C3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E475191A2B03A2CF00C360DD /* Directories */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,10 +143,12 @@
 		E4A30A7C2B00D24700BE5444 = {
 			isa = PBXGroup;
 			children = (
+				E466741E2B04CCC100782359 /* CoreSimulatorTools */,
 				E4A30A872B00D24700BE5444 /* Chinotto */,
 				E4A30A9B2B00D24800BE5444 /* ChinottoTests */,
 				E4A30AA52B00D24800BE5444 /* ChinottoUITests */,
 				E4A30A862B00D24700BE5444 /* Products */,
+				E45A70A72B04CD6200AC8C3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,6 +254,9 @@
 			dependencies = (
 			);
 			name = Chinotto;
+			packageProductDependencies = (
+				E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */,
+			);
 			productName = Chinotto;
 			productReference = E4A30A852B00D24700BE5444 /* Chinotto.app */;
 			productType = "com.apple.product-type.application";
@@ -699,6 +714,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreSimulatorTools;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4A30A7D2B00D24700BE5444 /* Project object */;
 }
