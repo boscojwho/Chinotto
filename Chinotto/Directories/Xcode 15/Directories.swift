@@ -9,9 +9,12 @@ import Foundation
 import SwiftUI
 import Charts
 
+/// A non-exhaustive list of top-level directories in `/Developer`.
 enum Directories: CaseIterable, Identifiable {
     case coreSimulator
     case developerDiskImages
+    case toolchains
+    
     case xcode
     case xcPGDevices
     case xcTestDevices
@@ -34,6 +37,8 @@ enum Directories: CaseIterable, Identifiable {
             "CoreSimulator"
         case .developerDiskImages:
             "DeveloperDiskImages"
+        case .toolchains:
+            "Toolchains"
         case .xcode:
             "Xcode"
         case .xcPGDevices:
@@ -53,6 +58,8 @@ enum Directories: CaseIterable, Identifiable {
             "apps.iphone"
         case .developerDiskImages:
             "externaldrive.fill"
+        case .toolchains:
+            "screwdriver"
         case .xcode:
             "wrench.and.screwdriver.fill"
         case .xcPGDevices:
@@ -71,6 +78,8 @@ extension Directories {
             Color.orange
         case .developerDiskImages:
             Color.purple
+        case .toolchains:
+            .teal
         case .xcode:
             Color.blue
         case .xcPGDevices:

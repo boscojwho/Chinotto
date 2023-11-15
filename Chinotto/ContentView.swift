@@ -174,6 +174,8 @@ struct ContentView: View {
             CoreSimulatorView(directoryScope: .user)
         case .developerDiskImages:
             Text("\(directory.dirName)")
+        case .toolchains:
+            Text("\(directory.dirName)")
         case .xcode:
             Text("\(directory.dirName)")
         case .xcPGDevices:
