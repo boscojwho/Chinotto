@@ -13,6 +13,8 @@ struct ContentView: View {
     @Query private var items: [Item]
     
     @State private var viewModels: [StorageViewModel]
+    @State private var selectedViewModel: StorageViewModel?
+    
     @State private var selectedDir: Directories?
     @State private var viewModel: DirectoryViewModel?
     @State private var selectedDetailItem: URL?
@@ -32,7 +34,7 @@ struct ContentView: View {
             List {
                 Section {
                     Button("Home", systemImage: "house.fill") {
-                        viewModel = nil
+                        selectedDir = nil
                     }
                     .containerRelativeFrame(.horizontal, alignment: .leading)
                 }
@@ -125,38 +127,15 @@ struct ContentView: View {
                     }
                 }
             }
-            .onChange(of: selectedDir, { oldValue, newValue in
-                if let newValue {
-                    viewModel = .init(directory: .init(directory: newValue))
-                }
-            })
         } content: {
-            DirectoriesStorageView(viewModels: $viewModels)
-                .navigationTitle("Chinotto")
-        } detail: {
             if let selectedDir {
                 makeSelectedDirectoryView(selectedDir)
             } else {
-                GroupBox {
-                    Text("Select a directory from sidebar.")
-                }
+                DirectoriesStorageView(viewModels: $viewModels)
+                    .navigationTitle("Chinotto")
             }
-        }
-        .inspector(
-            isPresented: .init(
-                get: {
-                    selectedInspectorItem != nil
-                },
-                set: { newValue in
-                    if newValue == false {
-                        selectedInspectorItem = nil
-                    }
-                })
-        ) {
-            Text("Inspector View")
-            if let selectedDetailItem {
-                Text("\(selectedDetailItem.absoluteString)")
-            }
+        } detail: {
+           Text("Selected Directory")
         }
     }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct _CoreSimulatorUserView: View {
     
+    @State private var storageViewModel: StorageViewModel = .init(directory: .coreSimulator)
     @State private var showInspectorView = false
     
     var body: some View {
@@ -18,6 +19,8 @@ struct _CoreSimulatorUserView: View {
             } header: {
                 Text("/CoreSimulator")
             }
+            
+            StorageView(viewModel: storageViewModel)
             
             ForEach(CoreSimulator_User.allCases) { value in
                 Section {
