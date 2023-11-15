@@ -59,15 +59,18 @@ final class CoreSimulatorDevicesViewModel {
 struct _CoreSimulatorDevicesView: View {
     
     @Environment(\.openWindow) var openWindow
+    
+    @Bindable var storageViewModel: StorageViewModel
     @State private var devicesViewModel: CoreSimulatorDevicesViewModel
     
-    init(dirScope: DirectoryScope) {
+    init(dirScope: DirectoryScope, storageViewModel: Bindable<StorageViewModel>) {
         _devicesViewModel = .init(
             wrappedValue: .init(
                 directory: .coreSimulator,
                 dirScope: dirScope
             )
         )
+        _storageViewModel = storageViewModel
     }
     
     var body: some View {
@@ -79,6 +82,8 @@ struct _CoreSimulatorDevicesView: View {
                 .containerRelativeFrame(.horizontal)
                 .onTapGesture {
                     /// Open new window for device.
+                    value.dirsMetadata = storageViewModel.dirMetadata
+                    value.filesMetadata = storageViewModel.fileMetadata
                     openWindow(id: "CoreSimulatorDevice", value: value)
                 }
             }
@@ -90,5 +95,8 @@ struct _CoreSimulatorDevicesView: View {
 }
 
 #Preview {
-    _CoreSimulatorDevicesView(dirScope: .user)
+    _CoreSimulatorDevicesView(
+        dirScope: .user,
+        storageViewModel: .init(.init(directory: .developerDiskImages))
+    )
 }

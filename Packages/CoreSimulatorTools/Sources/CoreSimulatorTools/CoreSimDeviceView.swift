@@ -13,6 +13,9 @@ public struct CoreSimDeviceView: View {
     
     public init(device: Binding<CoreSimulatorDevice?>) {
         _device = device
+        Task {
+            device.wrappedValue?.loadDataContents()
+        }
     }
     
     public var body: some View {
@@ -30,6 +33,30 @@ public struct CoreSimDeviceView: View {
                             let value = "\(child.value)"
                             LabeledContent(label, value: value)
                         }
+                    }
+                }
+                
+                Section("Data") {
+                    if let device {
+                        if device.isLoadingDataContents {
+                            ProgressView()
+                        } else {
+                            if let contents = device.dataContents {
+                                ForEach(contents.metadata) { value in
+                                    LabeledContent(value.url.lastPathComponent, value: "\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
+                                }
+                                                                
+                                let total = contents.metadata.reduce(0) { $0 + $1.size }
+                                LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
+                                    .fontWeight(.heavy)
+                            } else {
+                                ContentUnavailableView {
+                                    Text("Failed to load device contents.")
+                                }
+                            }
+                        }
+                    } else {
+                        ProgressView()
                     }
                 }
             }
