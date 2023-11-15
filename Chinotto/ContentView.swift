@@ -119,7 +119,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            .navigationSplitViewColumnWidth(min: 180, ideal: 240)
             .toolbar {
                 ToolbarItem {
                     Button(action: addItem) {
@@ -127,16 +127,17 @@ struct ContentView: View {
                     }
                 }
             }
-        } content: {
+        } detail: {
             if let selectedDir {
                 makeSelectedDirectoryView(selectedDir)
+                    .navigationSplitViewColumnWidth(min: 600, ideal: 720)
             } else {
                 DirectoriesStorageView(viewModels: $viewModels)
                     .navigationTitle("Chinotto")
+                    .navigationSplitViewColumnWidth(min: 600, ideal: 720)
             }
-        } detail: {
-           Text("Selected Directory")
         }
+        .navigationSplitViewStyle(.balanced)
     }
 
     private func addItem() {

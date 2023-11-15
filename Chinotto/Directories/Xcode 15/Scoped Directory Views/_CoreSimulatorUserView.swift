@@ -11,6 +11,7 @@ struct _CoreSimulatorUserView: View {
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .coreSimulator)
     @State private var showInspectorView = false
+    @State private var inspectorData: CoreSimulator_User?
     
     @State private var selectedFiles: Set<SizeMetadata.ID> = .init()
     @State private var selectedDirs: Set<SizeMetadata.ID> = .init()
@@ -47,16 +48,13 @@ struct _CoreSimulatorUserView: View {
                             }
                         }
                         .onTapGesture {
+                            inspectorData = value
                             showInspectorView = true
                         }
                     }
                 }
             }
             .listStyle(.inset)
-            .inspector(isPresented: $showInspectorView) {
-                Text("Inspector View")
-                    .inspectorColumnWidth(min: 320, ideal: 800)
-            }
             
             Table(
                 storageViewModel.fileSizeMetadata,
@@ -90,6 +88,9 @@ struct _CoreSimulatorUserView: View {
                 .disabled(selectedDirs.isEmpty)
             }
         }
+        .inspector(isPresented: $showInspectorView) {
+            makeInspectorView()
+        }
     }
     
     private func showFilesInFinder() {
@@ -102,6 +103,23 @@ struct _CoreSimulatorUserView: View {
         let dirPaths = selectedDirs
         let dirUrls = dirPaths.compactMap { URL(string: $0 ) }
         NSWorkspace.shared.activateFileViewerSelecting(dirUrls)
+    }
+    
+    @ViewBuilder
+    private func makeInspectorView() -> some View {
+        if let inspectorData {
+            switch inspectorData {
+            case .caches:
+                Text("")
+            case .devices:
+                _CoreSimulatorDevicesView(dirScope: .user)
+                    .inspectorColumnWidth(min: 320, ideal: 600)
+            case .temp:
+                Text("")
+            }
+        } else {
+            Text("Select directory data.")
+        }
     }
 }
 
