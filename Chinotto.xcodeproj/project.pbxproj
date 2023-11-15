@@ -11,6 +11,13 @@
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
+		E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191C2B03A2E800C360DD /* Subdirectories.swift */; };
+		E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191E2B03A8ED00C360DD /* CachesView.swift */; };
+		E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */; };
+		E47519232B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519222B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift */; };
+		E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519242B03AAF600C360DD /* CoreSimulatorView.swift */; };
+		E47519272B03AB0F00C360DD /* _CoreSimulatorSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */; };
+		E47519292B03AB1800C360DD /* _CoreSimulatorUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */; };
 		E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A882B00D24700BE5444 /* ChinottoApp.swift */; };
 		E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A8A2B00D24700BE5444 /* ContentView.swift */; };
 		E4A30A8D2B00D24700BE5444 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A8C2B00D24700BE5444 /* Item.swift */; };
@@ -20,6 +27,11 @@
 		E4A30AA72B00D24800BE5444 /* ChinottoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AA62B00D24800BE5444 /* ChinottoUITests.swift */; };
 		E4A30AA92B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */; };
 		E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AB52B00D32800BE5444 /* Directories.swift */; };
+		E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */; };
+		E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */; };
+		E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */; };
+		E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */; };
+		E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +56,13 @@
 		E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoriesStorageView.swift; sourceTree = "<group>"; };
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E475191C2B03A2E800C360DD /* Subdirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subdirectories.swift; sourceTree = "<group>"; };
+		E475191E2B03A8ED00C360DD /* CachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachesView.swift; sourceTree = "<group>"; };
+		E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserCachesView.swift; sourceTree = "<group>"; };
+		E47519222B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorSystemCachesView.swift; sourceTree = "<group>"; };
+		E47519242B03AAF600C360DD /* CoreSimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSimulatorView.swift; sourceTree = "<group>"; };
+		E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorSystemView.swift; sourceTree = "<group>"; };
+		E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserView.swift; sourceTree = "<group>"; };
 		E4A30A852B00D24700BE5444 /* Chinotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A30A882B00D24700BE5444 /* ChinottoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoApp.swift; sourceTree = "<group>"; };
 		E4A30A8A2B00D24700BE5444 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +76,11 @@
 		E4A30AA62B00D24800BE5444 /* ChinottoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoUITests.swift; sourceTree = "<group>"; };
 		E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E4A30AB52B00D32800BE5444 /* Directories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directories.swift; sourceTree = "<group>"; };
+		E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperDiskImagesView.swift; sourceTree = "<group>"; };
+		E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolchainsView.swift; sourceTree = "<group>"; };
+		E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeView.swift; sourceTree = "<group>"; };
+		E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPGDevicesView.swift; sourceTree = "<group>"; };
+		E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestDevicesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +108,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E475191A2B03A2CF00C360DD /* Directories */ = {
+			isa = PBXGroup;
+			children = (
+				E475191B2B03A2D800C360DD /* Xcode 15 */,
+			);
+			path = Directories;
+			sourceTree = "<group>";
+		};
+		E475191B2B03A2D800C360DD /* Xcode 15 */ = {
+			isa = PBXGroup;
+			children = (
+				E4A30AB52B00D32800BE5444 /* Directories.swift */,
+				E475191C2B03A2E800C360DD /* Subdirectories.swift */,
+				E4F8ECC42B0453EE0075AB04 /* User Scope */,
+				E4F8ECC52B0454050075AB04 /* System Scope */,
+				E4F8ECB92B0452F50075AB04 /* Scoped Directory Views */,
+			);
+			path = "Xcode 15";
+			sourceTree = "<group>";
+		};
 		E4A30A7C2B00D24700BE5444 = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +158,7 @@
 				E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */,
 				E4205D552B01FE8D0026D4A0 /* StorageView.swift */,
 				E4A30A8C2B00D24700BE5444 /* Item.swift */,
-				E4A30AB52B00D32800BE5444 /* Directories.swift */,
+				E475191A2B03A2CF00C360DD /* Directories */,
 				E4A30A8E2B00D24800BE5444 /* Assets.xcassets */,
 				E4A30A932B00D24800BE5444 /* Chinotto.entitlements */,
 				E4A30A902B00D24800BE5444 /* Preview Content */,
@@ -145,6 +189,38 @@
 				E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */,
 			);
 			path = ChinottoUITests;
+			sourceTree = "<group>";
+		};
+		E4F8ECB92B0452F50075AB04 /* Scoped Directory Views */ = {
+			isa = PBXGroup;
+			children = (
+				E475191E2B03A8ED00C360DD /* CachesView.swift */,
+				E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */,
+				E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */,
+				E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */,
+				E47519222B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift */,
+			);
+			path = "Scoped Directory Views";
+			sourceTree = "<group>";
+		};
+		E4F8ECC42B0453EE0075AB04 /* User Scope */ = {
+			isa = PBXGroup;
+			children = (
+				E47519242B03AAF600C360DD /* CoreSimulatorView.swift */,
+				E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */,
+				E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */,
+				E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */,
+				E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */,
+				E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */,
+			);
+			path = "User Scope";
+			sourceTree = "<group>";
+		};
+		E4F8ECC52B0454050075AB04 /* System Scope */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "System Scope";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,12 +354,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47519272B03AB0F00C360DD /* _CoreSimulatorSystemView.swift in Sources */,
+				E47519292B03AB1800C360DD /* _CoreSimulatorUserView.swift in Sources */,
+				E47519232B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift in Sources */,
 				E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */,
+				E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */,
 				E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */,
 				E4205D562B01FE8D0026D4A0 /* StorageView.swift in Sources */,
+				E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */,
 				E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */,
+				E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */,
 				E4A30A8D2B00D24700BE5444 /* Item.swift in Sources */,
 				E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */,
+				E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */,
+				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,
+				E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */,
+				E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */,
+				E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */,
+				E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */,
 				E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

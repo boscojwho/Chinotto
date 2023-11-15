@@ -9,17 +9,26 @@ import Foundation
 import SwiftUI
 import Charts
 
+/// A non-exhaustive list of top-level directories in `/Developer`.
 enum Directories: CaseIterable, Identifiable {
     case coreSimulator
     case developerDiskImages
+    case toolchains
+    
     case xcode
     case xcPGDevices
     case xcTestDevices
     
     var id: String { dirName }
     
-    static var basePath: String {
+    /// Base path for `/Developer` directory in current user's directory.
+    static var userBasePath: String {
         "/Users/\(NSUserName())/Library/Developer"
+    }
+    
+    /// Base path for `/Developer` directory not associated with any user.
+    static var systemBasePath: String {
+        "/Library/Developer"
     }
     
     var dirName: String {
@@ -28,6 +37,8 @@ enum Directories: CaseIterable, Identifiable {
             "CoreSimulator"
         case .developerDiskImages:
             "DeveloperDiskImages"
+        case .toolchains:
+            "Toolchains"
         case .xcode:
             "Xcode"
         case .xcPGDevices:
@@ -38,7 +49,7 @@ enum Directories: CaseIterable, Identifiable {
     }
     
     var path: String {
-        "\(Self.basePath)/\(dirName)"
+        "\(Self.userBasePath)/\(dirName)"
     }
     
     var systemImage: String {
@@ -47,6 +58,8 @@ enum Directories: CaseIterable, Identifiable {
             "apps.iphone"
         case .developerDiskImages:
             "externaldrive.fill"
+        case .toolchains:
+            "screwdriver"
         case .xcode:
             "wrench.and.screwdriver.fill"
         case .xcPGDevices:
@@ -65,6 +78,8 @@ extension Directories {
             Color.orange
         case .developerDiskImages:
             Color.purple
+        case .toolchains:
+            .teal
         case .xcode:
             Color.blue
         case .xcPGDevices:
@@ -170,7 +185,10 @@ final class Directory: Equatable {
             do {
 //                let size = directory.calculateDirectorySize(atPath: directory.path)
 //                let size = try directory.url.directoryTotalAllocatedSize(includingSubfolders: true)
-                let size = URL.directorySize(url: directory.url)
+                
+                var dirMetadata: [URL: Int] = [:]
+                var fileMetadata: [URL: Int] = [:]
+                let size = URL.directorySize(url: directory.url, dirMetadata: &dirMetadata, fileMetadata: &fileMetadata)
                 Task { @MainActor in
                     directorySize = .init(integerLiteral: UInt64(size ?? 0))
                 }
@@ -260,7 +278,7 @@ extension URL {
     }
     
     /// This is way faster and uses less memory than using FileManager's enumerator.
-    static func directorySize(url: URL) -> Int {
+    static func directorySize(url: URL, dirMetadata: inout [URL: Int], fileMetadata: inout [URL: Int]) -> Int {
         let contents: [URL]
         do {
             contents = try FileManager.default.contentsOfDirectory(
@@ -277,7 +295,11 @@ extension URL {
         autoreleasepool {
             for url in contents {
                 if url.hasDirectoryPath {
-                    size += directorySize(url: url)
+                    let s = directorySize(url: url, dirMetadata: &dirMetadata, fileMetadata: &fileMetadata)
+                    if s != 0 {
+                        dirMetadata[url] = s
+                    }
+                    size += s
                 } else {
                     let fileSizeResourceValue: URLResourceValues
                     do {
@@ -286,7 +308,11 @@ extension URL {
                         continue
                     }
                     
-                    size += fileSizeResourceValue.fileSize ?? 0
+                    let s = fileSizeResourceValue.fileSize ?? 0
+                    if s != 0 {
+                        fileMetadata[url] = s
+                    }
+                    size += s
                 }
             }
         }

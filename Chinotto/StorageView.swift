@@ -78,6 +78,11 @@ final class StorageViewModel: Identifiable {
         isCalculating = false
     }
     
+    private(set) var dirMetadata: [URL: Int] = [:]
+    private(set) var fileMetadata: [URL: Int] = [:]
+    private(set) var dirSizeMetadata: [SizeMetadata] = []
+    private(set) var fileSizeMetadata: [SizeMetadata] = []
+    
     /// - Parameter initial: If `true`, only calculates size if not yet calculated.
     func calculateSize(initial: Bool, recalculate: Bool) {
         defer { performedInitialLoad = true }
@@ -92,11 +97,40 @@ final class StorageViewModel: Identifiable {
         
         // TODO: Pre-calculating dir count doesn't yield faster performance. See if there's a faster way to calculate file count.
         isCalculating = true
+        
         let count = URL.directoryContentsCount(url: .init(filePath: directory.path, directoryHint: .isDirectory))
         self.dirFileCount = count
-        let size = URL.directorySize(url: .init(filePath: directory.path, directoryHint: .isDirectory))
+        var dirMetadata: [URL: Int] = [:]
+        var fileMetadata: [URL: Int] = [:]
+        let size = URL.directorySize(url: .init(filePath: directory.path, directoryHint: .isDirectory), dirMetadata: &dirMetadata, fileMetadata: &fileMetadata)
         self.dirSize = size
+        self.dirMetadata = dirMetadata
+        self.fileMetadata = fileMetadata
+        self.dirSizeMetadata = dirMetadata
+            .sorted(by: { lhs, rhs in lhs.value > rhs.value })
+            .map {
+                SizeMetadata(
+                    key: $0.key,
+                    value: ByteCountFormatter.string(
+                        fromByteCount: Int64($0.value),
+                        countStyle: .file
+                    )
+                )
+            }
+        self.fileSizeMetadata = fileMetadata
+            .sorted(by: { lhs, rhs in lhs.value > rhs.value })
+            .map {
+                SizeMetadata(
+                    key: $0.key,
+                    value: ByteCountFormatter.string(
+                        fromByteCount: Int64($0.value),
+                        countStyle: .file
+                    )
+                )
+            }
+        
         isCalculating = false
+        
         lastUpdated = Date().timeIntervalSinceReferenceDate
     }
     

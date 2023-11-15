@@ -12,6 +12,9 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
+    @State private var viewModels: [StorageViewModel]
+    @State private var selectedViewModel: StorageViewModel?
+    
     @State private var selectedDir: Directories?
     @State private var viewModel: DirectoryViewModel?
     @State private var selectedDetailItem: URL?
@@ -19,12 +22,19 @@ struct ContentView: View {
     
     @State private var isPresentingDownloadsPopover: Bool = false
     
+    init() {
+        let viewModels = Directories.allCases.map {
+            StorageViewModel(directory: $0)
+        }
+        _viewModels = .init(wrappedValue: viewModels)
+    }
+    
     var body: some View {
         NavigationSplitView {
             List {
                 Section {
                     Button("Home", systemImage: "house.fill") {
-                        viewModel = nil
+                        selectedDir = nil
                     }
                     .containerRelativeFrame(.horizontal, alignment: .leading)
                 }
@@ -117,62 +127,15 @@ struct ContentView: View {
                     }
                 }
             }
-            .onChange(of: selectedDir, { oldValue, newValue in
-                if let newValue {
-                    viewModel = .init(directory: .init(directory: newValue))
-                }
-            })
-//            .onChange(of: viewModel?.directory, { oldValue, newValue in
-//                if let viewModel {
-//                    viewModel.reloadContents()
-//                    Task {
-//                        await viewModel.calculateDirectorySize()
-//                    }
-//                }
-//            })
         } content: {
-            if let viewModel {
-                List(selection: $selectedDetailItem) {
-                    Section("Size: \(viewModel.byteSize())") {
-                        ForEach(viewModel.contents, id: \.hashValue) { value in
-                            NavigationLink(value: value) {
-                                Text(value.absoluteString)
-                            }
-                        }
-                        .navigationTitle(viewModel.directory.url.lastPathComponent)
-                    }
-                }
-//                .task(priority: .userInitiated) {
-//                    viewModel.calculateDirectorySize()
-//                }
+            if let selectedDir {
+                makeSelectedDirectoryView(selectedDir)
             } else {
-               DirectoriesStorageView()
+                DirectoriesStorageView(viewModels: $viewModels)
                     .navigationTitle("Chinotto")
             }
         } detail: {
-            if let selectedDetailItem {
-                Button(action: {
-                    selectedInspectorItem = selectedDetailItem
-                }, label: {
-                    Text(selectedDetailItem.absoluteString)
-                })
-            }
-        }
-        .inspector(
-            isPresented: .init(
-                get: {
-                    selectedInspectorItem != nil
-                },
-                set: { newValue in
-                    if newValue == false {
-                        selectedInspectorItem = nil
-                    }
-                })
-        ) {
-            Text("Inspector View")
-            if let selectedDetailItem {
-                Text("\(selectedDetailItem.absoluteString)")
-            }
+           Text("Selected Directory")
         }
     }
 
@@ -189,6 +152,24 @@ struct ContentView: View {
 //                modelContext.delete(items[index])
 //            }
 //        }
+    }
+    
+    @ViewBuilder
+    private func makeSelectedDirectoryView(_ directory: Directories) -> some View {
+        switch directory {
+        case .coreSimulator:
+            CoreSimulatorView(directoryScope: .user)
+        case .developerDiskImages:
+            DeveloperDiskImagesView()
+        case .toolchains:
+            ToolchainsView()
+        case .xcode:
+            XcodeView()
+        case .xcPGDevices:
+            XCPGDevicesView()
+        case .xcTestDevices:
+            XCTestDevicesView()
+        }
     }
 }
 
