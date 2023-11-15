@@ -31,7 +31,7 @@ struct ChinottoApp: App {
         .modelContainer(sharedModelContainer)
         
         WindowGroup(Text("Core Simulator Device"), id: "CoreSimulatorDevice", for: CoreSimulatorDevice.self) { value in
-            Text("\(value.wrappedValue?.devicePlist?.name ?? "unknown device")")
+            CoreSimDeviceView(device: value)
         }
     }
 }
