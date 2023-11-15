@@ -12,12 +12,20 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
+    @State private var viewModels: [StorageViewModel]
     @State private var selectedDir: Directories?
     @State private var viewModel: DirectoryViewModel?
     @State private var selectedDetailItem: URL?
     @State private var selectedInspectorItem: URL?
     
     @State private var isPresentingDownloadsPopover: Bool = false
+    
+    init() {
+        let viewModels = Directories.allCases.map {
+            StorageViewModel(directory: $0)
+        }
+        _viewModels = .init(wrappedValue: viewModels)
+    }
     
     var body: some View {
         NavigationSplitView {
@@ -123,7 +131,7 @@ struct ContentView: View {
                 }
             })
         } content: {
-            DirectoriesStorageView()
+            DirectoriesStorageView(viewModels: $viewModels)
                 .navigationTitle("Chinotto")
         } detail: {
             if let selectedDir {

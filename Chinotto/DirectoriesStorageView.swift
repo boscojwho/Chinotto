@@ -10,13 +10,10 @@ import SwiftUI
 /// Shows the storage consumed for each directory, separately.
 struct DirectoriesStorageView: View {
     
-    @State private var viewModels: [StorageViewModel]
+    @Binding var viewModels: [StorageViewModel]
     
-    init() {
-        let viewModels = Directories.allCases.map {
-            StorageViewModel(directory: $0)
-        }
-        _viewModels = .init(wrappedValue: viewModels)
+    init(viewModels: Binding<[StorageViewModel]>) {
+        _viewModels = viewModels
     }
     
     var body: some View {
@@ -62,5 +59,5 @@ struct DirectoriesStorageView: View {
 }
 
 #Preview {
-    DirectoriesStorageView()
+    DirectoriesStorageView(viewModels: .constant([.init(directory: .developerDiskImages)]))
 }
