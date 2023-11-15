@@ -25,6 +25,16 @@
     "%@" : {
 
     },
+    "%@ - %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$lld"
+          }
+        }
+      }
+    },
     "%@ (%lld files)" : {
       "localizations" : {
         "en" : {
@@ -63,6 +73,9 @@
     "Data Category" : {
 
     },
+    "Directory" : {
+
+    },
     "Directory Size" : {
 
     },
@@ -70,6 +83,9 @@
 
     },
     "Downloads" : {
+
+    },
+    "File" : {
 
     },
     "Home" : {
@@ -89,6 +105,9 @@
     },
     "Show in Finder" : {
       "extractionState" : "manual"
+    },
+    "Size" : {
+
     },
     "This is where simulator images are stored when downloaded via Xcode." : {
 

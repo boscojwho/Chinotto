@@ -10,18 +10,67 @@ import SwiftUI
 struct XcodeView: View {
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .xcode)
+    
+    @State private var selectedFiles: Set<SizeMetadata.ID> = .init()
+    @State private var selectedDirs: Set<SizeMetadata.ID> = .init()
 
     var body: some View {
-        List {
-            Section {
-                EmptyView()
-            } header: {
-                Text("/\(storageViewModel.directory.dirName)")
+        VSplitView {
+            List {
+                Section {
+                    EmptyView()
+                } header: {
+                    Text("/\(storageViewModel.directory.dirName)")
+                }
+                
+                StorageView(viewModel: storageViewModel)
             }
+            .listStyle(.inset)
             
-            StorageView(viewModel: storageViewModel)
+            Table(
+                storageViewModel.fileSizeMetadata,
+                selection: $selectedFiles
+            ) {
+                TableColumn("Size", value: \.value)
+                TableColumn("File", value: \.key.lastPathComponent)
+            }
+            .contextMenu {
+                Button {
+                    showFilesInFinder()
+                } label: {
+                    Text("Show in Finder")
+                }
+                .disabled(selectedFiles.isEmpty)
+            }
+
+            Table(
+                storageViewModel.dirSizeMetadata,
+                selection: $selectedDirs
+            ) {
+                TableColumn("Size", value: \.value)
+                TableColumn("Directory", value: \.key.lastPathComponent)
+            }
+            .contextMenu {
+                Button {
+                    showDirsInFinder()
+                } label: {
+                    Text("Show in Finder")
+                }
+                .disabled(selectedDirs.isEmpty)
+            }
         }
-        .listStyle(.inset)
+    }
+    
+    private func showFilesInFinder() {
+        let filePaths = selectedFiles
+        let fileUrls = filePaths.compactMap { URL(string: $0 ) }
+        NSWorkspace.shared.activateFileViewerSelecting(fileUrls)
+    }
+    
+    private func showDirsInFinder() {
+        let dirPaths = selectedDirs
+        let dirUrls = dirPaths.compactMap { URL(string: $0 ) }
+        NSWorkspace.shared.activateFileViewerSelecting(dirUrls)
     }
 }
 
