@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct XCPGDevicesView: View {
+    
+    @Query var filesMetadata: [SizeMetadata]
+    @Query var dirsMetadata: [SizeMetadata]
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .xcPGDevices)
     
@@ -28,7 +32,9 @@ struct XCPGDevicesView: View {
             .listStyle(.inset)
             
             Table(
-                storageViewModel.fileSizeMetadata,
+                try! filesMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "XCPGDevices" }) && !input.key.hasDirectoryPath
+                }),
                 selection: $selectedFiles
             ) {
                 TableColumn("Size", value: \.value)
@@ -44,7 +50,9 @@ struct XCPGDevicesView: View {
             }
             
             Table(
-                storageViewModel.dirSizeMetadata,
+                try! dirsMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "XCPGDevices" }) && input.key.hasDirectoryPath
+                }),
                 selection: $selectedDirs
             ) {
                 TableColumn("Size", value: \.value)

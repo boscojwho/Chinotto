@@ -28,5 +28,11 @@ struct ChinottoApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        
+        #if os(macOS)
+        Settings {
+            AppPreferencesView()
+        }
+        #endif
     }
 }

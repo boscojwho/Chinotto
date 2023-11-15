@@ -98,9 +98,6 @@ struct UnifiedStorageView: View {
         }
         .chartLegend(.visible)
         .frame(height: 80)
-        .onAppear {
-            viewModels.forEach { $0.calculateSize(initial: false, recalculate: false) }
-        }
     }
 }
 

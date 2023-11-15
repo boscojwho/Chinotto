@@ -24,8 +24,9 @@ final class SizeMetadata: Identifiable {
 
 struct DeveloperDiskImagesView: View {
     
-    @Query
-    var files: [SizeMetadata]
+    /// Not sure why filtering on URL value causes crash where it can't find `pathComponents` keyp path. [2023.11]
+    @Query var filesMetadata: [SizeMetadata]
+    @Query var dirsMetadata: [SizeMetadata]
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .developerDiskImages)
     
@@ -53,7 +54,9 @@ struct DeveloperDiskImagesView: View {
             .listStyle(.inset)
             
             Table(
-                self.files,
+                try! filesMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "DeveloperDiskImages" }) && !input.key.hasDirectoryPath
+                }),
                 selection: $selectedFiles
             ) {
                 TableColumn("Size", value: \.value)
@@ -69,7 +72,9 @@ struct DeveloperDiskImagesView: View {
             }
             
             Table(
-                storageViewModel.dirSizeMetadata,
+                try! dirsMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "DeveloperDiskImages" }) && input.key.hasDirectoryPath
+                }),
                 selection: $selectedDirs
             ) {
                 TableColumn("Size", value: \.value)

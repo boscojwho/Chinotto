@@ -58,13 +58,22 @@
     "Add Item" : {
 
     },
+    "Advanced" : {
+
+    },
     "All Directories" : {
 
     },
     "All Directories (%lld files)" : {
 
     },
+    "Are you sure?" : {
+
+    },
     "By Directory" : {
+
+    },
+    "Cancel" : {
 
     },
     "Chinotto" : {
@@ -88,6 +97,12 @@
     "File" : {
 
     },
+    "General" : {
+
+    },
+    "Hello, World!" : {
+
+    },
     "Home" : {
 
     },
@@ -100,6 +115,15 @@
     "Last Updated: %@" : {
 
     },
+    "Reset" : {
+
+    },
+    "Reset App Data" : {
+
+    },
+    "Reset app data..." : {
+
+    },
     "Selected Directory" : {
 
     },
@@ -107,6 +131,12 @@
       "extractionState" : "manual"
     },
     "Size" : {
+
+    },
+    "Storage" : {
+
+    },
+    "SwiftData Store" : {
 
     },
     "This is where simulator images are stored when downloaded via Xcode." : {

@@ -54,7 +54,8 @@ struct DirectoriesStorageView: View {
                 }
             }
         }
-        .contentMargins(8)
+        .contentMargins(16, for: .scrollContent)
+        .contentMargins(-16, for: .scrollIndicators)
     }
 }
 

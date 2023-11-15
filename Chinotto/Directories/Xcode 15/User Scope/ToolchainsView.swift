@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ToolchainsView: View {
+    
+    @Query var filesMetadata: [SizeMetadata]
+    @Query var dirsMetadata: [SizeMetadata]
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .toolchains)
     
@@ -28,7 +32,9 @@ struct ToolchainsView: View {
             .listStyle(.inset)
             
             Table(
-                storageViewModel.dirSizeMetadata,
+                try! filesMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "Toolchains" }) && !input.key.hasDirectoryPath
+                }),
                 selection: $selectedDirs
             ) {
                 TableColumn("Size", value: \.value)
@@ -44,7 +50,9 @@ struct ToolchainsView: View {
             }
             
             Table(
-                storageViewModel.fileSizeMetadata,
+                try! dirsMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "Toolchains" }) && input.key.hasDirectoryPath
+                }),
                 selection: $selectedFiles
             ) {
                 TableColumn("Size", value: \.value)

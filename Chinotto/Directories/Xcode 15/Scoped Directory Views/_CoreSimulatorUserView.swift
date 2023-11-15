@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct _CoreSimulatorUserView: View {
     
@@ -14,6 +15,9 @@ struct _CoreSimulatorUserView: View {
     
     @State private var selectedFiles: Set<SizeMetadata.ID> = .init()
     @State private var selectedDirs: Set<SizeMetadata.ID> = .init()
+    
+    @Query var filesMetadata: [SizeMetadata]
+    @Query var dirsMetadata: [SizeMetadata]
     
     var body: some View {
         VSplitView {
@@ -59,7 +63,9 @@ struct _CoreSimulatorUserView: View {
             }
             
             Table(
-                storageViewModel.fileSizeMetadata,
+                try! filesMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "CoreSimulator" }) && !input.key.hasDirectoryPath
+                }),
                 selection: $selectedFiles
             ) {
                 TableColumn("Size", value: \.value)
@@ -75,7 +81,9 @@ struct _CoreSimulatorUserView: View {
             }
 
             Table(
-                storageViewModel.dirSizeMetadata,
+                try! dirsMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "CoreSimulator" }) && input.key.hasDirectoryPath
+                }),
                 selection: $selectedDirs
             ) {
                 TableColumn("Size", value: \.value)

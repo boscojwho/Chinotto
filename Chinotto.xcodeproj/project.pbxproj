@@ -11,6 +11,9 @@
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
+		E46674112B04A3E000782359 /* AppPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674102B04A3E000782359 /* AppPreferencesView.swift */; };
+		E46674142B04A41100782359 /* GeneralPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674132B04A41100782359 /* GeneralPreferencesView.swift */; };
+		E46674162B04A56100782359 /* AdvancedPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674152B04A56100782359 /* AdvancedPreferencesView.swift */; };
 		E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191C2B03A2E800C360DD /* Subdirectories.swift */; };
 		E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191E2B03A8ED00C360DD /* CachesView.swift */; };
 		E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */; };
@@ -56,6 +59,9 @@
 		E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoriesStorageView.swift; sourceTree = "<group>"; };
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E46674102B04A3E000782359 /* AppPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferencesView.swift; sourceTree = "<group>"; };
+		E46674132B04A41100782359 /* GeneralPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesView.swift; sourceTree = "<group>"; };
+		E46674152B04A56100782359 /* AdvancedPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPreferencesView.swift; sourceTree = "<group>"; };
 		E475191C2B03A2E800C360DD /* Subdirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subdirectories.swift; sourceTree = "<group>"; };
 		E475191E2B03A8ED00C360DD /* CachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachesView.swift; sourceTree = "<group>"; };
 		E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserCachesView.swift; sourceTree = "<group>"; };
@@ -108,6 +114,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E46674122B04A40700782359 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				E46674102B04A3E000782359 /* AppPreferencesView.swift */,
+				E46674132B04A41100782359 /* GeneralPreferencesView.swift */,
+				E46674152B04A56100782359 /* AdvancedPreferencesView.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		E475191A2B03A2CF00C360DD /* Directories */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +174,7 @@
 				E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */,
 				E4205D552B01FE8D0026D4A0 /* StorageView.swift */,
 				E4A30A8C2B00D24700BE5444 /* Item.swift */,
+				E46674122B04A40700782359 /* Preferences */,
 				E475191A2B03A2CF00C360DD /* Directories */,
 				E4A30A8E2B00D24800BE5444 /* Assets.xcassets */,
 				E4A30A932B00D24800BE5444 /* Chinotto.entitlements */,
@@ -361,10 +378,13 @@
 				E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */,
 				E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */,
 				E4205D562B01FE8D0026D4A0 /* StorageView.swift in Sources */,
+				E46674162B04A56100782359 /* AdvancedPreferencesView.swift in Sources */,
 				E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */,
 				E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */,
+				E46674112B04A3E000782359 /* AppPreferencesView.swift in Sources */,
 				E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */,
 				E4A30A8D2B00D24700BE5444 /* Item.swift in Sources */,
+				E46674142B04A41100782359 /* GeneralPreferencesView.swift in Sources */,
 				E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */,
 				E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */,
 				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,

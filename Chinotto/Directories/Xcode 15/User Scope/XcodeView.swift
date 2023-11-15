@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct XcodeView: View {
+
+    @Query var filesMetadata: [SizeMetadata]
+    @Query var dirsMetadata: [SizeMetadata]
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .xcode)
     
@@ -28,7 +32,9 @@ struct XcodeView: View {
             .listStyle(.inset)
             
             Table(
-                storageViewModel.fileSizeMetadata,
+                try! filesMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "Xcode" }) && !input.key.hasDirectoryPath
+                }),
                 selection: $selectedFiles
             ) {
                 TableColumn("Size", value: \.value)
@@ -44,7 +50,9 @@ struct XcodeView: View {
             }
 
             Table(
-                storageViewModel.dirSizeMetadata,
+                try! dirsMetadata.filter(#Predicate { input in
+                    input.key.pathComponents.contains(where: { p in p == "Xcode" }) && input.key.hasDirectoryPath
+                }),
                 selection: $selectedDirs
             ) {
                 TableColumn("Size", value: \.value)
