@@ -52,6 +52,19 @@ enum Directories: CaseIterable, Identifiable {
         "\(Self.userBasePath)/\(dirName)"
     }
     
+    var systemPath: String {
+        "\(Self.systemBasePath)/\(dirName)"
+    }
+    
+    func path(scope: DirectoryScope) -> String {
+        switch scope {
+        case .system:
+            systemPath
+        case .user:
+            path
+        }
+    }
+    
     var systemImage: String {
         switch self {
         case .coreSimulator:

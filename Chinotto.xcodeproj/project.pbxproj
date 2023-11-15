@@ -11,6 +11,7 @@
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
+		E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */; };
 		E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191C2B03A2E800C360DD /* Subdirectories.swift */; };
 		E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191E2B03A8ED00C360DD /* CachesView.swift */; };
 		E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */; };
@@ -56,6 +57,7 @@
 		E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoriesStorageView.swift; sourceTree = "<group>"; };
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorDevicesView.swift; sourceTree = "<group>"; };
 		E475191C2B03A2E800C360DD /* Subdirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subdirectories.swift; sourceTree = "<group>"; };
 		E475191E2B03A8ED00C360DD /* CachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachesView.swift; sourceTree = "<group>"; };
 		E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserCachesView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				E475191E2B03A8ED00C360DD /* CachesView.swift */,
 				E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */,
 				E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */,
+				E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */,
 				E47519202B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift */,
 				E47519222B03AA6900C360DD /* _CoreSimulatorSystemCachesView.swift */,
 			);
@@ -370,6 +373,7 @@
 				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,
 				E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */,
 				E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */,
+				E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */,
 				E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */,
 				E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */,
 				E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */,
