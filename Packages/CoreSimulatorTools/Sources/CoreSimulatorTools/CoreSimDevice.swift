@@ -103,8 +103,10 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
                     lastModified: values?.contentModificationDate
                 )
             }
-            dataContents = .init(contents: contents, metadata: metadata)
-            size = metadata.reduce(0) { $0 + $1.size }
+            Task { @MainActor in
+                dataContents = .init(contents: contents, metadata: metadata)
+                size = metadata.reduce(0) { $0 + $1.size }
+            }
         } catch {
             print(error)
         }
