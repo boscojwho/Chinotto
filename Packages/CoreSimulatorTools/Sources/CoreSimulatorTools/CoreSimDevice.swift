@@ -30,11 +30,13 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
         hasher.combine(uuid)
     }
     
+    public let root: URL
     public let uuid: UUID
     public let plist: URL
     public let data: URL
     
-    public init(uuid: UUID, plist: URL, data: URL) {
+    public init(root: URL, uuid: UUID, plist: URL, data: URL) {
+        self.root = root
         self.uuid = uuid
         self.plist = plist
         self.data = data
@@ -46,6 +48,7 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
         
         Task {
             await decodePlist()
+            loadDataContents()
         }
     }
     
@@ -71,9 +74,15 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
         }
     }
     
+    /// Use this key path for APIs that require a non-optional value (e.g. `SwiftUI.TableColumn`).
+    public var name: String { devicePlist?.name ?? uuid.uuidString }
+    /// Use this key path for APIs that require a non-optional value (e.g. `SwiftUI.TableColumn`).
+    public var totalSize: Int { size ?? -1 }
+    
+    public private(set) var size: Int?
     public var isLoadingDataContents = false
     public var dataContents: DataDir?
-    public func loadDataContents() {
+    public func loadDataContents(recalculate: Bool = true) {
         defer { isLoadingDataContents = false }
         isLoadingDataContents = true
         let contents: [URL]
@@ -95,6 +104,7 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
                 )
             }
             dataContents = .init(contents: contents, metadata: metadata)
+            size = metadata.reduce(0) { $0 + $1.size }
         } catch {
             print(error)
         }
@@ -107,20 +117,20 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
     public var filesMetadata: [URL: Int] = [:]
 }
 
-struct Metadata: Codable, Identifiable {
-    let url: URL
-    let size: Int
+public struct Metadata: Codable, Identifiable {
+    public let url: URL
+    public let size: Int
     /// `.creationDateKey`
-    let dateAdded: Date?
+    public let dateAdded: Date?
     /// `.contentModificationDateKey`
-    let lastModified: Date?
+    public let lastModified: Date?
     
-    var id: String { url.absoluteString }
+    public var id: String { url.absoluteString }
 }
 
 public final class DataDir: Codable {
-    var contents: [URL] = []
-    var metadata: [Metadata] = []
+    public var contents: [URL] = []
+    public var metadata: [Metadata] = []
     
     init(contents: [URL], metadata: [Metadata]) {
         self.contents = contents

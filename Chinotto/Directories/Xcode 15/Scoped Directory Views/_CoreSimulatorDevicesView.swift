@@ -43,7 +43,7 @@ final class CoreSimulatorDevicesViewModel {
                 let devicePlist = deviceContents.first { $0.lastPathComponent == "device.plist" }
                 let dataDir = deviceContents.first { $0.lastPathComponent == "data" }
                 if let devicePlist, let dataDir, let uuid = UUID(uuidString: deviceDir.lastPathComponent) {
-                    return CoreSimulatorDevice(uuid: uuid, plist: devicePlist, data: dataDir)
+                    return CoreSimulatorDevice(root: deviceDir, uuid: uuid, plist: devicePlist, data: dataDir)
                 } else {
                     return nil
                 }
@@ -63,6 +63,9 @@ struct _CoreSimulatorDevicesView: View {
     @Bindable var storageViewModel: StorageViewModel
     @State private var devicesViewModel: CoreSimulatorDevicesViewModel
     
+    @State private var selectedDevices: Set<CoreSimulatorDevice.ID> = .init()
+    @State private var tableSortOrder = [KeyPathComparator(\CoreSimulatorDevice.totalSize)]
+    
     init(dirScope: DirectoryScope, storageViewModel: Bindable<StorageViewModel>) {
         _devicesViewModel = .init(
             wrappedValue: .init(
@@ -74,10 +77,66 @@ struct _CoreSimulatorDevicesView: View {
     }
     
     var body: some View {
+        tableView()
+            .task {
+                devicesViewModel.loadDevices()
+            }
+    }
+    
+    @ViewBuilder
+    private func tableView() -> some View {
+        Table(
+            devicesViewModel.devices,
+            selection: $selectedDevices,
+            sortOrder: $tableSortOrder
+        ) {
+            TableColumn("Device Name", value: \.name) { value in
+                HStack {
+                    Text(value.name)
+                    Spacer()
+                    Image(systemName: "chevron.forward")
+                        .foregroundStyle(.secondary)
+                        .onTapGesture {
+                            openWindow(id: "CoreSimulatorDevice", value: value)
+                        }
+                }
+            }
+            TableColumn("Size", value: \.totalSize) { value in
+                if let totalSize = value.size {
+                    Text("\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))")
+                } else {
+                    ProgressView()
+                        .controlSize(.small)
+                }
+            }
+        }
+        .contextMenu(
+            forSelectionType: CoreSimulatorDevice.ID.self) { items in
+                // no-op.
+            } primaryAction: { deviceIds in
+                for id in deviceIds {
+                    if let device = devicesViewModel.devices.first(where: { $0.id == id }) {
+                        openWindow(id: "CoreSimulatorDevice", value: device)
+                    }
+                }
+            }
+        .onChange(of: tableSortOrder) { _, sortOrder in
+            devicesViewModel.devices.sort(using: sortOrder)
+        }
+    }
+    
+    @ViewBuilder
+    private func listView() -> some View {
         List {
             ForEach(devicesViewModel.devices) { value in
                 GroupBox {
-                    Text("\(value.devicePlist?.name ?? value.uuid.uuidString)")
+                    HStack {
+                        Text("\(value.devicePlist?.name ?? value.uuid.uuidString)")
+                        if let metadata = value.dataContents?.metadata {
+                            let totalSize = metadata.reduce(0) { $0 + $1.size }
+                            Text("[\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))]")
+                        }
+                    }
                 }
                 .containerRelativeFrame(.horizontal)
                 .onTapGesture {
@@ -87,9 +146,6 @@ struct _CoreSimulatorDevicesView: View {
                     openWindow(id: "CoreSimulatorDevice", value: value)
                 }
             }
-        }
-        .task {
-            devicesViewModel.loadDevices()
         }
     }
 }

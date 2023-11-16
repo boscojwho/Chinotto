@@ -332,4 +332,38 @@ extension URL {
         
         return size
     }
+    
+    static func directorySize(url: URL) -> Int {
+        let contents: [URL]
+        do {
+            contents = try FileManager.default.contentsOfDirectory(
+                at: url,
+                includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey],
+                options: .skipsPackageDescendants /// Not sure if `.skipsPackageDescendants` is wise here.
+            )
+        } catch {
+            return 0
+        }
+        
+        var size: Int = 0
+        
+        autoreleasepool {
+            for url in contents {
+                if url.hasDirectoryPath {
+                    size += directorySize(url: url)
+                } else {
+                    let fileSizeResourceValue: URLResourceValues
+                    do {
+                        fileSizeResourceValue = try url.resourceValues(forKeys: [.fileSizeKey])
+                    } catch {
+                        continue
+                    }
+                    
+                    size += fileSizeResourceValue.fileSize ?? 0
+                }
+            }
+        }
+        
+        return size
+    }
 }
