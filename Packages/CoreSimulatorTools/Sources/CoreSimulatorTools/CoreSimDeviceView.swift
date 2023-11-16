@@ -11,6 +11,8 @@ public struct CoreSimDeviceView: View {
     
     @Binding var device: CoreSimulatorDevice?
     
+    private let dateTimeFormatter = RelativeDateTimeFormatter()
+    
     public init(device: Binding<CoreSimulatorDevice?>) {
         _device = device
         Task {
@@ -36,6 +38,24 @@ public struct CoreSimDeviceView: View {
                     }
                 }
                 
+                Section("Access") {
+                    if let dateAdded = device?.dateAdded {
+                        LabeledContent(
+                            "Date Added",
+                            value: dateTimeFormatter.localizedString(
+                                for: dateAdded,
+                                relativeTo: Date()
+                            )
+                        )
+                    }
+                    if let lastModified = device?.lastModified {
+                        LabeledContent("Last Modified", value: dateTimeFormatter.localizedString(
+                            for: lastModified,
+                            relativeTo: Date()
+                        ))
+                    }
+                }
+                
                 Section("Data") {
                     if let device {
                         if device.isLoadingDataContents {
@@ -43,7 +63,11 @@ public struct CoreSimDeviceView: View {
                         } else {
                             if let contents = device.dataContents {
                                 ForEach(contents.metadata) { value in
-                                    LabeledContent(value.url.lastPathComponent, value: "\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
+                                    let string = (value.lastModified != nil) ? "\(value.url.lastPathComponent) [\(dateTimeFormatter.localizedString(for: value.lastModified!, relativeTo: .init()))]" : "\(value.url.lastPathComponent)"
+                                    LabeledContent(
+                                        string,
+                                        value: "\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))"
+                                    )
                                 }
                                                                 
                                 let total = contents.metadata.reduce(0) { $0 + $1.size }
