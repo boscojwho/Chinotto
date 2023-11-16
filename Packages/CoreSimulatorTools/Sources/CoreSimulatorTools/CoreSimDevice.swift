@@ -39,10 +39,20 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
         self.plist = plist
         self.data = data
         
+        if let values = try? data.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey]), let creationDate = values.creationDate, let contentModified = values.contentModificationDate {
+            dateAdded = creationDate
+            lastModified = contentModified
+        }
+        
         Task {
             await decodePlist()
         }
     }
+    
+    /// `.creationDateKey`
+    public private(set) var dateAdded: Date?
+    /// `.contentModificationDateKey`
+    public private(set) var lastModified: Date?
     
     public var devicePlist: DevicePlist?
     
@@ -70,13 +80,19 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
         do {
             contents = try FileManager.default.contentsOfDirectory(
                 at: data,
-                includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey],
+                includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey, .creationDateKey, .contentModificationDateKey],
                 options: [.skipsPackageDescendants, .skipsHiddenFiles]
             )
             
             let metadata = contents.compactMap {
+                let values = try? $0.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
                 let size = URL.directorySize(url: $0)
-                return Metadata(url: $0, size: size)
+                return Metadata(
+                    url: $0,
+                    size: size,
+                    dateAdded: values?.creationDate,
+                    lastModified: values?.contentModificationDate
+                )
             }
             dataContents = .init(contents: contents, metadata: metadata)
         } catch {
@@ -94,6 +110,10 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
 struct Metadata: Codable, Identifiable {
     let url: URL
     let size: Int
+    /// `.creationDateKey`
+    let dateAdded: Date?
+    /// `.contentModificationDateKey`
+    let lastModified: Date?
     
     var id: String { url.absoluteString }
 }
