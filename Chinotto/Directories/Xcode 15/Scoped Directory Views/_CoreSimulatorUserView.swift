@@ -39,6 +39,11 @@ struct _CoreSimulatorUserView: View {
                                         Text("/\(value.dirName)")
                                             .fontWeight(.bold)
                                         Spacer()
+                                        if value == .devices {
+                                            Button("Inspect Devices...") {
+                                                openWindow(id: "CoreSimulators", value: value)
+                                            }
+                                        }
                                     }
                                     Divider()
                                     HStack {
@@ -50,12 +55,12 @@ struct _CoreSimulatorUserView: View {
                                 .padding(2)
                             }
                         }
-                        .onTapGesture {
-                            openWindow(id: "CoreSimulators", value: value)
-                            
-                            inspectorData = value
-                            showInspectorView = true
-                        }
+//                        .onTapGesture {
+//                            openWindow(id: "CoreSimulators", value: value)
+//                            
+//                            inspectorData = value
+//                            showInspectorView = true
+//                        }
                     }
                 }
             }

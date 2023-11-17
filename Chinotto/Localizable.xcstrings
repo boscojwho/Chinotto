@@ -76,13 +76,16 @@
     "Chinotto" : {
 
     },
-    "Core Simulator Device" : {
-
-    },
     "Core Simulators" : {
 
     },
     "Data Category" : {
+
+    },
+    "Date Added" : {
+
+    },
+    "Device Kind" : {
 
     },
     "Device Name" : {
@@ -109,7 +112,16 @@
     "If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is time-consuming." : {
 
     },
+    "Inspect Devices..." : {
+
+    },
+    "Last Boot Time" : {
+
+    },
     "Last Updated: %@" : {
+
+    },
+    "Never Booted" : {
 
     },
     "Select directory data." : {

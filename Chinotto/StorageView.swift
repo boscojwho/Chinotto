@@ -158,7 +158,7 @@ struct StorageView: View {
                     .fontWeight(.regular)
                     .foregroundStyle(.secondary)
             }
-            .offset(y: 8)
+//            .offset(y: 8)
             GroupBox {
                 VStack {
                     HStack {

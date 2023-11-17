@@ -27,18 +27,15 @@ struct ChinottoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(maxWidth: 1440)
         }
+        .defaultPosition(.center)
+        .defaultSize(width: 1080, height: 1080)
+        .windowResizability(.contentSize)
         .modelContainer(sharedModelContainer)
         
         WindowGroup(Text("Core Simulators"), id: "CoreSimulators", for: CoreSimulator_User.self) { value in
             CoreSimulatorsRootView()
         }
-        
-        WindowGroup(Text("Core Simulator Device"), id: "CoreSimulatorDevice", for: CoreSimulatorDevice.self) { value in
-            CoreSimDeviceView(device: value)
-                .frame(minWidth: 480, minHeight: 580)
-        }
-        .defaultSize(width: 480, height: 720)
-        .windowResizability(.contentSize)
     }
 }
