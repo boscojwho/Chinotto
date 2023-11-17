@@ -21,24 +21,26 @@ public struct CoreSimDeviceView: View {
     }
     
     public var body: some View {
-        if let devicePlist = device?.devicePlist {
+        if let device, let devicePlist = device.devicePlist {
             let mirror = Mirror(reflecting: devicePlist)
             let children = Array(mirror.children)
             List {
                 Section {
-                    HStack {
-                        Text("\(devicePlist.name)")
-                            .font(.title2)
-                        Spacer()
-                        Button("Delete Device...") {
-                            isPresentingDeleteDeviceAlert = true
+                    GroupBox {
+                        HStack {
+                            Text("\(devicePlist.name)")
+                                .font(.title2)
+                            Spacer()
+                            Button("Delete Device...") {
+                                isPresentingDeleteDeviceAlert = true
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.red)
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.red)
                     }
                 }
 
-                Section {
+                Section("Metadata") {
                     ForEach(children, id: \.label) { child in
                         if let l = child.label {
                             let label = "\(l)"
@@ -49,7 +51,7 @@ public struct CoreSimDeviceView: View {
                 }
                 
                 Section("Access") {
-                    if let dateAdded = device?.dateAdded {
+                    if let dateAdded = device.dateAdded {
                         LabeledContent(
                             "Date Added",
                             value: dateTimeFormatter.localizedString(
@@ -58,7 +60,7 @@ public struct CoreSimDeviceView: View {
                             )
                         )
                     }
-                    if let lastModified = device?.lastModified {
+                    if let lastModified = device.lastModified {
                         LabeledContent("Last Modified", value: dateTimeFormatter.localizedString(
                             for: lastModified,
                             relativeTo: Date()
@@ -67,31 +69,56 @@ public struct CoreSimDeviceView: View {
                 }
                 
                 Section("Data") {
-                    if let device {
-                        if device.isLoadingDataContents {
-                            ProgressView()
-                        } else {
+                    if device.isLoadingDataContents {
+                        ProgressView()
+                    } else {
+                        GroupBox {
                             if let contents = device.dataContents {
-                                ForEach(contents.metadata) { value in
-                                    let string = (value.lastModified != nil) ? "\(value.url.lastPathComponent) [\(dateTimeFormatter.localizedString(for: value.lastModified!, relativeTo: .init()))]" : "\(value.url.lastPathComponent)"
-                                    LabeledContent(
-                                        string,
-                                        value: "\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))"
-                                    )
+                                Table(contents.metadata) {
+                                    TableColumn("Directory") { value in
+                                        Text("\(value.url.lastPathComponent)")
+                                    }
+                                    
+                                    TableColumn("Last Modified") { value in
+                                        if let date = value.lastModified {
+                                            Text("\(dateTimeFormatter.localizedString(for: date, relativeTo: Date()))")
+                                        } else {
+                                            Text("Never")
+                                        }
+                                    }
+                                    
+                                    TableColumn("Size") { value in
+                                        HStack {
+                                            Spacer()
+                                            Text("\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
+                                                .fontWeight(.medium)
+                                        }
+                                    }
                                 }
-                                                                
-                                let total = contents.metadata.reduce(0) { $0 + $1.size }
-                                LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
-                                    .fontWeight(.heavy)
-                                    .font(.title3)
+                                .frame(height: 280)
+                                
+                                GroupBox {
+                                    let total = contents.metadata.reduce(0) { $0 + $1.size }
+                                    LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
+                                        .fontWeight(.heavy)
+                                        .font(.title3)
+                                        .padding(.horizontal, 4)
+                                }
                             } else {
                                 ContentUnavailableView {
                                     Text("Failed to load device contents.")
                                 }
                             }
                         }
-                    } else {
-                        ProgressView()
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button {
+                        NSWorkspace.shared.activateFileViewerSelecting([device.root])
+                    } label: {
+                        Text("Show in Finder")
                     }
                 }
             }

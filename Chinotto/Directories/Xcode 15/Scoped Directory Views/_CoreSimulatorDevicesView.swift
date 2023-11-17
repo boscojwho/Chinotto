@@ -121,6 +121,24 @@ struct _CoreSimulatorDevicesView: View {
 //            TableColumn("Last Modified", value: \.contentModificationDate) { value in
 //                Text("\(dateTimeFormatter.localizedString(for: value.contentModificationDate, relativeTo: Date()))")
 //            }
+            TableColumn("Last Boot Time", value: \.lastBootedAt) { value in
+                if value.lastBootedAt == .distantPast {
+                    Text("Never Booted")
+                } else {
+                    Text("\(dateTimeFormatter.localizedString(for: value.lastBootedAt, relativeTo: Date()))")
+                }
+            }
+            
+            TableColumn("Device Kind", value: \.deviceKind) { value in
+                HStack(spacing: 10) {
+                    Group {
+                        Image(systemName: value.deviceKind.systemImage)
+                            .frame(alignment: .trailing)
+                    }
+                    .frame(width: 12, alignment: .trailing)
+                    Text(value.deviceKind.description)
+                }
+            }
         }
         .contextMenu(forSelectionType: CoreSimulatorDevice.ID.self) { items in
             // no-op.

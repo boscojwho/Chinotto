@@ -88,6 +88,9 @@
     "Date Added" : {
 
     },
+    "Device Kind" : {
+
+    },
     "Device Name" : {
 
     },
@@ -115,7 +118,13 @@
     "Inspect Devices..." : {
 
     },
+    "Last Boot Time" : {
+
+    },
     "Last Updated: %@" : {
+
+    },
+    "Never Booted" : {
 
     },
     "Select directory data." : {
