@@ -78,6 +78,12 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
     public var name: String { devicePlist?.name ?? uuid.uuidString }
     /// Use this key path for APIs that require a non-optional value (e.g. `SwiftUI.TableColumn`).
     public var totalSize: Int { size ?? -1 }
+    public var creationDate: Date {
+        dateAdded ?? .distantPast
+    }
+    public var contentModificationDate: Date {
+        lastModified ?? .distantPast
+    }
     
     public private(set) var size: Int?
     public var isLoadingDataContents = false
@@ -85,30 +91,33 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
     public func loadDataContents(recalculate: Bool = true) {
         defer { isLoadingDataContents = false }
         isLoadingDataContents = true
-        let contents: [URL]
-        do {
-            contents = try FileManager.default.contentsOfDirectory(
-                at: data,
-                includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey, .creationDateKey, .contentModificationDateKey],
-                options: [.skipsPackageDescendants, .skipsHiddenFiles]
-            )
-            
-            let metadata = contents.compactMap {
-                let values = try? $0.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
-                let size = URL.directorySize(url: $0)
-                return Metadata(
-                    url: $0,
-                    size: size,
-                    dateAdded: values?.creationDate,
-                    lastModified: values?.contentModificationDate
+        
+        Task {
+            let contents: [URL]
+            do {
+                contents = try FileManager.default.contentsOfDirectory(
+                    at: data,
+                    includingPropertiesForKeys: [.fileSizeKey, .isDirectoryKey, .creationDateKey, .contentModificationDateKey],
+                    options: [.skipsPackageDescendants, .skipsHiddenFiles]
                 )
+                
+                let metadata = contents.compactMap {
+                    let values = try? $0.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
+                    let size = URL.directorySize(url: $0)
+                    return Metadata(
+                        url: $0,
+                        size: size,
+                        dateAdded: values?.creationDate,
+                        lastModified: values?.contentModificationDate
+                    )
+                }
+                Task { @MainActor in
+                    dataContents = .init(contents: contents, metadata: metadata)
+                    size = metadata.reduce(0) { $0 + $1.size }
+                }
+            } catch {
+                print(error)
             }
-            Task { @MainActor in
-                dataContents = .init(contents: contents, metadata: metadata)
-                size = metadata.reduce(0) { $0 + $1.size }
-            }
-        } catch {
-            print(error)
         }
     }
     

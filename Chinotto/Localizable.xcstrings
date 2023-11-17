@@ -85,6 +85,9 @@
     "Data Category" : {
 
     },
+    "Date Added" : {
+
+    },
     "Device Name" : {
 
     },
@@ -107,6 +110,9 @@
 
     },
     "If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is time-consuming." : {
+
+    },
+    "Inspect Devices..." : {
 
     },
     "Last Updated: %@" : {

@@ -11,13 +11,13 @@ public struct CoreSimDeviceView: View {
     
     @Binding var device: CoreSimulatorDevice?
     
+    @State private var isPresentingDeleteDeviceAlert = false
+    
     private let dateTimeFormatter = RelativeDateTimeFormatter()
     
     public init(device: Binding<CoreSimulatorDevice?>) {
         _device = device
-        Task {
-            device.wrappedValue?.loadDataContents()
-        }
+        device.wrappedValue?.loadDataContents()
     }
     
     public var body: some View {
@@ -25,9 +25,19 @@ public struct CoreSimDeviceView: View {
             let mirror = Mirror(reflecting: devicePlist)
             let children = Array(mirror.children)
             List {
-                Text("\(devicePlist.name)")
-                    .font(.title3)
-                
+                Section {
+                    HStack {
+                        Text("\(devicePlist.name)")
+                            .font(.title2)
+                        Spacer()
+                        Button("Delete Device...") {
+                            isPresentingDeleteDeviceAlert = true
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.red)
+                    }
+                }
+
                 Section {
                     ForEach(children, id: \.label) { child in
                         if let l = child.label {
@@ -85,6 +95,17 @@ public struct CoreSimDeviceView: View {
                     }
                 }
             }
+            .alert("Are you sure you wish to permanently delete\n\"\(devicePlist.name)\"?", isPresented: $isPresentingDeleteDeviceAlert) {
+                Button("Cancel", role: .cancel) {
+                    
+                }
+                Button("Delete", role: .destructive) {
+                    
+                }
+            } message: {
+                Text("This operation cannot be reversed.\n\nYou may wish to backup test data associated with this device before proceeding.")
+            }
+
         } else {
             ProgressView()
         }

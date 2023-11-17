@@ -66,6 +66,11 @@ struct _CoreSimulatorDevicesView: View {
     @State private var selectedDevices: Set<CoreSimulatorDevice.ID> = .init()
     @State private var tableSortOrder = [KeyPathComparator(\CoreSimulatorDevice.totalSize)]
     
+    @State private var isPresentingInspectorViewForDevice = false
+    @State private var deviceForInspectorView: CoreSimulatorDevice? = nil
+    
+    private let dateTimeFormatter: RelativeDateTimeFormatter = .init()
+    
     init(dirScope: DirectoryScope, storageViewModel: Bindable<StorageViewModel>) {
         _devicesViewModel = .init(
             wrappedValue: .init(
@@ -109,19 +114,43 @@ struct _CoreSimulatorDevicesView: View {
                         .controlSize(.small)
                 }
             }
+            TableColumn("Date Added", value: \.creationDate) { value in
+                Text("\(dateTimeFormatter.localizedString(for: value.creationDate, relativeTo: Date()))")
+            }
+            /// Not very useful, since /tmp directory gets updated often. [2023.11]
+//            TableColumn("Last Modified", value: \.contentModificationDate) { value in
+//                Text("\(dateTimeFormatter.localizedString(for: value.contentModificationDate, relativeTo: Date()))")
+//            }
         }
-        .contextMenu(
-            forSelectionType: CoreSimulatorDevice.ID.self) { items in
-                // no-op.
-            } primaryAction: { deviceIds in
-                for id in deviceIds {
-                    if let device = devicesViewModel.devices.first(where: { $0.id == id }) {
-                        openWindow(id: "CoreSimulatorDevice", value: device)
-                    }
+        .contextMenu(forSelectionType: CoreSimulatorDevice.ID.self) { items in
+            // no-op.
+        } primaryAction: { deviceIds in
+            for id in deviceIds {
+                if let device = devicesViewModel.devices.first(where: { $0.id == id }) {
+                    isPresentingInspectorViewForDevice = true
+                    deviceForInspectorView = device
+//                    openWindow(id: "CoreSimulatorDevice", value: device)
                 }
             }
+        }
+        .contextMenu {
+            Button {
+                let devicesToShow = devicesViewModel.devices.filter { devices in
+                    selectedDevices.contains { selected in selected == devices.id }
+                }
+                let fileUrls = devicesToShow.compactMap { $0.root }
+                NSWorkspace.shared.activateFileViewerSelecting(fileUrls)
+            } label: {
+                Text("Show in Finder")
+            }
+            .disabled(selectedDevices.isEmpty)
+        }
         .onChange(of: tableSortOrder) { _, sortOrder in
             devicesViewModel.devices.sort(using: sortOrder)
+        }
+        .inspector(isPresented: $isPresentingInspectorViewForDevice) {
+            CoreSimDeviceView(device: $deviceForInspectorView)
+                .inspectorColumnWidth(min: 480, ideal: 520, max: 720)
         }
     }
     
