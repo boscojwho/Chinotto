@@ -19,7 +19,7 @@ protocol CoreSimulator {
 }
 
 /// `/Users/{username}/Library/Developer/CoreSimulator`
-enum CoreSimulator_User: CoreSimulator, CaseIterable, Identifiable {
+enum CoreSimulator_User: CoreSimulator, CaseIterable, Identifiable, Codable {
     case caches
     case devices
     case temp
