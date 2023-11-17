@@ -84,7 +84,7 @@ final class StorageViewModel: Identifiable {
     private(set) var fileSizeMetadata: [SizeMetadata] = []
     
     /// - Parameter initial: If `true`, only calculates size if not yet calculated.
-    func calculateSize(initial: Bool, recalculate: Bool) {
+    func calculateSize(initial: Bool, recalculate: Bool, shallowMetadata: Bool = false) {
         defer { performedInitialLoad = true }
         
         if initial, performedInitialLoad == true {
@@ -186,7 +186,7 @@ struct StorageView: View {
     }
     
     private func reload() {
-        Task(priority: .background) {
+        Task(priority: .userInitiated) {
             viewModel.calculateSize(initial: false, recalculate: true)
         }
     }

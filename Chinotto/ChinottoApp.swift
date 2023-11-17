@@ -32,6 +32,9 @@ struct ChinottoApp: App {
         
         WindowGroup(Text("Core Simulator Device"), id: "CoreSimulatorDevice", for: CoreSimulatorDevice.self) { value in
             CoreSimDeviceView(device: value)
+                .frame(minWidth: 480, minHeight: 580)
         }
+        .defaultSize(width: 480, height: 720)
+        .windowResizability(.contentSize)
     }
 }
