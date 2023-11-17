@@ -22,6 +22,12 @@
     "/CoreSimulator" : {
 
     },
+    "/Developer (System)" : {
+
+    },
+    "/Developer (User)" : {
+
+    },
     "%.1f GB" : {
 
     },
@@ -57,9 +63,6 @@
           }
         }
       }
-    },
-    "Add Item" : {
-
     },
     "All Directories" : {
 

@@ -35,6 +35,7 @@
 		E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */; };
 		E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */; };
 		E4F8ECC92B06F8050075AB04 /* CoreSimulatorsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */; };
+		E4F8ECCB2B0702D30075AB04 /* AppSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECCA2B0702D30075AB04 /* AppSidebarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		E4F8ECC02B0453DF0075AB04 /* XCPGDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPGDevicesView.swift; sourceTree = "<group>"; };
 		E4F8ECC22B0453E40075AB04 /* XCTestDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestDevicesView.swift; sourceTree = "<group>"; };
 		E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSimulatorsRootView.swift; sourceTree = "<group>"; };
+		E4F8ECCA2B0702D30075AB04 /* AppSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSidebarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				E4205D552B01FE8D0026D4A0 /* StorageView.swift */,
 				E4A30A8C2B00D24700BE5444 /* Item.swift */,
 				E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */,
+				E4F8ECCA2B0702D30075AB04 /* AppSidebarView.swift */,
 				E475191A2B03A2CF00C360DD /* Directories */,
 				E4A30A8E2B00D24800BE5444 /* Assets.xcassets */,
 				E4A30A932B00D24800BE5444 /* Chinotto.entitlements */,
@@ -382,6 +385,7 @@
 				E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */,
 				E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */,
 				E4205D562B01FE8D0026D4A0 /* StorageView.swift in Sources */,
+				E4F8ECCB2B0702D30075AB04 /* AppSidebarView.swift in Sources */,
 				E4F8ECC92B06F8050075AB04 /* CoreSimulatorsRootView.swift in Sources */,
 				E4F8ECC32B0453E40075AB04 /* XCTestDevicesView.swift in Sources */,
 				E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */,
