@@ -9,7 +9,10 @@ import SwiftUI
 
 struct _CoreSimulatorUserView: View {
     
+    @Environment(\.openWindow) var openWindow
+    
     @State private var storageViewModel: StorageViewModel = .init(directory: .coreSimulator)
+    
     @State private var showInspectorView = false
     @State private var inspectorData: CoreSimulator_User?
     
@@ -48,6 +51,8 @@ struct _CoreSimulatorUserView: View {
                             }
                         }
                         .onTapGesture {
+                            openWindow(id: "CoreSimulators", value: value)
+                            
                             inspectorData = value
                             showInspectorView = true
                         }
@@ -55,41 +60,41 @@ struct _CoreSimulatorUserView: View {
                 }
             }
             .listStyle(.inset)
-            
-            Table(
-                storageViewModel.fileSizeMetadata,
-                selection: $selectedFiles
-            ) {
-                TableColumn("Size", value: \.value)
-                TableColumn("File", value: \.key.lastPathComponent)
-            }
-            .contextMenu {
-                Button {
-                    showFilesInFinder()
-                } label: {
-                    Text("Show in Finder")
-                }
-                .disabled(selectedFiles.isEmpty)
-            }
-
-            Table(
-                storageViewModel.dirSizeMetadata,
-                selection: $selectedDirs
-            ) {
-                TableColumn("Size", value: \.value)
-                TableColumn("Directory", value: \.key.lastPathComponent)
-            }
-            .contextMenu {
-                Button {
-                    showDirsInFinder()
-                } label: {
-                    Text("Show in Finder")
-                }
-                .disabled(selectedDirs.isEmpty)
-            }
         }
-        .inspector(isPresented: $showInspectorView) {
-            makeInspectorView()
+    }
+    
+    @ViewBuilder
+    private func metadataTableView() -> some View {
+        Table(
+            storageViewModel.fileSizeMetadata,
+            selection: $selectedFiles
+        ) {
+            TableColumn("Size", value: \.value)
+            TableColumn("File", value: \.key.lastPathComponent)
+        }
+        .contextMenu {
+            Button {
+                showFilesInFinder()
+            } label: {
+                Text("Show in Finder")
+            }
+            .disabled(selectedFiles.isEmpty)
+        }
+        
+        Table(
+            storageViewModel.dirSizeMetadata,
+            selection: $selectedDirs
+        ) {
+            TableColumn("Size", value: \.value)
+            TableColumn("Directory", value: \.key.lastPathComponent)
+        }
+        .contextMenu {
+            Button {
+                showDirsInFinder()
+            } label: {
+                Text("Show in Finder")
+            }
+            .disabled(selectedDirs.isEmpty)
         }
     }
     

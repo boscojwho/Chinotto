@@ -30,6 +30,10 @@ struct ChinottoApp: App {
         }
         .modelContainer(sharedModelContainer)
         
+        WindowGroup(Text("Core Simulators"), id: "CoreSimulators", for: CoreSimulator_User.self) { value in
+            CoreSimulatorsRootView()
+        }
+        
         WindowGroup(Text("Core Simulator Device"), id: "CoreSimulatorDevice", for: CoreSimulatorDevice.self) { value in
             CoreSimDeviceView(device: value)
                 .frame(minWidth: 480, minHeight: 580)
