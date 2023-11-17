@@ -1,6 +1,7 @@
 **Warning**
-- *Chinotto is currently in active development.*
-- *Chinotto does not run in an App Sandbox.*
+- *Chinotto is currently in active development (alpha build, not feature-complete).*
+- *Chinotto currently does not run in an App Sandbox.*
+- *Use at your own risk =)*
 
 # Chinotto
 A sweet little tool for managing the bitter taste of Xcode using up your Mac's storage space.
