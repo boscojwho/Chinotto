@@ -73,7 +73,7 @@ struct _CoreSimulatorDevicesView: View {
     @State private var selectedDevices: Set<CoreSimulatorDevice.ID> = .init()
     @State private var tableSortOrder = [KeyPathComparator(\CoreSimulatorDevice.totalSize)]
     
-    @State private var isPresentingInspectorViewForDevice = false
+    @State private var isPresentingInspectorViewForDevice = true
     @State private var deviceForInspectorView: CoreSimulatorDevice? = nil
     
     private let dateTimeFormatter: RelativeDateTimeFormatter = .init()
