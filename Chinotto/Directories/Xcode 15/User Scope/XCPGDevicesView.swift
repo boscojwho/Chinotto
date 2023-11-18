@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct XCPGDevicesView: View {
+    @Environment(\.openWindow) var openWindow
     
     @State private var storageViewModel: StorageViewModel = .init(directory: .xcPGDevices)
     
@@ -30,6 +31,9 @@ struct XCPGDevicesView: View {
                 
                 Section("Description") {
                     Text("Xcode Playground Devices.")
+                    Button("Inspect Devices...") {
+                        openWindow(id: "XCPGDevices", value: Directories.xcPGDevices)
+                    }
                 }
             }
             .listStyle(.inset)

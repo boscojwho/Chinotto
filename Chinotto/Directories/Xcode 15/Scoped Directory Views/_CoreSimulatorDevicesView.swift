@@ -22,7 +22,13 @@ final class CoreSimulatorDevicesViewModel {
     
     func loadDevices() {
         let path = directory.path(scope: dirScope)
-        let url = URL(string: path)!.appending(path: "Devices", directoryHint: .isDirectory)
+        
+        let url: URL
+        if directory == .coreSimulator {
+            url = URL(string: path)!.appending(path: "Devices", directoryHint: .isDirectory)
+        } else {
+            url = URL(string: path)!
+        }
         
         let contents: [URL]
         do {
@@ -73,13 +79,13 @@ struct _CoreSimulatorDevicesView: View {
     private let dateTimeFormatter: RelativeDateTimeFormatter = .init()
     
     init(dirScope: DirectoryScope, storageViewModel: Bindable<StorageViewModel>) {
+        _storageViewModel = storageViewModel
         _devicesViewModel = .init(
             wrappedValue: .init(
-                directory: .coreSimulator,
+                directory: storageViewModel.wrappedValue.directory,
                 dirScope: dirScope
             )
         )
-        _storageViewModel = storageViewModel
     }
     
     var body: some View {
