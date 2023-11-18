@@ -98,7 +98,7 @@ struct _CoreSimulatorDevicesView: View {
     @ViewBuilder
     private func tableView() -> some View {
         Table(
-            devicesViewModel.devices,
+            devicesViewModel.devices.filter { !$0.isDeleted },
             selection: $selectedDevices,
             sortOrder: $tableSortOrder
         ) {
