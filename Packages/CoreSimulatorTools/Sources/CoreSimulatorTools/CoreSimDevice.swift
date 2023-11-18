@@ -10,7 +10,7 @@ import Foundation
 public struct DevicePlist: Codable, Identifiable {
     public let UDID: String
     public let deviceType: String
-    public let isDeleted: Bool
+    public var isDeleted: Bool
     public let isEphemeral: Bool
     public let lastBootedAt: Date?
     public let name: String
@@ -96,6 +96,9 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
     }
     public var lastBootedAt: Date {
         devicePlist?.lastBootedAt ?? .distantPast
+    }
+    public var isDeleted: Bool {
+        devicePlist?.isDeleted ?? false
     }
     
     public private(set) var size: Int?
