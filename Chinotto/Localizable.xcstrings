@@ -127,6 +127,9 @@
     "Last Updated: %@" : {
 
     },
+    "Last Updated: Never" : {
+
+    },
     "Manually managing this directory is not recommended." : {
 
     },
