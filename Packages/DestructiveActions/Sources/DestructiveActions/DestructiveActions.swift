@@ -20,10 +20,11 @@ public enum DestructiveActionError: LocalizedError {
 public extension FileManager {
     
     func delete(coreSimDevice: CoreSimulatorDevice) throws {
-        Log.logger.info("⌫ deleting core sim device: [\(coreSimDevice.name)](\(coreSimDevice.root))")
+        Log.logger.info("⌫ deleting core sim device: [\(coreSimDevice.name)](\(coreSimDevice.root)), uuid: \(coreSimDevice.uuid.uuidString)")
         let rootDirUrl = coreSimDevice.root
         do {
-            try self.removeItem(at: rootDirUrl)
+            try self.trashItem(at: rootDirUrl, resultingItemURL: nil)
+//            try self.removeItem(at: rootDirUrl)
         } catch {
             throw DestructiveActionError.deleteCoreSimDevice(error)
         }
