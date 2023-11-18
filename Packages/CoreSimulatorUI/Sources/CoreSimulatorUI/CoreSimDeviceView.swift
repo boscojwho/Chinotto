@@ -141,6 +141,7 @@ public struct CoreSimDeviceView: View {
                 Button("Delete", role: .destructive) {
                     do {
                         try FileManager.default.delete(coreSimDevice: device)
+                        self.device = nil
                     } catch {
                         if let error = error as? DestructiveActionError {
                             isPresentingDeleteErrorAlert = true

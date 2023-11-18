@@ -98,7 +98,7 @@ struct _CoreSimulatorDevicesView: View {
     @ViewBuilder
     private func tableView() -> some View {
         Table(
-            devicesViewModel.devices,
+            devicesViewModel.devices.filter { !$0.isDeleted },
             selection: $selectedDevices,
             sortOrder: $tableSortOrder
         ) {
@@ -113,6 +113,8 @@ struct _CoreSimulatorDevicesView: View {
                         }
                 }
             }
+            .width(min: 200, ideal: 240, max: .infinity)
+
             TableColumn("Size", value: \.totalSize) { value in
                 if let totalSize = value.size {
                     Text("\(ByteCountFormatter.string(fromByteCount: Int64(totalSize), countStyle: .file))")
@@ -121,13 +123,18 @@ struct _CoreSimulatorDevicesView: View {
                         .controlSize(.small)
                 }
             }
+            .width(min: 100, ideal: 144, max: 144)
+            
             TableColumn("Date Added", value: \.creationDate) { value in
                 Text("\(dateTimeFormatter.localizedString(for: value.creationDate, relativeTo: Date()))")
             }
+            .width(min: 120, ideal: 144, max: 180)
+
             /// Not very useful, since /tmp directory gets updated often. [2023.11]
 //            TableColumn("Last Modified", value: \.contentModificationDate) { value in
 //                Text("\(dateTimeFormatter.localizedString(for: value.contentModificationDate, relativeTo: Date()))")
 //            }
+            
             TableColumn("Last Boot Time", value: \.lastBootedAt) { value in
                 if value.lastBootedAt == .distantPast {
                     Text("Never Booted")
@@ -135,6 +142,7 @@ struct _CoreSimulatorDevicesView: View {
                     Text("\(dateTimeFormatter.localizedString(for: value.lastBootedAt, relativeTo: Date()))")
                 }
             }
+            .width(min: 120, ideal: 144, max: 180)
             
             TableColumn("Device Kind", value: \.deviceKind) { value in
                 HStack(spacing: 10) {
@@ -146,6 +154,7 @@ struct _CoreSimulatorDevicesView: View {
                     Text(value.deviceKind.description)
                 }
             }
+            .width(min: 100, ideal: 144, max: 144)
         }
         .contextMenu(forSelectionType: CoreSimulatorDevice.ID.self) { items in
             // no-op.
@@ -174,11 +183,15 @@ struct _CoreSimulatorDevicesView: View {
             devicesViewModel.devices.sort(using: sortOrder)
         }
         .inspector(isPresented: $isPresentingInspectorViewForDevice) {
-            if deviceForInspectorView != nil {
+            if let deviceForInspectorView {
+                /// [2023.11] Using `device.isLoadingDataContents` here triggers SwiftUI recursive loop for some reason.
                 CoreSimDeviceView(device: $deviceForInspectorView)
                     .inspectorColumnWidth(min: 480, ideal: 520, max: 720) /// [2023.11] This was crashing on some builds on relaunch (state restoration) for some reason.
             } else {
-                ProgressView()
+                GroupBox {
+                    Text("Double-click to select a device")
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }
