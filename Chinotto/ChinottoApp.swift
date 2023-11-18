@@ -30,7 +30,7 @@ struct ChinottoApp: App {
                 .frame(maxWidth: 1440)
         }
         .defaultPosition(.center)
-        .defaultSize(width: 1080, height: 1080)
+        .defaultSize(width: 840, height: 1080)
         .windowResizability(.contentSize)
         .modelContainer(sharedModelContainer)
         

@@ -12,6 +12,8 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
+    @State private var selectedXcodeVersion: XcodeVersion = .default
+    
     @State private var viewModels: [StorageViewModel]
     @State private var selectedViewModel: StorageViewModel?
     
@@ -85,6 +87,15 @@ struct ContentView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                Picker("Xcode", selection: $selectedXcodeVersion) {
+                    ForEach(XcodeVersion.allCases) { value in
+                        Text(value.description)
+                    }
+                }
+            }
+        }
     }
 
     private func addItem() {
