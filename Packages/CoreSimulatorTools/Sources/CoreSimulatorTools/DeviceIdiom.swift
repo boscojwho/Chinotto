@@ -10,7 +10,7 @@ import Foundation
 /// Same as `UIUserInterfaceIdiom`.
 public enum DeviceIdiom: Int, Sendable, CustomStringConvertible, Comparable {
     public static func < (lhs: DeviceIdiom, rhs: DeviceIdiom) -> Bool {
-        lhs.rawValue == rhs.rawValue
+        lhs.rawValue < rhs.rawValue
     }
     
     case unspecified
