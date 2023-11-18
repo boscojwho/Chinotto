@@ -24,6 +24,10 @@ struct ToolchainsView: View {
                 }
                 
                 StorageView(viewModel: storageViewModel)
+                
+                Section("Description") {
+                    Text("Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...).")
+                }
             }
             .listStyle(.inset)
             

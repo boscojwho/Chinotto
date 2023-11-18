@@ -24,6 +24,10 @@ struct XCTestDevicesView: View {
                 }
                 
                 StorageView(viewModel: storageViewModel)
+                
+                Section("Description") {
+                    Text("Xcode Test Devices.")
+                }
             }
             .listStyle(.inset)
             

@@ -85,6 +85,9 @@
     "Date Added" : {
 
     },
+    "Description" : {
+
+    },
     "Device Kind" : {
 
     },
@@ -121,7 +124,13 @@
     "Last Updated: %@" : {
 
     },
+    "Manually managing this directory is not recommended." : {
+
+    },
     "Never Booted" : {
+
+    },
+    "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
 
     },
     "Select directory data." : {
@@ -140,6 +149,15 @@
 
     },
     "Xcode" : {
+
+    },
+    "Xcode Playground Devices." : {
+
+    },
+    "Xcode Test Devices." : {
+
+    },
+    "Xcode.app related directories." : {
 
     }
   },
