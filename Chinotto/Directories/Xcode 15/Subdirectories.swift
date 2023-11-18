@@ -37,6 +37,9 @@ enum CoreSimulator_User: CoreSimulator, CaseIterable, Identifiable, Codable {
             "Temp"
         }
     }
+    var dirPath: String {
+        "\(Self.basePath)/\(dirName)"
+    }
     var dirDescription: String {
         switch self {
         case .caches:
@@ -46,6 +49,10 @@ enum CoreSimulator_User: CoreSimulator, CaseIterable, Identifiable, Codable {
         case .temp:
             "Temporary files associated with any simulators are stored here. This directory doesn't appear to contain anything of much permanent interest."
         }
+    }
+    
+    static var basePath: String {
+        "/Users/\(NSUserName())/Library/Developer/CoreSimulator"
     }
 }
 

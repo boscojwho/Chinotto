@@ -42,6 +42,11 @@ struct _CoreSimulatorUserView: View {
                                         Button("Inspect Devices...") {
                                             openWindow(id: "CoreSimulators", value: value)
                                         }
+                                    } else {
+                                        Button("Show in Finder") {
+                                            let url = URL(filePath: value.dirPath, directoryHint: .isDirectory)
+                                            NSWorkspace.shared.activateFileViewerSelecting([url])
+                                        }
                                     }
                                 }
                                 Divider()
