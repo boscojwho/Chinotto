@@ -136,13 +136,13 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
                 
                 HStack(spacing: 0) {
-                    Text("If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is time-consuming.")
+                    Text("If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nRun \"`xcrun simctl runtime add`\" on the downloaded .dmg file here to do so.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is unnecessarily time-consuming.")
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
                         .foregroundStyle(.primary)
                 }
             }
-            .frame(width: 240)
+            .frame(width: 280)
             .padding(10)
         }
     }
