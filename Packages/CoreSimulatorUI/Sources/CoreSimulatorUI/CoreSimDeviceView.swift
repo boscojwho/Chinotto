@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreSimulatorTools
 
 public struct CoreSimDeviceView: View {
     
