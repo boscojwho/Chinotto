@@ -25,7 +25,10 @@ struct DeveloperDiskImagesView: View {
         VSplitView {
             List {
                 Section {
-                    EmptyView()
+                    Button("Show in Finder") {
+                        let url = URL(filePath: storageViewModel.directory.path(scope: .user), directoryHint: .isDirectory)
+                        NSWorkspace.shared.activateFileViewerSelecting([url])
+                    }
                 } header: {
                     Text("/\(storageViewModel.directory.dirName)")
                 }

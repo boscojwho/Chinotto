@@ -32,28 +32,31 @@ struct _CoreSimulatorUserView: View {
                 
                 ForEach(CoreSimulator_User.allCases) { value in
                     Section {
-                        NavigationLink(value: value) {
-                            GroupBox {
-                                VStack {
-                                    HStack {
-                                        Text("/\(value.dirName)")
-                                            .fontWeight(.bold)
-                                        Spacer()
-                                        if value == .devices {
-                                            Button("Inspect Devices...") {
-                                                openWindow(id: "CoreSimulators", value: value)
-                                            }
+                        GroupBox {
+                            VStack {
+                                HStack {
+                                    Text("/\(value.dirName)")
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                    if value == .devices {
+                                        Button("Inspect Devices...") {
+                                            openWindow(id: "CoreSimulators", value: value)
+                                        }
+                                    } else {
+                                        Button("Show in Finder") {
+                                            let url = URL(filePath: value.dirPath, directoryHint: .isDirectory)
+                                            NSWorkspace.shared.activateFileViewerSelecting([url])
                                         }
                                     }
-                                    Divider()
-                                    HStack {
-                                        Text("\(value.dirDescription)")
-                                            .fontWeight(.medium)
-                                        Spacer()
-                                    }
                                 }
-                                .padding(2)
+                                Divider()
+                                HStack {
+                                    Text("\(value.dirDescription)")
+                                        .fontWeight(.medium)
+                                    Spacer()
+                                }
                             }
+                            .padding(2)
                         }
                     }
                 }

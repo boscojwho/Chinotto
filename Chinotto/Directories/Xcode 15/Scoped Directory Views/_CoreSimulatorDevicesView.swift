@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreSimulatorTools
+import CoreSimulatorUI
 
 @Observable
 final class CoreSimulatorDevicesViewModel {
