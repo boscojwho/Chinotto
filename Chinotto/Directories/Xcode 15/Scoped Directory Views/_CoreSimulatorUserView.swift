@@ -55,12 +55,6 @@ struct _CoreSimulatorUserView: View {
                                 .padding(2)
                             }
                         }
-//                        .onTapGesture {
-//                            openWindow(id: "CoreSimulators", value: value)
-//                            
-//                            inspectorData = value
-//                            showInspectorView = true
-//                        }
                     }
                 }
             }

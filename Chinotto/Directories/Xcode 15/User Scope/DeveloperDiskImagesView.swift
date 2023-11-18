@@ -44,38 +44,6 @@ struct DeveloperDiskImagesView: View {
                 }
             }
             .listStyle(.inset)
-            
-            Table(
-                storageViewModel.fileSizeMetadata,
-                selection: $selectedFiles
-            ) {
-                TableColumn("Size", value: \.value)
-                TableColumn("File", value: \.key.lastPathComponent)
-            }
-            .contextMenu {
-                Button {
-                    showFilesInFinder()
-                } label: {
-                    Text("Show in Finder")
-                }
-                .disabled(selectedFiles.isEmpty)
-            }
-            
-            Table(
-                storageViewModel.dirSizeMetadata,
-                selection: $selectedDirs
-            ) {
-                TableColumn("Size", value: \.value)
-                TableColumn("Directory", value: \.key.lastPathComponent)
-            }
-            .contextMenu {
-                Button {
-                    showDirsInFinder()
-                } label: {
-                    Text("Show in Finder")
-                }
-                .disabled(selectedDirs.isEmpty)
-            }
         }
     }
     
