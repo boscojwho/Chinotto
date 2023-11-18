@@ -24,6 +24,10 @@ struct XcodeView: View {
                 }
                 
                 StorageView(viewModel: storageViewModel)
+                
+                Section("Description") {
+                    Text("Xcode.app related directories.")
+                }
             }
             .listStyle(.inset)
             

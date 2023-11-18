@@ -38,6 +38,10 @@ struct DeveloperDiskImagesView: View {
                             .font(.footnote)
                     }
                 }
+                
+                Section("Description") {
+                    Text("Manually managing this directory is not recommended.")
+                }
             }
             .listStyle(.inset)
             

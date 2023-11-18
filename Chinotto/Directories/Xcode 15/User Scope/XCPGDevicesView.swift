@@ -24,6 +24,10 @@ struct XCPGDevicesView: View {
                 }
                 
                 StorageView(viewModel: storageViewModel)
+                
+                Section("Description") {
+                    Text("Xcode Playground Devices.")
+                }
             }
             .listStyle(.inset)
             
