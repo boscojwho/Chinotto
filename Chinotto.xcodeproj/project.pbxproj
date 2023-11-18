@@ -36,6 +36,7 @@
 		E4F8ECC92B06F8050075AB04 /* CoreSimulatorsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */; };
 		E4F8ECCD2B083F440075AB04 /* XcodeVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECCC2B083F440075AB04 /* XcodeVersion.swift */; };
 		E4F8ECD02B0848270075AB04 /* CoreSimulatorUI in Frameworks */ = {isa = PBXBuildFile; productRef = E4F8ECCF2B0848270075AB04 /* CoreSimulatorUI */; };
+		E4F8ECD32B08546A0075AB04 /* DestructiveActions in Frameworks */ = {isa = PBXBuildFile; productRef = E4F8ECD22B08546A0075AB04 /* DestructiveActions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSimulatorsRootView.swift; sourceTree = "<group>"; };
 		E4F8ECCC2B083F440075AB04 /* XcodeVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeVersion.swift; sourceTree = "<group>"; };
 		E4F8ECCE2B0846D30075AB04 /* CoreSimulatorUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreSimulatorUI; path = Packages/CoreSimulatorUI; sourceTree = "<group>"; };
+		E4F8ECD12B0851CD0075AB04 /* DestructiveActions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DestructiveActions; path = Packages/DestructiveActions; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F8ECD32B08546A0075AB04 /* DestructiveActions in Frameworks */,
 				E4F8ECD02B0848270075AB04 /* CoreSimulatorUI in Frameworks */,
 				E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */,
 			);
@@ -148,6 +151,7 @@
 		E4A30A7C2B00D24700BE5444 = {
 			isa = PBXGroup;
 			children = (
+				E4F8ECD12B0851CD0075AB04 /* DestructiveActions */,
 				E4F8ECCE2B0846D30075AB04 /* CoreSimulatorUI */,
 				E466741E2B04CCC100782359 /* CoreSimulatorTools */,
 				E4A30A872B00D24700BE5444 /* Chinotto */,
@@ -264,6 +268,7 @@
 			packageProductDependencies = (
 				E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */,
 				E4F8ECCF2B0848270075AB04 /* CoreSimulatorUI */,
+				E4F8ECD22B08546A0075AB04 /* DestructiveActions */,
 			);
 			productName = Chinotto;
 			productReference = E4A30A852B00D24700BE5444 /* Chinotto.app */;
@@ -732,6 +737,10 @@
 		E4F8ECCF2B0848270075AB04 /* CoreSimulatorUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreSimulatorUI;
+		};
+		E4F8ECD22B08546A0075AB04 /* DestructiveActions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DestructiveActions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
