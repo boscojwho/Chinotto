@@ -17,15 +17,36 @@ final class StorageViewModel: Identifiable {
         self.volumeTotalCapacity = URL(filePath: directory.path, directoryHint: .isDirectory).volumeTotalCapacity()
     }
     
+    private enum AppStorageKeys: CaseIterable {
+        case lastUpdated
+        case dirFileCount, dirSize
+        
+        func key(_ directory: Directories) -> String {
+            switch self {
+            case .lastUpdated:
+                "\(directory.dirName).dirSize.lastUpdated.appStorage.key"
+            case .dirFileCount:
+                "\(directory.dirName).dirFileCount.appStorage.key"
+            case .dirSize:
+                "\(directory.dirName).dirSize.appStorage.key"
+            }
+        }
+    }
+    
+    var appStorageKeys: [String] {
+        AppStorageKeys.allCases.map { $0.key(directory) }
+    }
+    
     /// timeIntervalSinceReferenceDate
     var lastUpdated: TimeInterval {
         get {
             access(keyPath: \.lastUpdated)
-            return UserDefaults.standard.double(forKey: "\(directory.dirName).dirSize.lastUpdated.appStorage.key")
+            let value = UserDefaults.standard.double(forKey: AppStorageKeys.lastUpdated.key(directory))
+            return value == 0 ? Date.distantPast.timeIntervalSinceReferenceDate : value
         }
         set {
             withMutation(keyPath: \.lastUpdated) {
-                UserDefaults.standard.setValue(newValue, forKey: "\(directory.dirName).dirSize.lastUpdated.appStorage.key")
+                UserDefaults.standard.setValue(newValue, forKey: AppStorageKeys.lastUpdated.key(directory))
             }
         }
     }
@@ -38,22 +59,22 @@ final class StorageViewModel: Identifiable {
     var dirFileCount: Int {
         get {
             access(keyPath: \.dirFileCount)
-            return UserDefaults.standard.integer(forKey: "\(directory.dirName).dirFileCount.appStorage.key")
+            return UserDefaults.standard.integer(forKey: AppStorageKeys.dirFileCount.key(directory))
         }
         set {
             withMutation(keyPath: \.dirFileCount) {
-                UserDefaults.standard.setValue(newValue, forKey: "\(directory.dirName).dirFileCount.appStorage.key")
+                UserDefaults.standard.setValue(newValue, forKey: AppStorageKeys.dirFileCount.key(directory))
             }
         }
     }
     var dirSize: Int {
         get {
             access(keyPath: \.dirSize)
-            return UserDefaults.standard.integer(forKey: "\(directory.dirName).dirSize.appStorage.key")
+            return UserDefaults.standard.integer(forKey: AppStorageKeys.dirSize.key(directory))
         }
         set {
             withMutation(keyPath: \.dirSize) {
-                UserDefaults.standard.setValue(newValue, forKey: "\(directory.dirName).dirSize.appStorage.key")
+                UserDefaults.standard.setValue(newValue, forKey: AppStorageKeys.dirSize.key(directory))
             }
         }
     }
@@ -153,10 +174,17 @@ struct StorageView: View {
         Group {
             HStack {
                 Spacer()
-                Text("Last Updated: \(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative)")
-                    .font(.headline)
-                    .fontWeight(.regular)
-                    .foregroundStyle(.secondary)
+                if Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated) == .distantPast {
+                    Text("Last Updated: Never")
+                        .font(.headline)
+                        .fontWeight(.regular)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text("Last Updated: \(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative)")
+                        .font(.headline)
+                        .fontWeight(.regular)
+                        .foregroundStyle(.secondary)
+                }
             }
 //            .offset(y: 8)
             GroupBox {
