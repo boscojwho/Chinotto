@@ -24,11 +24,15 @@ struct ChinottoApp: App {
         WindowGroup(Text("Core Simulator (Devices)"), id: "CoreSimulators", for: CoreSimulator_User.self) { value in
             CoreSimulatorsRootView()
         }
+        .defaultPosition(.topLeading)
+        .defaultSize(width: 1440, height: 1080)
         
         WindowGroup(Text("Xcode Playground Devices (XCPGDevices)"), id: "XCPGDevices", for: Directories.self) { value in
             if let dir = value.wrappedValue, dir == .xcPGDevices {
                 XCPGDevicesRootView()
             }
         }
+        .defaultPosition(.topLeading)
+        .defaultSize(width: 1440, height: 1080)
     }
 }
