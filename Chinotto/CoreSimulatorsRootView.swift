@@ -23,3 +23,14 @@ struct CoreSimulatorsRootView: View {
 #Preview {
     CoreSimulatorsRootView()
 }
+
+struct XCPGDevicesRootView: View {
+    @State private var storageViewModel: StorageViewModel = .init(directory: .xcPGDevices)
+    var body: some View {
+        @Bindable var vm = storageViewModel
+        _CoreSimulatorDevicesView(
+            dirScope: .user,
+            storageViewModel: $vm
+        )
+    }
+}

@@ -10,7 +10,7 @@ import SwiftUI
 import Charts
 
 /// A non-exhaustive list of top-level directories in `/Developer`.
-enum Directories: CaseIterable, Identifiable {
+enum Directories: CaseIterable, Identifiable, Codable {
     case coreSimulator
     case developerDiskImages
     case toolchains
