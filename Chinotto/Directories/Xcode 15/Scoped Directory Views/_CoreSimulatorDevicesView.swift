@@ -183,11 +183,15 @@ struct _CoreSimulatorDevicesView: View {
             devicesViewModel.devices.sort(using: sortOrder)
         }
         .inspector(isPresented: $isPresentingInspectorViewForDevice) {
-            if deviceForInspectorView != nil {
+            if let deviceForInspectorView {
+                /// [2023.11] Using `device.isLoadingDataContents` here triggers SwiftUI recursive loop for some reason.
                 CoreSimDeviceView(device: $deviceForInspectorView)
                     .inspectorColumnWidth(min: 480, ideal: 520, max: 720) /// [2023.11] This was crashing on some builds on relaunch (state restoration) for some reason.
             } else {
-                ProgressView()
+                GroupBox {
+                    Text("Double-click to select a device")
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }

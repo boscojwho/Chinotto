@@ -105,7 +105,12 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
     public var isLoadingDataContents = false
     public var dataContents: DataDir?
     public func loadDataContents(recalculate: Bool = true) {
-        defer { isLoadingDataContents = false }
+        defer {
+            Task { @MainActor in
+                isLoadingDataContents = false
+            }
+        }
+        
         isLoadingDataContents = true
         
         Task {
