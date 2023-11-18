@@ -21,7 +21,7 @@ struct ChinottoApp: App {
         /// [2023.11] Feature exists in another branch.
 //        .modelContainer(sharedModelContainer)
         
-        WindowGroup(Text("Core Simulators"), id: "CoreSimulators", for: CoreSimulator_User.self) { value in
+        WindowGroup(Text("Core Simulator (Devices)"), id: "CoreSimulators", for: CoreSimulator_User.self) { value in
             CoreSimulatorsRootView()
         }
         

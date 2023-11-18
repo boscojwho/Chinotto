@@ -4,36 +4,31 @@
 import PackageDescription
 
 let package = Package(
-    name: "CoreSimulatorUI",
+    name: "DestructiveActions",
     platforms: [.macOS(.v14)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "CoreSimulatorUI",
-            targets: ["CoreSimulatorUI"]),
+            name: "DestructiveActions",
+            targets: ["DestructiveActions"]),
     ],
     dependencies: [
         .package(name: "CoreSimulatorTools", path: "../CoreSimulatorTools"),
-        .package(name: "DestructiveActions", path: "../DestructiveActions")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "CoreSimulatorUI",
+            name: "DestructiveActions",
             dependencies: [
                 .product(
                     name: "CoreSimulatorTools",
                     package: "CoreSimulatorTools"
                 ),
-                .product(
-                    name: "DestructiveActions",
-                    package: "DestructiveActions"
-                ),
             ]
         ),
         .testTarget(
-            name: "CoreSimulatorUITests",
-            dependencies: ["CoreSimulatorUI"]),
+            name: "DestructiveActionsTests",
+            dependencies: ["DestructiveActions"]),
     ]
 )

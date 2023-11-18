@@ -174,8 +174,12 @@ struct _CoreSimulatorDevicesView: View {
             devicesViewModel.devices.sort(using: sortOrder)
         }
         .inspector(isPresented: $isPresentingInspectorViewForDevice) {
-            CoreSimDeviceView(device: $deviceForInspectorView)
-                .inspectorColumnWidth(min: 480, ideal: 520, max: 720)
+            if deviceForInspectorView != nil {
+                CoreSimDeviceView(device: $deviceForInspectorView)
+                    .inspectorColumnWidth(min: 480, ideal: 520, max: 720) /// [2023.11] This was crashing on some builds on relaunch (state restoration) for some reason.
+            } else {
+                ProgressView()
+            }
         }
     }
     
