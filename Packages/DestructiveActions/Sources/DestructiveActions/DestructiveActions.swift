@@ -24,6 +24,7 @@ public extension FileManager {
         let rootDirUrl = coreSimDevice.root
         do {
             try self.trashItem(at: rootDirUrl, resultingItemURL: nil)
+            coreSimDevice.devicePlist?.isDeleted = true
 //            try self.removeItem(at: rootDirUrl)
         } catch {
             throw DestructiveActionError.deleteCoreSimDevice(error)
