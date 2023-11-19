@@ -13,6 +13,9 @@ public struct CoreSimDeviceView: View {
     
     @Binding var device: CoreSimulatorDevice?
     
+    @State private var tableSelection: Set<Metadata.ID> = .init()
+    @State private var tableSortOrder = [KeyPathComparator(\Metadata.size)]
+    
     @State private var isPresentingDeleteDeviceAlert = false
     
     @State private var isPresentingDeleteErrorAlert = false
@@ -91,36 +94,7 @@ public struct CoreSimDeviceView: View {
                 } else {
                     GroupBox {
                         if let contents = device.dataContents {
-                            Table(contents.metadata) {
-                                TableColumn("Directory") { value in
-                                    Text("\(value.url.lastPathComponent)")
-                                }
-                                
-                                TableColumn("Last Modified") { value in
-                                    if let date = value.lastModified {
-                                        Text("\(dateTimeFormatter.localizedString(for: date, relativeTo: Date()))")
-                                    } else {
-                                        Text("Never")
-                                    }
-                                }
-                                
-                                TableColumn("Size") { value in
-                                    HStack {
-                                        Spacer()
-                                        Text("\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
-                                            .fontWeight(.medium)
-                                    }
-                                }
-                            }
-                            .frame(height: 280)
-                            
-                            GroupBox {
-                                let total = contents.metadata.reduce(0) { $0 + $1.size }
-                                LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
-                                    .fontWeight(.heavy)
-                                    .font(.title3)
-                                    .padding(.horizontal, 4)
-                            }
+                            dataContentsTableView(contents: contents)
                         } else {
                             ContentUnavailableView {
                                 Text("Failed to load device contents.")
@@ -163,6 +137,47 @@ public struct CoreSimDeviceView: View {
             }
         } message: {
             Text("This operation cannot be reversed.\n\nYou may wish to backup test data associated with this device before proceeding.")
+        }
+    }
+    
+    @ViewBuilder
+    private func dataContentsTableView(contents: DataDir) -> some View {
+        Table(
+            contents.metadata,
+            selection: $tableSelection,
+            sortOrder: $tableSortOrder
+        ) {
+            TableColumn("Directory", value: \.lastPathComponent) { value in
+                Text("\(value.url.lastPathComponent)")
+            }
+            
+            TableColumn("Last Modified", value: \.contentModificationDate) { value in
+                if let date = value.lastModified {
+                    Text("\(dateTimeFormatter.localizedString(for: date, relativeTo: Date()))")
+                } else {
+                    Text("Never")
+                }
+            }
+            
+            TableColumn("Size", value: \.size) { value in
+                HStack {
+                    Spacer()
+                    Text("\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
+                        .fontWeight(.medium)
+                }
+            }
+        }
+        .frame(height: 280)
+        .onChange(of: tableSortOrder) { _, sortOrder in
+            contents.metadata.sort(using: sortOrder)
+        }
+        
+        GroupBox {
+            let total = contents.metadata.reduce(0) { $0 + $1.size }
+            LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
+                .fontWeight(.heavy)
+                .font(.title3)
+                .padding(.horizontal, 4)
         }
     }
 }

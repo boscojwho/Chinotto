@@ -168,6 +168,13 @@ public struct Metadata: Codable, Identifiable {
     public var key: String {
         url.lastPathComponent
     }
+    
+    public var lastPathComponent: String {
+        url.lastPathComponent
+    }
+    public var contentModificationDate: Date {
+        lastModified ?? .distantPast
+    }
 }
 
 public final class DataDir: Codable {
