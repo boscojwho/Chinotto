@@ -93,7 +93,7 @@
     "Disk Space Used" : {
 
     },
-    "Disk Space Used - [Showing %lld device](inflect: true)" : {
+    "Disk Space Used - ^[Showing %lld device](inflect: true)" : {
 
     },
     "Disk Space Used - Calculating %lld ^[of %lld device](inflect: true)" : {
