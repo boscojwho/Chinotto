@@ -55,7 +55,7 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
         
         Task {
             await decodePlist()
-            loadDataContents()
+            await loadDataContents()
         }
     }
     
@@ -115,7 +115,9 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
             return
         }
         
-        isLoadingDataContents = true
+        Task { @MainActor in
+            isLoadingDataContents = true
+        }
         
         Task {
             let contents: [URL]

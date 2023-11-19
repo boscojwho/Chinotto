@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 import CoreSimulatorTools
 import CoreSimulatorUI
 
@@ -89,10 +90,30 @@ struct _CoreSimulatorDevicesView: View {
     }
     
     var body: some View {
-        tableView()
-            .task {
-                devicesViewModel.loadDevices()
+        Group {
+            tableView()
+                .padding(.top, 80)
+                .overlay(alignment: .top) {
+                    GroupBox {
+                        storageChartView()
+                    }
+                }
+                .task {
+                    devicesViewModel.loadDevices()
+                }
+        }
+        .inspector(isPresented: $isPresentingInspectorViewForDevice) {
+            if let deviceForInspectorView {
+                /// [2023.11] Using `device.isLoadingDataContents` here triggers SwiftUI recursive loop for some reason.
+                CoreSimDeviceView(device: $deviceForInspectorView)
+                    .inspectorColumnWidth(min: 480, ideal: 520, max: 720) /// [2023.11] This was crashing on some builds on relaunch (state restoration) for some reason.
+            } else {
+                GroupBox {
+                    Text("Double-click to select a device")
+                        .foregroundStyle(.secondary)
+                }
             }
+        }
     }
     
     @ViewBuilder
@@ -184,18 +205,6 @@ struct _CoreSimulatorDevicesView: View {
         .onChange(of: tableSortOrder) { _, sortOrder in
             devicesViewModel.devices.sort(using: sortOrder)
         }
-        .inspector(isPresented: $isPresentingInspectorViewForDevice) {
-            if let deviceForInspectorView {
-                /// [2023.11] Using `device.isLoadingDataContents` here triggers SwiftUI recursive loop for some reason.
-                CoreSimDeviceView(device: $deviceForInspectorView)
-                    .inspectorColumnWidth(min: 480, ideal: 520, max: 720) /// [2023.11] This was crashing on some builds on relaunch (state restoration) for some reason.
-            } else {
-                GroupBox {
-                    Text("Double-click to select a device")
-                        .foregroundStyle(.secondary)
-                }
-            }
-        }
     }
     
     @ViewBuilder
@@ -220,6 +229,49 @@ struct _CoreSimulatorDevicesView: View {
                 }
             }
         }
+    }
+    
+    @ViewBuilder
+    private func storageChartView() -> some View {
+        let sizeForAllDevices = devicesViewModel.devices.reduce(0) { $0 + $1.totalSize }
+        let volumeTotalCapacity = devicesViewModel.devices.first?.root.volumeTotalCapacity() ?? 0
+        let maxValue = volumeTotalCapacity
+        let xAxisValues = [
+            Int64(0),
+            Int64(((maxValue/2)/2)),
+            Int64((maxValue/2)),
+            Int64((Double(maxValue/2)*1.5)),
+            Int64(maxValue)
+        ]
+        Chart {
+            Plot {
+                BarMark(x: .value("Size", sizeForAllDevices))
+                    .cornerRadius(6, style: .continuous)
+                    .annotation(position: .overlay) {
+                        GroupBox {
+                            Text("\(ByteCountFormatter.string(fromByteCount: Int64(sizeForAllDevices), countStyle: .file))")
+                        }
+                    }
+            }
+        }
+        .chartXAxisLabel(position: .top) {
+            let count = devicesViewModel.devices.filter { $0.dataContents == nil }.count
+            if count > 0 {
+                Text("Disk Space Used - Calculating \(count) ^[of \(devicesViewModel.devices.count) device](inflect: true)")
+            } else {
+                Text("Disk Space Used - ^[Showing \(devicesViewModel.devices.count) device](inflect: true)")
+            }
+        }
+        .chartXAxis {
+            AxisMarks(
+                format: .byteCount(style: .memory, allowedUnits: .all, spellsOutZero: true, includesActualByteCount: false),
+                values: xAxisValues
+            )
+        }
+        .chartXScale(domain: [0, volumeTotalCapacity])
+        .chartYAxis(.hidden)
+        .chartLegend(.hidden)
+        .frame(height: 64)
     }
 }
 

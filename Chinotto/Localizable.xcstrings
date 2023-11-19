@@ -93,6 +93,19 @@
     "Disk Space Used" : {
 
     },
+    "Disk Space Used - [Showing %lld device](inflect: true)" : {
+
+    },
+    "Disk Space Used - Calculating %lld ^[of %lld device](inflect: true)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Disk Space Used - Calculating %1$lld ^[of %2$lld device](inflect: true)"
+          }
+        }
+      }
+    },
     "Double-click to select a device" : {
 
     },
