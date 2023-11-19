@@ -157,7 +157,21 @@ struct _CoreSimulatorDevicesView: View {
             .width(min: 100, ideal: 144, max: 144)
         }
         .contextMenu(forSelectionType: CoreSimulatorDevice.ID.self) { items in
-            // no-op.
+            if items.isEmpty {
+                Button("Show in Finder", action: {})
+                    .disabled(true)
+            } else {
+                Button {
+                    let devicesToShow = devicesViewModel.devices.filter { devices in
+                        items.contains { selected in selected == devices.id }
+                    }
+                    let fileUrls = devicesToShow.compactMap { $0.root }
+                    NSWorkspace.shared.activateFileViewerSelecting(fileUrls)
+                } label: {
+                    let text = items.count > 1 ? "Show in Finder (\(items.count))" : "Show in Finder"
+                    Text(text)
+                }
+            }
         } primaryAction: { deviceIds in
             for id in deviceIds {
                 if let device = devicesViewModel.devices.first(where: { $0.id == id }) {
@@ -166,18 +180,6 @@ struct _CoreSimulatorDevicesView: View {
 //                    openWindow(id: "CoreSimulatorDevice", value: device)
                 }
             }
-        }
-        .contextMenu {
-            Button {
-                let devicesToShow = devicesViewModel.devices.filter { devices in
-                    selectedDevices.contains { selected in selected == devices.id }
-                }
-                let fileUrls = devicesToShow.compactMap { $0.root }
-                NSWorkspace.shared.activateFileViewerSelecting(fileUrls)
-            } label: {
-                Text("Show in Finder")
-            }
-            .disabled(selectedDevices.isEmpty)
         }
         .onChange(of: tableSortOrder) { _, sortOrder in
             devicesViewModel.devices.sort(using: sortOrder)

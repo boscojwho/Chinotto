@@ -116,15 +116,14 @@ final class StorageViewModel: Identifiable {
             return
         }
         
-        // TODO: Pre-calculating dir count doesn't yield faster performance. See if there's a faster way to calculate file count.
         isCalculating = true
         
+        #if CALCULATE_STORAGE_METADATA
         let count = URL.directoryContentsCount(url: .init(filePath: directory.path, directoryHint: .isDirectory))
         self.dirFileCount = count
         var dirMetadata: [URL: Int] = [:]
         var fileMetadata: [URL: Int] = [:]
         let size = URL.directorySize(url: .init(filePath: directory.path, directoryHint: .isDirectory), dirMetadata: &dirMetadata, fileMetadata: &fileMetadata)
-        self.dirSize = size
         self.dirMetadata = dirMetadata
         self.fileMetadata = fileMetadata
         self.dirSizeMetadata = dirMetadata
@@ -149,6 +148,11 @@ final class StorageViewModel: Identifiable {
                     )
                 )
             }
+        #else
+        self.dirSize = URL.directorySize(
+            url: .init(filePath: directory.path, directoryHint: .isDirectory)
+        )
+        #endif
         
         isCalculating = false
         
@@ -190,7 +194,7 @@ struct StorageView: View {
             GroupBox {
                 VStack {
                     HStack {
-                        Text("\(viewModel.directory.dirName) (\(viewModel.dirFileCount) files)")
+                        Text("\(viewModel.directory.dirName)")
                         Spacer()
                         Text("\(viewModel.dirSizeFormattedString) of \(viewModel.volumeTotalCapacityFormattedString)")
                         

@@ -44,16 +44,6 @@
         }
       }
     },
-    "%@ (%lld files)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ (%2$lld files)"
-          }
-        }
-      }
-    },
     "%@ of %@" : {
       "localizations" : {
         "en" : {
