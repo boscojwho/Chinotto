@@ -111,6 +111,10 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
             }
         }
         
+        if recalculate == false, (dataContents != nil || size != nil) {
+            return
+        }
+        
         isLoadingDataContents = true
         
         Task {

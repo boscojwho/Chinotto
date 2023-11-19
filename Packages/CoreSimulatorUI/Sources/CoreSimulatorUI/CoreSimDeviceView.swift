@@ -22,7 +22,7 @@ public struct CoreSimDeviceView: View {
     
     public init(device: Binding<CoreSimulatorDevice?>) {
         _device = device
-        device.wrappedValue?.loadDataContents()
+        device.wrappedValue?.loadDataContents(recalculate: false)
     }
     
     public var body: some View {
