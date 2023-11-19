@@ -88,7 +88,7 @@ public struct CoreSimDeviceView: View {
                 }
             }
             
-            Section("Data") {
+            Section {
                 if device.isLoadingDataContents {
                     ProgressView()
                 } else {
@@ -101,6 +101,15 @@ public struct CoreSimDeviceView: View {
                             }
                         }
                     }
+                }
+            } header: {
+                HStack {
+                    Text("Data")
+                    Spacer()
+                    Button("Inspect Device...") {
+                        
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
