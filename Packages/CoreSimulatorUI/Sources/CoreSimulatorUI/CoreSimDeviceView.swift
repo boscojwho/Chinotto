@@ -11,6 +11,8 @@ import DestructiveActions
 
 public struct CoreSimDeviceView: View {
     
+    @Environment(\.openWindow) var openWindow
+    
     @Binding var device: CoreSimulatorDevice?
     
     @State private var tableSelection: Set<Metadata.ID> = .init()
@@ -20,6 +22,8 @@ public struct CoreSimDeviceView: View {
     
     @State private var isPresentingDeleteErrorAlert = false
     @State private var deleteError: DestructiveActionError?
+    
+    @State private var isPresentingDeviceInspector = false
     
     private let dateTimeFormatter = RelativeDateTimeFormatter()
     
@@ -107,7 +111,7 @@ public struct CoreSimDeviceView: View {
                     Text("Data")
                     Spacer()
                     Button("Inspect Device...") {
-                        
+                        openWindow(id: "CoreSimInspectDevice", value: device)
                     }
                     .buttonStyle(.borderedProminent)
                 }
