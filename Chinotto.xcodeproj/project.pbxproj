@@ -20,6 +20,7 @@
 		E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519242B03AAF600C360DD /* CoreSimulatorView.swift */; };
 		E47519272B03AB0F00C360DD /* _CoreSimulatorSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */; };
 		E47519292B03AB1800C360DD /* _CoreSimulatorUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */; };
+		E49C418F2B0C551E001100EC /* FileSystemUI in Frameworks */ = {isa = PBXBuildFile; productRef = E49C418E2B0C551E001100EC /* FileSystemUI */; };
 		E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A882B00D24700BE5444 /* ChinottoApp.swift */; };
 		E4A30A8B2B00D24700BE5444 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A8A2B00D24700BE5444 /* ContentView.swift */; };
 		E4A30A8F2B00D24800BE5444 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4A30A8E2B00D24800BE5444 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		E47519242B03AAF600C360DD /* CoreSimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSimulatorView.swift; sourceTree = "<group>"; };
 		E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorSystemView.swift; sourceTree = "<group>"; };
 		E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserView.swift; sourceTree = "<group>"; };
+		E49C418D2B0C54D5001100EC /* FileSystemUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FileSystemUI; path = Packages/FileSystemUI; sourceTree = "<group>"; };
 		E4A30A852B00D24700BE5444 /* Chinotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4A30A882B00D24700BE5444 /* ChinottoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoApp.swift; sourceTree = "<group>"; };
 		E4A30A8A2B00D24700BE5444 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				E4F8ECD32B08546A0075AB04 /* DestructiveActions in Frameworks */,
 				E4F8ECD02B0848270075AB04 /* CoreSimulatorUI in Frameworks */,
 				E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */,
+				E49C418F2B0C551E001100EC /* FileSystemUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +154,7 @@
 		E4A30A7C2B00D24700BE5444 = {
 			isa = PBXGroup;
 			children = (
+				E49C418D2B0C54D5001100EC /* FileSystemUI */,
 				E4F8ECD12B0851CD0075AB04 /* DestructiveActions */,
 				E4F8ECCE2B0846D30075AB04 /* CoreSimulatorUI */,
 				E466741E2B04CCC100782359 /* CoreSimulatorTools */,
@@ -269,6 +273,7 @@
 				E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */,
 				E4F8ECCF2B0848270075AB04 /* CoreSimulatorUI */,
 				E4F8ECD22B08546A0075AB04 /* DestructiveActions */,
+				E49C418E2B0C551E001100EC /* FileSystemUI */,
 			);
 			productName = Chinotto;
 			productReference = E4A30A852B00D24700BE5444 /* Chinotto.app */;
@@ -733,6 +738,10 @@
 		E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreSimulatorTools;
+		};
+		E49C418E2B0C551E001100EC /* FileSystemUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FileSystemUI;
 		};
 		E4F8ECCF2B0848270075AB04 /* CoreSimulatorUI */ = {
 			isa = XCSwiftPackageProductDependency;
