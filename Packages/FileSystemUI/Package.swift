@@ -12,11 +12,21 @@ let package = Package(
             name: "FileSystemUI",
             targets: ["FileSystemUI"]),
     ],
+    dependencies: [
+        .package(name: "FileSystem", path: "../FileSystem"),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "FileSystemUI"),
+            name: "FileSystemUI",
+            dependencies: [
+                .product(
+                    name: "FileSystem",
+                    package: "FileSystem"
+                ),
+            ]
+        ),
         .testTarget(
             name: "FileSystemUITests",
             dependencies: ["FileSystemUI"]),

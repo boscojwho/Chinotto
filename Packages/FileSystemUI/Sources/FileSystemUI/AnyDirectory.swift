@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import FileSystem
 
 public struct AnyDirectory {
     let root: URL
     let contents: [URL]
-//    let contentSizes: [URL: Int]
+    let contentSizes: [URL: Int]
 }
 
 @Observable
@@ -35,8 +36,14 @@ public final class AnyDirectoryViewModel {
             options: [.skipsPackageDescendants, .skipsHiddenFiles]
         )
         
+        let sizes = contents.compactMap {
+            ($0, URL.directorySize(url: $0))
+        }
+        let grouped = Dictionary(grouping: sizes, by: { $0.0 })
+            .compactMapValues { e in e.reduce(0) { $0 + $1.1 } }
+        
         Task { @MainActor in
-            self.directory = .init(root: url, contents: contents)
+            self.directory = .init(root: url, contents: contents, contentSizes: grouped)
             self.isLoading = false
         }
     }
@@ -62,7 +69,12 @@ public struct AnyDirectoryView: View {
                         NavigationLink {
                             AnyDirectoryView(dirUrl: value)
                         } label: {
-                            Text("\(value.lastPathComponent)")
+                            HStack {
+                                Text("\(value.lastPathComponent)")
+                                if let size = directory.contentSizes[value] {
+                                    Text("\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))")
+                                }
+                            }
                         }
                     }
                 }
