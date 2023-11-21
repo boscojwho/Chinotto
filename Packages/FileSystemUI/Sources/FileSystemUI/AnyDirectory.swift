@@ -37,7 +37,16 @@ public final class AnyDirectoryViewModel {
         )
         
         let sizes = contents.compactMap {
-            ($0, URL.directorySize(url: $0))
+            if $0.hasDirectoryPath {
+                return ($0, URL.directorySize(url: $0))
+            } else {
+                if let values = try? $0.resourceValues(forKeys: [.fileSizeKey]) {
+                    let size = values.fileSize ?? 0
+                    return ($0, size)
+                } else {
+                    return ($0, 0)
+                }
+            }
         }
         let grouped = Dictionary(grouping: sizes, by: { $0.0 })
             .compactMapValues { e in e.reduce(0) { $0 + $1.1 } }
@@ -66,9 +75,18 @@ public struct AnyDirectoryView: View {
                     }
                 } else {
                     ForEach(directory.contents, id: \.self) { value in
-                        NavigationLink {
-                            AnyDirectoryView(dirUrl: value)
-                        } label: {
+                        if value.hasDirectoryPath {
+                            NavigationLink {
+                                AnyDirectoryView(dirUrl: value)
+                            } label: {
+                                HStack {
+                                    Text("\(value.lastPathComponent)")
+                                    if let size = directory.contentSizes[value] {
+                                        Text("\(ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file))")
+                                    }
+                                }
+                            }
+                        } else {
                             HStack {
                                 Text("\(value.lastPathComponent)")
                                 if let size = directory.contentSizes[value] {
