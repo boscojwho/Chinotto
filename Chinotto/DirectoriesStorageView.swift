@@ -38,7 +38,7 @@ struct DirectoriesStorageView: View {
                         StorageView(viewModel: value)
                             .contextMenu {
                                 Button("Show in Finder") {
-                                    let url = URL(filePath: value.directory.path, directoryHint: .isDirectory)
+                                    let url = URL(filePath: value.directory.userPath, directoryHint: .isDirectory)
                                     NSWorkspace.shared.activateFileViewerSelecting([url])
                                 }
                             }

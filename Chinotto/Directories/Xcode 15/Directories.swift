@@ -49,7 +49,7 @@ enum Directories: CaseIterable, Identifiable, Codable {
         }
     }
     
-    var path: String {
+    var userPath: String {
         "\(Self.userBasePath)/\(dirName)"
     }
     
@@ -62,7 +62,7 @@ enum Directories: CaseIterable, Identifiable, Codable {
         case .system:
             systemPath
         case .user:
-            path
+            userPath
         }
     }
     

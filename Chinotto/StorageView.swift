@@ -14,7 +14,7 @@ final class StorageViewModel: Identifiable {
     let directory: Directories
     init(directory: Directories) {
         self.directory = directory
-        self.volumeTotalCapacity = URL(filePath: directory.path, directoryHint: .isDirectory).volumeTotalCapacity()
+        self.volumeTotalCapacity = URL(filePath: directory.userPath, directoryHint: .isDirectory).volumeTotalCapacity()
     }
     
     private enum AppStorageKeys: CaseIterable {
@@ -119,11 +119,11 @@ final class StorageViewModel: Identifiable {
         isCalculating = true
         
         #if CALCULATE_STORAGE_METADATA
-        let count = URL.directoryContentsCount(url: .init(filePath: directory.path, directoryHint: .isDirectory))
+        let count = URL.directoryContentsCount(url: .init(filePath: directory.userPath, directoryHint: .isDirectory))
         self.dirFileCount = count
         var dirMetadata: [URL: Int] = [:]
         var fileMetadata: [URL: Int] = [:]
-        let size = URL.directorySize(url: .init(filePath: directory.path, directoryHint: .isDirectory), dirMetadata: &dirMetadata, fileMetadata: &fileMetadata)
+        let size = URL.directorySize(url: .init(filePath: directory.userPath, directoryHint: .isDirectory), dirMetadata: &dirMetadata, fileMetadata: &fileMetadata)
         self.dirMetadata = dirMetadata
         self.fileMetadata = fileMetadata
         self.dirSizeMetadata = dirMetadata
@@ -150,7 +150,7 @@ final class StorageViewModel: Identifiable {
             }
         #else
         self.dirSize = URL.directorySize(
-            url: .init(filePath: directory.path, directoryHint: .isDirectory)
+            url: .init(filePath: directory.userPath, directoryHint: .isDirectory)
         )
         #endif
         
