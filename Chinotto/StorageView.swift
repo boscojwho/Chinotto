@@ -201,11 +201,15 @@ struct StorageView: View {
                         Button {
                             reload()
                         } label: {
-                            if viewModel.isCalculating {
-                                ProgressView()
-                                    .controlSize(.small)
-                            } else {
-                                Image(systemName: "arrow.clockwise")
+                            HStack {
+                                if viewModel.isCalculating {
+                                    Text("Calculating...")
+                                    ProgressView()
+                                        .controlSize(.small)
+                                } else {
+                                    Text("Calculate")
+                                    Image(systemName: "arrow.clockwise")
+                                }
                             }
                         }
                         .disabled(viewModel.isCalculating)

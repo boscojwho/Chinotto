@@ -66,6 +66,7 @@ public struct CoreSimDeviceInspectView: View {
                 }
             }
         }
+        .navigationTitle("\(device?.name ?? "")")
     }
     
     @ViewBuilder
