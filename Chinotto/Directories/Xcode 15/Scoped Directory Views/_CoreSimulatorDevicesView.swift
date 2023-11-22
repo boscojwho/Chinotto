@@ -66,7 +66,8 @@ final class CoreSimulatorDevicesViewModel {
 }
 
 struct _CoreSimulatorDevicesView: View {
-    
+
+    @AppStorage("coreSimDevices.loadAllDevices.lastUpdated.appStorage.key") var lastUpdatedAllDevices: TimeInterval = Date.distantPast.timeIntervalSinceReferenceDate
     @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
 
     @Environment(\.openWindow) var openWindow
@@ -95,6 +96,10 @@ struct _CoreSimulatorDevicesView: View {
                 dirScope: dirScope
             )
         )
+    }
+    
+    private var isCalculating: Bool {
+        devicesViewModel.devices.first { $0.dataContents != nil } != nil
     }
     
     private var isSelectingMultipleDevices: Bool {
@@ -146,6 +151,38 @@ struct _CoreSimulatorDevicesView: View {
                 .task {
                     devicesViewModel.loadDevices()
                 }
+                .onChange(of: isCalculating) { oldValue, newValue in
+                    if newValue == false {
+                        lastUpdatedAllDevices = Date().timeIntervalSinceReferenceDate
+                    }
+                }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .primaryAction) {
+                GroupBox {
+                    if lastUpdatedAllDevices == Date.distantPast.timeIntervalSinceReferenceDate {
+                        Text("Last Updated: Never")
+                    } else {
+                        let date = Date(timeIntervalSinceReferenceDate: lastUpdatedAllDevices)
+                        Text("Last Updated: \(dateTimeFormatter.localizedString(for: date, relativeTo: Date()))")
+                    }
+                }
+                Button {
+                    
+                } label: {
+                    HStack {
+                        if isCalculating {
+                            Text("Calculating...")
+                            ProgressView()
+                                .controlSize(.small)
+                        } else {
+                            Text("Calculate")
+                            Image(systemName: "arrow.clockwise")
+                        }
+                    }
+                }
+                .disabled(isCalculating)
+            }
         }
         .inspector(isPresented: $isPresentingInspectorViewForDevice) {
             if let deviceForInspectorView {
