@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 import CoreSimulatorTools
 import CoreSimulatorUI
+import DestructiveActions
 
 @Observable
 final class CoreSimulatorDevicesViewModel {
@@ -77,6 +78,11 @@ struct _CoreSimulatorDevicesView: View {
     @State private var isPresentingInspectorViewForDevice = true
     @State private var deviceForInspectorView: CoreSimulatorDevice? = nil
     
+    @State private var isPresentingDeleteDeviceAlert = false
+    
+    @State private var isPresentingDeleteErrorAlert = false
+    @State private var deleteError: DestructiveActionError?
+    
     private let dateTimeFormatter: RelativeDateTimeFormatter = .init()
     
     init(dirScope: DirectoryScope, storageViewModel: Bindable<StorageViewModel>) {
@@ -89,14 +95,51 @@ struct _CoreSimulatorDevicesView: View {
         )
     }
     
+    private var isSelectingMultipleDevices: Bool {
+        selectedDevices.count > 1
+    }
+    
+    private var selectedDevicesSize: Int {
+        devicesViewModel.devices
+            .filter { devices in
+                selectedDevices.contains { selected in selected == devices.id }
+            }
+            .reduce(0) { $0 + $1.totalSize }
+    }
+    
+    private func selectedCoreSimDevices() -> [CoreSimulatorDevice] {
+        devicesViewModel.devices
+            .filter { devices in
+                selectedDevices.contains { selected in selected == devices.id }
+            }
+    }
+    
     var body: some View {
         Group {
             tableView()
-                .padding(.top, 80)
+                .padding(.top, 80 + 64)
                 .overlay(alignment: .top) {
-                    GroupBox {
-                        storageChartView()
+                    VStack {
+                        GroupBox {
+                            storageChartView()
+                        }
+                        
+                        GroupBox {
+                            HStack {
+                                Spacer()
+                                Text("\(ByteCountFormatter.string(fromByteCount: Int64(selectedDevicesSize), countStyle: .file))")
+                                Button("Delete selected (\(selectedDevices.count))...", role: .destructive) {
+                                    isPresentingDeleteDeviceAlert = true
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .tint(.red)
+                                .disabled(selectedDevices.isEmpty)
+                            }
+                            .frame(height: 36)
+                            .padding(.horizontal, 12)
+                        }
                     }
+                    .padding(8)
                 }
                 .task {
                     devicesViewModel.loadDevices()
@@ -113,6 +156,30 @@ struct _CoreSimulatorDevicesView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+        }
+        .alert("Are you sure you wish to permanently delete\n\"^[\(selectedDevices.count) device](inflect: true)\"?", isPresented: $isPresentingDeleteDeviceAlert) {
+            Button("Cancel", role: .cancel) {
+                
+            }
+            Button("Delete", role: .destructive) {
+                defer { selectedDevices.removeAll() }
+                let devices = selectedCoreSimDevices()
+                devices.forEach { device in
+                    do {
+                        try FileManager.default.delete(coreSimDevice: device)
+                        if let index = devicesViewModel.devices.firstIndex(where: { $0.id == device.id }) {
+                            devicesViewModel.devices.remove(at: index)
+                        }
+                    } catch {
+                        if let error = error as? DestructiveActionError {
+                            isPresentingDeleteErrorAlert = true
+                            deleteError = error
+                        }
+                    }
+                }
+            }
+        } message: {
+            Text("This operation cannot be reversed.\n\nYou may wish to backup test data associated with this device before proceeding.")
         }
     }
     
