@@ -14,7 +14,6 @@ struct ContentView: View {
     @State private var selectedViewModel: StorageViewModel?
     
     @State private var selectedDir: Directories?
-    @State private var viewModel: DirectoryViewModel?
     @State private var selectedDetailItem: URL?
     @State private var selectedInspectorItem: URL?
     
