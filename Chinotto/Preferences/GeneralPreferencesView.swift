@@ -12,6 +12,8 @@ struct GeneralPreferencesView: View {
     
     @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
     
+    @State private var isPresentingResetStorageDataAlert = false
+    
     var body: some View {
         Form {
             Section {
@@ -32,6 +34,33 @@ struct GeneralPreferencesView: View {
                     }
                 }
                 .frame(maxWidth: 320)
+            }
+            
+            Spacer(minLength: 24)
+                .frame(height: 24)
+            
+            Section {
+                Button("Reset Storage Data...") {
+                    isPresentingResetStorageDataAlert = true
+                }
+                GroupBox {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .foregroundStyle(.red)
+                            .fontWeight(.bold)
+                        Text("This includes disk usage statistics that may take some time to calculate.")
+                    }
+                }
+                .frame(maxWidth: 320)
+            }
+        }
+        .alert("Are you sure you want to reset storage data?", isPresented: $isPresentingResetStorageDataAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Reset", role: .destructive) {
+                Directories.allCases
+                    .map { StorageViewModel(directory: $0).appStorageKeys }
+                    .flatMap { $0 }
+                    .forEach { UserDefaults.standard.setValue(nil, forKey: $0) }
             }
         }
     }

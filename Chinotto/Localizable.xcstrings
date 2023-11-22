@@ -60,6 +60,9 @@
     "All Directories (%lld files)" : {
 
     },
+    "Are you sure you want to reset storage data?" : {
+
+    },
     "Are you sure you wish to permanently delete\n\"^[%lld device](inflect: true)\"?" : {
 
     },
@@ -163,10 +166,22 @@
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
 
     },
+    "Reset" : {
+
+    },
+    "Reset Storage Data..." : {
+
+    },
+    "Select directory data." : {
+
+    },
     "Show in Finder" : {
       "extractionState" : "manual"
     },
     "Size" : {
+
+    },
+    "This includes disk usage statistics that may take some time to calculate." : {
 
     },
     "This is where simulator images are stored when downloaded via Xcode." : {
