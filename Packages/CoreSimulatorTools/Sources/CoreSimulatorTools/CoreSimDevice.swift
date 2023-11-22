@@ -155,7 +155,7 @@ public final class CoreSimulatorDevice: Identifiable, Codable, Hashable {
     public var filesMetadata: [URL: Int] = [:]
 }
 
-public struct Metadata: Codable, Identifiable {
+public struct Metadata: Codable, Identifiable, Hashable {
     public let url: URL
     public let size: Int
     /// `.creationDateKey`
@@ -163,10 +163,21 @@ public struct Metadata: Codable, Identifiable {
     /// `.contentModificationDateKey`
     public let lastModified: Date?
     
-    public var id: String { url.absoluteString }
+    public var id: String { url.lastPathComponent }
     
     public var key: String {
         url.lastPathComponent
+    }
+    
+    public var lastPathComponent: String {
+        url.lastPathComponent
+    }
+    public var contentModificationDate: Date {
+        lastModified ?? .distantPast
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(url)
     }
 }
 

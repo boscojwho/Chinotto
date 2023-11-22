@@ -14,7 +14,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "CoreSimulatorTools", path: "../CoreSimulatorTools"),
-        .package(name: "DestructiveActions", path: "../DestructiveActions")
+        .package(name: "DestructiveActions", path: "../DestructiveActions"),
+        .package(name: "FileSystemUI", path: "../FileSystemUI"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -29,6 +30,10 @@ let package = Package(
                 .product(
                     name: "DestructiveActions",
                     package: "DestructiveActions"
+                ),
+                .product(
+                    name: "FileSystemUI",
+                    package: "FileSystemUI"
                 ),
             ]
         ),

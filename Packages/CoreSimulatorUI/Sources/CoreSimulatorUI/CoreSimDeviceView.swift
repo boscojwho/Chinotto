@@ -11,12 +11,21 @@ import DestructiveActions
 
 public struct CoreSimDeviceView: View {
     
+    @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
+    
+    @Environment(\.openWindow) var openWindow
+    
     @Binding var device: CoreSimulatorDevice?
+    
+    @State private var tableSelection: Set<Metadata.ID> = .init()
+    @State private var tableSortOrder = [KeyPathComparator(\Metadata.size)]
     
     @State private var isPresentingDeleteDeviceAlert = false
     
     @State private var isPresentingDeleteErrorAlert = false
     @State private var deleteError: DestructiveActionError?
+    
+    @State private var isPresentingDeviceInspector = false
     
     private let dateTimeFormatter = RelativeDateTimeFormatter()
     
@@ -85,48 +94,28 @@ public struct CoreSimDeviceView: View {
                 }
             }
             
-            Section("Data") {
+            Section {
                 if device.isLoadingDataContents {
                     ProgressView()
                 } else {
                     GroupBox {
                         if let contents = device.dataContents {
-                            Table(contents.metadata) {
-                                TableColumn("Directory") { value in
-                                    Text("\(value.url.lastPathComponent)")
-                                }
-                                
-                                TableColumn("Last Modified") { value in
-                                    if let date = value.lastModified {
-                                        Text("\(dateTimeFormatter.localizedString(for: date, relativeTo: Date()))")
-                                    } else {
-                                        Text("Never")
-                                    }
-                                }
-                                
-                                TableColumn("Size") { value in
-                                    HStack {
-                                        Spacer()
-                                        Text("\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
-                                            .fontWeight(.medium)
-                                    }
-                                }
-                            }
-                            .frame(height: 280)
-                            
-                            GroupBox {
-                                let total = contents.metadata.reduce(0) { $0 + $1.size }
-                                LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
-                                    .fontWeight(.heavy)
-                                    .font(.title3)
-                                    .padding(.horizontal, 4)
-                            }
+                            dataContentsTableView(contents: contents)
                         } else {
                             ContentUnavailableView {
                                 Text("Failed to load device contents.")
                             }
                         }
                     }
+                }
+            } header: {
+                HStack {
+                    Text("Data")
+                    Spacer()
+                    Button("Inspect Device...") {
+                        openWindow(id: "CoreSimInspectDevice", value: device)
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }
@@ -152,7 +141,7 @@ public struct CoreSimDeviceView: View {
             }
             Button("Delete", role: .destructive) {
                 do {
-                    try FileManager.default.delete(coreSimDevice: device)
+                    try FileManager.default.delete(coreSimDevice: device, moveToTrash: deletionBehaviour == .moveToTrash)
                     self.device = nil
                 } catch {
                     if let error = error as? DestructiveActionError {
@@ -163,6 +152,47 @@ public struct CoreSimDeviceView: View {
             }
         } message: {
             Text("This operation cannot be reversed.\n\nYou may wish to backup test data associated with this device before proceeding.")
+        }
+    }
+    
+    @ViewBuilder
+    private func dataContentsTableView(contents: DataDir) -> some View {
+        Table(
+            contents.metadata,
+            selection: $tableSelection,
+            sortOrder: $tableSortOrder
+        ) {
+            TableColumn("Directory", value: \.lastPathComponent) { value in
+                Text("\(value.url.lastPathComponent)")
+            }
+            
+            TableColumn("Last Modified", value: \.contentModificationDate) { value in
+                if let date = value.lastModified {
+                    Text("\(dateTimeFormatter.localizedString(for: date, relativeTo: Date()))")
+                } else {
+                    Text("Never")
+                }
+            }
+            
+            TableColumn("Size", value: \.size) { value in
+                HStack {
+                    Spacer()
+                    Text("\(ByteCountFormatter.string(fromByteCount: Int64(value.size), countStyle: .file))")
+                        .fontWeight(.medium)
+                }
+            }
+        }
+        .frame(height: 280)
+        .onChange(of: tableSortOrder) { _, sortOrder in
+            contents.metadata.sort(using: sortOrder)
+        }
+        
+        GroupBox {
+            let total = contents.metadata.reduce(0) { $0 + $1.size }
+            LabeledContent("Total Data Used", value: ByteCountFormatter.string(fromByteCount: Int64(total), countStyle: .file))
+                .fontWeight(.heavy)
+                .font(.title3)
+                .padding(.horizontal, 4)
         }
     }
 }

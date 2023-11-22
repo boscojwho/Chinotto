@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreSimulatorTools
+import CoreSimulatorUI
 
 @main
 struct ChinottoApp: App {
@@ -43,5 +44,16 @@ struct ChinottoApp: App {
         }
         .defaultPosition(.topLeading)
         .defaultSize(width: 1440, height: 1080)
+        
+        WindowGroup(Text("Device Inspector"), id: "CoreSimInspectDevice", for: CoreSimulatorDevice.self) { value in
+            CoreSimDeviceInspectView(device: value)
+        }
+        
+        Settings {
+            AppPreferencesView()
+        }
+        .defaultPosition(.center)
+        .defaultSize(width: 480, height: 720)
+        .windowResizability(.contentSize)
     }
 }

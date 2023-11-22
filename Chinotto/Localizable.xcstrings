@@ -60,7 +60,13 @@
     "All Directories (%lld files)" : {
 
     },
+    "Are you sure you wish to permanently delete\n\"^[%lld device](inflect: true)\"?" : {
+
+    },
     "By Directory" : {
+
+    },
+    "Cancel" : {
 
     },
     "Chinotto" : {
@@ -75,7 +81,19 @@
     "Date Added" : {
 
     },
+    "Delete" : {
+
+    },
+    "Delete selected (%lld)..." : {
+
+    },
+    "Deletion Behavior:" : {
+
+    },
     "Description" : {
+
+    },
+    "Device Inspector" : {
 
     },
     "Device Kind" : {
@@ -115,6 +133,9 @@
     "File" : {
 
     },
+    "General" : {
+
+    },
     "Home" : {
 
     },
@@ -152,6 +173,9 @@
 
     },
     "This is where simulator images are stored when downloaded via Xcode." : {
+
+    },
+    "This operation cannot be reversed.\n\nYou may wish to backup test data associated with this device before proceeding." : {
 
     },
     "Tip" : {
