@@ -3,6 +3,9 @@
 - *Chinotto currently does not run in an App Sandbox.*
 - *Use at your own risk =)*
 
+**Notes**
+- *Most of the functionality is currently in `CoreSimulator/Devices`, where you can inspect individual devices.*
+
 # Chinotto
 A sweet little tool for managing the bitter taste of Xcode using up your Mac's storage space.
 
@@ -14,6 +17,12 @@ One of the pain points of using macOS is seeing half of your Mac's storage consu
 <img width="720" alt="Screenshot 2023-11-13 at 4 57 07 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/4882db49-05ef-45c6-a6ae-dbf2144d5032">
 
 This is where Chinotto can help.
+
+## Instructions
+1. Checkout latest commit on `/main` branch.
+2. Build and run via Xcode 15 on macOS 14.0 (or higher).
+3. Click the "Calculate" button on "All Directories" or on an individual directory.
+4. That's it!
 
 ## See it in action
 
