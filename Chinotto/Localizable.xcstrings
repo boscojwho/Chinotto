@@ -108,9 +108,6 @@
     "Device Name" : {
 
     },
-    "Directory" : {
-
-    },
     "Directory Size" : {
 
     },
@@ -134,9 +131,6 @@
 
     },
     "Downloads" : {
-
-    },
-    "File" : {
 
     },
     "General" : {
@@ -167,9 +161,6 @@
 
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
-
-    },
-    "Select directory data." : {
 
     },
     "Show in Finder" : {
