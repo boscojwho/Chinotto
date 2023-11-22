@@ -48,5 +48,12 @@ struct ChinottoApp: App {
         WindowGroup(Text("Device Inspector"), id: "CoreSimInspectDevice", for: CoreSimulatorDevice.self) { value in
             CoreSimDeviceInspectView(device: value)
         }
+        
+        Settings {
+            AppPreferencesView()
+        }
+        .defaultPosition(.center)
+        .defaultSize(width: 480, height: 720)
+        .windowResizability(.contentSize)
     }
 }

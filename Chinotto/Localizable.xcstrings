@@ -87,6 +87,9 @@
     "Delete selected (%lld)..." : {
 
     },
+    "Deletion Behavior:" : {
+
+    },
     "Description" : {
 
     },
@@ -128,6 +131,9 @@
 
     },
     "File" : {
+
+    },
+    "General" : {
 
     },
     "Home" : {

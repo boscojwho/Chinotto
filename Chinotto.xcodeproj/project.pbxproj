@@ -20,6 +20,8 @@
 		E47519252B03AAF600C360DD /* CoreSimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519242B03AAF600C360DD /* CoreSimulatorView.swift */; };
 		E47519272B03AB0F00C360DD /* _CoreSimulatorSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */; };
 		E47519292B03AB1800C360DD /* _CoreSimulatorUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */; };
+		E4934CDE2B0D9BE000B4A527 /* AppPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4934CDD2B0D9BE000B4A527 /* AppPreferencesView.swift */; };
+		E4934CE02B0D9BEE00B4A527 /* GeneralPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4934CDF2B0D9BEE00B4A527 /* GeneralPreferencesView.swift */; };
 		E49C418F2B0C551E001100EC /* FileSystemUI in Frameworks */ = {isa = PBXBuildFile; productRef = E49C418E2B0C551E001100EC /* FileSystemUI */; };
 		E49C41922B0C5616001100EC /* FileSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E49C41912B0C5616001100EC /* FileSystem */; };
 		E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A882B00D24700BE5444 /* ChinottoApp.swift */; };
@@ -72,6 +74,8 @@
 		E47519242B03AAF600C360DD /* CoreSimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreSimulatorView.swift; sourceTree = "<group>"; };
 		E47519262B03AB0F00C360DD /* _CoreSimulatorSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorSystemView.swift; sourceTree = "<group>"; };
 		E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorUserView.swift; sourceTree = "<group>"; };
+		E4934CDD2B0D9BE000B4A527 /* AppPreferencesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPreferencesView.swift; sourceTree = "<group>"; };
+		E4934CDF2B0D9BEE00B4A527 /* GeneralPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesView.swift; sourceTree = "<group>"; };
 		E49C418D2B0C54D5001100EC /* FileSystemUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FileSystemUI; path = Packages/FileSystemUI; sourceTree = "<group>"; };
 		E49C41902B0C55CB001100EC /* FileSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FileSystem; path = Packages/FileSystem; sourceTree = "<group>"; };
 		E4A30A852B00D24700BE5444 /* Chinotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,15 @@
 			path = "Xcode 15";
 			sourceTree = "<group>";
 		};
+		E4934CDC2B0D9BD100B4A527 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				E4934CDD2B0D9BE000B4A527 /* AppPreferencesView.swift */,
+				E4934CDF2B0D9BEE00B4A527 /* GeneralPreferencesView.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		E4A30A7C2B00D24700BE5444 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +204,7 @@
 				E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */,
 				E4205D552B01FE8D0026D4A0 /* StorageView.swift */,
 				E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */,
+				E4934CDC2B0D9BD100B4A527 /* Preferences */,
 				E475191A2B03A2CF00C360DD /* Directories */,
 				E4A30A8E2B00D24800BE5444 /* Assets.xcassets */,
 				E4A30A932B00D24800BE5444 /* Chinotto.entitlements */,
@@ -412,8 +426,10 @@
 				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,
 				E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */,
 				E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */,
+				E4934CE02B0D9BEE00B4A527 /* GeneralPreferencesView.swift in Sources */,
 				E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */,
 				E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */,
+				E4934CDE2B0D9BE000B4A527 /* AppPreferencesView.swift in Sources */,
 				E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */,
 				E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */,
 			);
