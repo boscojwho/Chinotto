@@ -11,6 +11,8 @@ import DestructiveActions
 
 public struct CoreSimDeviceView: View {
     
+    @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
+    
     @Environment(\.openWindow) var openWindow
     
     @Binding var device: CoreSimulatorDevice?
@@ -139,7 +141,7 @@ public struct CoreSimDeviceView: View {
             }
             Button("Delete", role: .destructive) {
                 do {
-                    try FileManager.default.delete(coreSimDevice: device)
+                    try FileManager.default.delete(coreSimDevice: device, moveToTrash: deletionBehaviour == .moveToTrash)
                     self.device = nil
                 } catch {
                     if let error = error as? DestructiveActionError {

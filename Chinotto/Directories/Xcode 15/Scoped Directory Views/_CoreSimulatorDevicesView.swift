@@ -67,6 +67,8 @@ final class CoreSimulatorDevicesViewModel {
 
 struct _CoreSimulatorDevicesView: View {
     
+    @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
+
     @Environment(\.openWindow) var openWindow
     
     @Bindable var storageViewModel: StorageViewModel
@@ -166,7 +168,7 @@ struct _CoreSimulatorDevicesView: View {
                 let devices = selectedCoreSimDevices()
                 devices.forEach { device in
                     do {
-                        try FileManager.default.delete(coreSimDevice: device)
+                        try FileManager.default.delete(coreSimDevice: device, moveToTrash: deletionBehaviour == .moveToTrash)
                         if let index = devicesViewModel.devices.firstIndex(where: { $0.id == device.id }) {
                             devicesViewModel.devices.remove(at: index)
                         }
