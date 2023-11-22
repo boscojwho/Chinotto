@@ -54,11 +54,18 @@ struct UnifiedStorageView: View {
     
     private func reload() {
         isReloading = true
-        Task(priority: .background) {
-            viewModels.forEach { $0.beginCalculating() }
-            viewModels.forEach { $0.calculateSize(initial: false, recalculate: true) }
-            viewModels.forEach { $0.endCalculating() }
+        viewModels.forEach { $0.beginCalculating() }
+
+        Task {
+            await withTaskGroup(of: Void.self, returning: Void.self) { taskGroup in
+                viewModels.forEach { viewModel in
+                    taskGroup.addTask(priority: .userInitiated) {
+                        viewModel.calculateSize(initial: false, recalculate: true)
+                    }
+                }
+            }
             Task { @MainActor in
+                viewModels.forEach { $0.endCalculating() }
                 isReloading = false
             }
         }
