@@ -27,11 +27,15 @@ struct UnifiedStorageView: View {
                     Button {
                         reload()
                     } label: {
-                        if isReloading {
-                            ProgressView()
-                                .controlSize(.small)
-                        } else {
-                            Image(systemName: "arrow.clockwise")
+                        HStack {
+                            if isReloading {
+                                Text("Calculating...")
+                                ProgressView()
+                                    .controlSize(.small)
+                            } else {
+                                Text("Calculate")
+                                Image(systemName: "arrow.clockwise")
+                            }
                         }
                     }
                     .disabled(isReloading)

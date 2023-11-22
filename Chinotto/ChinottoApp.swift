@@ -15,15 +15,6 @@ struct ChinottoApp: App {
         WindowGroup {
             ContentView()
                 .frame(maxWidth: 1440)
-            // TODO: Add this to Settings view.
-//            #if DEBUG
-//                .onAppear {
-//                    Directories.allCases
-//                        .map { StorageViewModel(directory: $0).appStorageKeys }
-//                        .flatMap { $0 }
-//                        .forEach { UserDefaults.standard.setValue(nil, forKey: $0) }
-//                }
-//            #endif
         }
         .defaultPosition(.center)
         .defaultSize(width: 840, height: 1080)
