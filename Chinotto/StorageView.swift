@@ -173,6 +173,14 @@ final class StorageViewModel: Identifiable {
 struct StorageView: View {
     
     @Bindable var viewModel: StorageViewModel
+    let sizeClass: UserInterfaceSizeClass
+    
+    #warning("TODO: This needs to take a Bindable view model")
+    // TODO: This needs to take a Bindable view model.
+    public init(viewModel: StorageViewModel, sizeClass: UserInterfaceSizeClass = .regular) {
+        self.viewModel = viewModel
+        self.sizeClass = sizeClass
+    }
     
     var body: some View {
         Group {
@@ -275,6 +283,11 @@ struct StorageView: View {
 //        .chartLegend(position: .top, spacing: 8)
         .chartLegend(.hidden)
         .frame(height: 64)
+    }
+    
+    @ViewBuilder
+    private func compactChartView() -> some View {
+        chartView()
     }
 }
 
