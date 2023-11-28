@@ -44,6 +44,9 @@
         }
       }
     },
+    "%@ ago" : {
+
+    },
     "%@ of %@" : {
       "localizations" : {
         "en" : {
@@ -164,6 +167,9 @@
 
     },
     "Menu Bar" : {
+
+    },
+    "Never" : {
 
     },
     "Never Booted" : {

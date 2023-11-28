@@ -29,6 +29,7 @@ struct ChinottoApp: App {
         ) {
             DirectoriesStorageView(viewModels: $directories)
                 .frame(width: 480, height: 720)
+                .environment(\.horizontalSizeClass, .compact)
         }
         .menuBarExtraStyle(.window)
         

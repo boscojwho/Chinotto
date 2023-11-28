@@ -172,30 +172,19 @@ final class StorageViewModel: Identifiable {
 
 struct StorageView: View {
     
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Bindable var viewModel: StorageViewModel
-    let sizeClass: UserInterfaceSizeClass
-    
-    #warning("TODO: This needs to take a Bindable view model")
-    // TODO: This needs to take a Bindable view model.
-    public init(viewModel: StorageViewModel, sizeClass: UserInterfaceSizeClass = .regular) {
-        self.viewModel = viewModel
-        self.sizeClass = sizeClass
+
+    private var sizeClass: UserInterfaceSizeClass {
+        horizontalSizeClass ?? .regular
     }
     
     var body: some View {
         Group {
             HStack {
                 Spacer()
-                if Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated) == .distantPast {
-                    Text("Last Updated: Never")
-                        .font(.headline)
-                        .fontWeight(.regular)
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("Last Updated: \(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative)")
-                        .font(.headline)
-                        .fontWeight(.regular)
-                        .foregroundStyle(.secondary)
+                if sizeClass == .regular {
+                    lastUpdated()
                 }
             }
 //            .offset(y: 8)
@@ -211,11 +200,17 @@ struct StorageView: View {
                         } label: {
                             HStack {
                                 if viewModel.isCalculating {
-                                    Text("Calculating...")
+                                    if sizeClass == .regular {
+                                        Text("Calculating...")
+                                    }
                                     ProgressView()
                                         .controlSize(.small)
                                 } else {
-                                    Text("Calculate")
+                                    if sizeClass == .regular {
+                                        Text("Calculate")
+                                    } else {
+                                        lastUpdated()
+                                    }
                                     Image(systemName: "arrow.clockwise")
                                 }
                             }
@@ -237,6 +232,18 @@ struct StorageView: View {
     
     @ViewBuilder
     private func chartView() -> some View {
+        switch sizeClass {
+        case .compact:
+            compactChartView()
+        case .regular:
+            regularChartView()
+        @unknown default:
+            regularChartView()
+        }
+    }
+    
+    @ViewBuilder
+    private func regularChartView() -> some View {
         Chart {
             Plot {
                 BarMark(
@@ -287,7 +294,85 @@ struct StorageView: View {
     
     @ViewBuilder
     private func compactChartView() -> some View {
-        chartView()
+        Chart {
+            Plot {
+                BarMark(
+                    x: .value("Directory Size", viewModel.dirSize)
+                )
+                .foregroundStyle(viewModel.directory.accentColor)
+            }
+            .accessibilityLabel(viewModel.directory.dirName)
+            .accessibilityValue("\(viewModel.dirSize, specifier: "%.1f") GB")
+        }
+        .chartPlotStyle { plotArea in
+            plotArea
+#if os(macOS)
+                .background(viewModel.directory.accentColor.opacity(0.2))
+#else
+                .background(viewModel.directory.accentColor.opacity(0.2))
+#endif
+                .cornerRadius(8)
+        }
+        .chartXAxis {
+            AxisMarks(
+                format: .byteCount(style: .memory, allowedUnits: .all, spellsOutZero: true, includesActualByteCount: false),
+                values: viewModel.axisValues
+            )
+        }
+        .chartXScale(domain: [0, viewModel.volumeTotalCapacity ?? viewModel.dirSize])
+        .chartXAxisLabel(position: .top) {
+            switch sizeClass {
+            case .compact:
+                EmptyView()
+            case .regular:
+                Text("Disk Space Used")
+            @unknown default:
+                Text("Disk Space Used")
+            }
+        }
+        .chartYAxis(.hidden)
+        .chartLegend(.hidden)
+        .frame(height: 40)
+    }
+    
+    @ViewBuilder
+    private func lastUpdated() -> some View {
+        switch sizeClass {
+        case .compact:
+            if Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated) == .distantPast {
+                Text("Never")
+                    .font(.headline)
+                    .fontWeight(.regular)
+            } else {
+                Text("\(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative) ago")
+                    .font(.headline)
+                    .fontWeight(.regular)
+            }
+        case .regular:
+            if Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated) == .distantPast {
+                Text("Last Updated: Never")
+                    .font(.headline)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
+            } else {
+                Text("Last Updated: \(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative)")
+                    .font(.headline)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
+            }
+        @unknown default:
+            if Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated) == .distantPast {
+                Text("Never")
+                    .font(.headline)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
+            } else {
+                Text("\(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative)")
+                    .font(.headline)
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
+            }
+        }
     }
 }
 
