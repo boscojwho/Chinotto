@@ -163,6 +163,9 @@
     "Manually managing this directory is not recommended." : {
 
     },
+    "Menu Bar" : {
+
+    },
     "Never Booted" : {
 
     },
@@ -177,6 +180,9 @@
     },
     "Show in Finder" : {
       "extractionState" : "manual"
+    },
+    "Show in Menu Bar (compact view)" : {
+
     },
     "Size" : {
 
