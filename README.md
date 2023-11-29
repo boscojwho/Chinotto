@@ -18,6 +18,9 @@ A sweet little tool for managing the bitter taste of Xcode using up your Mac's s
 4. That's it!
 5. You can use Spotlight and search for "Chinotto" for subsequent launches, if you wish to bypass Xcode.
 
+## Contribute!
+Feel free to suggest new features, file bug reports, or provide feedback in the issues tracker 😀
+
 ## Why?
 One of the pain points of using macOS is seeing half of your Mac's storage consumed by some unknown force called "System Data". Apple does provide some tools in System Settings to help manage this issue, but it could be much better, especially for Xcode users.
 
