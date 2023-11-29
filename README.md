@@ -9,7 +9,7 @@
 # Chinotto
 A sweet little tool for managing the bitter taste of Xcode using up your Mac's storage space.
 
-<img width="320" alt="Screenshot 2023-11-13 at 5 13 08 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/b770ddd9-46e9-46cc-a240-0a8bd089b088">
+<img width="240" alt="Screenshot 2023-11-13 at 5 13 08 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/b770ddd9-46e9-46cc-a240-0a8bd089b088">
 
 ## Instructions
 1. Checkout latest commit on `/main` branch.
@@ -18,6 +18,19 @@ A sweet little tool for managing the bitter taste of Xcode using up your Mac's s
 4. Click the "Calculate" button on "All Directories" or on an individual directory.
 5. That's it!
 6. You can use Spotlight and search for "Chinotto" for subsequent launches, if you wish to bypass Xcode.
+
+## Screenshots
+### Main Window
+
+<img width="480" alt="Screenshot 2023-11-28 at 6 53 43 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/8da3f865-b528-442d-8b9f-e8568c7ef7d2">
+
+### Menu Bar extra app
+
+<img width="360" alt="Screenshot 2023-11-28 at 6 53 46 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/b0f250e2-e0a3-46f0-9f88-7002fba2ec24">
+
+### Settings/Preferences
+
+<img width="360" alt="Screenshot 2023-11-28 at 6 53 51 PM" src="https://github.com/boscojwho/Chinotto/assets/2549615/2d388ca8-0d7d-4af8-976a-d53a1c7fcb00">
 
 ## Contribute!
 Feel free to suggest new features, file bug reports, or provide feedback in the issues tracker 😀
