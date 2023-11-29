@@ -13,10 +13,11 @@ A sweet little tool for managing the bitter taste of Xcode using up your Mac's s
 
 ## Instructions
 1. Checkout latest commit on `/main` branch.
-2. Build and run via Xcode 15 on macOS 14.0 (or higher).
-3. Click the "Calculate" button on "All Directories" or on an individual directory.
-4. That's it!
-5. You can use Spotlight and search for "Chinotto" for subsequent launches, if you wish to bypass Xcode.
+2. Go to the project's "Chinotto" target > Signing to change to your own Team for code-signing.
+3. Build and run via Xcode 15 on macOS 14.0 (or higher).
+4. Click the "Calculate" button on "All Directories" or on an individual directory.
+5. That's it!
+6. You can use Spotlight and search for "Chinotto" for subsequent launches, if you wish to bypass Xcode.
 
 ## Contribute!
 Feel free to suggest new features, file bug reports, or provide feedback in the issues tracker 😀
