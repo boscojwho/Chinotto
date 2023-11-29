@@ -32,6 +32,7 @@
 		E4A30AA72B00D24800BE5444 /* ChinottoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AA62B00D24800BE5444 /* ChinottoUITests.swift */; };
 		E4A30AA92B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */; };
 		E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30AB52B00D32800BE5444 /* Directories.swift */; };
+		E4E10D3C2B16CE7A00126C53 /* ChinottoMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E10D3B2B16CE7A00126C53 /* ChinottoMenuBarApp.swift */; };
 		E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */; };
 		E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */; };
 		E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */; };
@@ -90,6 +91,7 @@
 		E4A30AA62B00D24800BE5444 /* ChinottoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoUITests.swift; sourceTree = "<group>"; };
 		E4A30AA82B00D24800BE5444 /* ChinottoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E4A30AB52B00D32800BE5444 /* Directories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directories.swift; sourceTree = "<group>"; };
+		E4E10D3B2B16CE7A00126C53 /* ChinottoMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinottoMenuBarApp.swift; sourceTree = "<group>"; };
 		E4F8ECBA2B0453220075AB04 /* DeveloperDiskImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperDiskImagesView.swift; sourceTree = "<group>"; };
 		E4F8ECBC2B0453C70075AB04 /* ToolchainsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolchainsView.swift; sourceTree = "<group>"; };
 		E4F8ECBE2B0453D10075AB04 /* XcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				E4A30A882B00D24700BE5444 /* ChinottoApp.swift */,
+				E4E10D3B2B16CE7A00126C53 /* ChinottoMenuBarApp.swift */,
 				E4F8ECCC2B083F440075AB04 /* XcodeVersion.swift */,
 				E4A30A8A2B00D24700BE5444 /* ContentView.swift */,
 				E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */,
@@ -423,6 +426,7 @@
 				E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */,
 				E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */,
 				E4F8ECCD2B083F440075AB04 /* XcodeVersion.swift in Sources */,
+				E4E10D3C2B16CE7A00126C53 /* ChinottoMenuBarApp.swift in Sources */,
 				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,
 				E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */,
 				E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */,

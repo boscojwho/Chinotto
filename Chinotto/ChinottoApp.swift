@@ -12,14 +12,6 @@ import CoreSimulatorUI
 @main
 struct ChinottoApp: App {
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
-    @State private var directories: [StorageViewModel] = [
-        .init(directory: .coreSimulator),
-        .init(directory: .developerDiskImages),
-        .init(directory: .toolchains),
-        .init(directory: .xcPGDevices),
-        .init(directory: .xcTestDevices),
-        .init(directory: .xcode),
-    ]
 
     var body: some Scene {
         MenuBarExtra(
@@ -27,9 +19,7 @@ struct ChinottoApp: App {
             systemImage: "chart.bar.doc.horizontal",
             isInserted: $showMenuBarExtra
         ) {
-            DirectoriesStorageView(viewModels: $directories)
-                .frame(width: 480, height: 720)
-                .environment(\.horizontalSizeClass, .compact)
+            ChinottoMenuBarApp()
         }
         .menuBarExtraStyle(.window)
         
