@@ -23,7 +23,7 @@ struct ChinottoApp: App {
         }
         .menuBarExtraStyle(.window)
         
-        WindowGroup {
+        Window("", id: "Main Window") {
             ContentView()
                 .frame(maxWidth: 1440)
         }

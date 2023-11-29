@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChinottoMenuBarApp: View {
+    @Environment(\.openWindow) var openWindow
+    @Environment(\.dismissWindow) var dismissWindow
     
     @State private var directories: [StorageViewModel] = [
         .init(directory: .coreSimulator),
@@ -22,5 +24,21 @@ struct ChinottoMenuBarApp: View {
         DirectoriesStorageView(viewModels: $directories)
             .frame(width: 480, height: 720)
             .environment(\.horizontalSizeClass, .compact)
+            .safeAreaInset(edge: .top) {
+                HStack {
+                    Text("Chinotto")
+                        .fontWeight(.medium)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Button("Open App...") {
+                        openWindow(id: "Main Window")
+                        dismissWindow()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.accentColor)
+                }
+                .padding(8)
+                .background(.regularMaterial)
+            }
     }
 }
