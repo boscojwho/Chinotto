@@ -44,6 +44,9 @@
         }
       }
     },
+    "%@ ago" : {
+
+    },
     "%@ of %@" : {
       "localizations" : {
         "en" : {
@@ -79,6 +82,9 @@
 
     },
     "Chinotto" : {
+
+    },
+    "Chinotto Menu Bar App" : {
 
     },
     "Core Simulator (Devices)" : {
@@ -160,7 +166,16 @@
     "Manually managing this directory is not recommended." : {
 
     },
+    "Menu Bar" : {
+
+    },
+    "Never" : {
+
+    },
     "Never Booted" : {
+
+    },
+    "Open App..." : {
 
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
@@ -172,11 +187,11 @@
     "Reset Storage Data..." : {
 
     },
-    "Select directory data." : {
-
-    },
     "Show in Finder" : {
       "extractionState" : "manual"
+    },
+    "Show in Menu Bar (compact view)" : {
+
     },
     "Size" : {
 

@@ -10,9 +10,13 @@ import Charts
 
 /// Shows storage consumed for all directories in a unified view.
 struct UnifiedStorageView: View {
-    
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Binding var viewModels: [StorageViewModel]
     @State private var isReloading = false
+    
+    private var sizeClass: UserInterfaceSizeClass {
+        horizontalSizeClass ?? .regular
+    }
     
     var body: some View {
         GroupBox {
@@ -96,7 +100,14 @@ struct UnifiedStorageView: View {
             )
         }
         .chartXAxisLabel(position: .top) {
-            Text("Disk Space Used")
+            switch sizeClass {
+            case .compact:
+                EmptyView()
+            case .regular:
+                Text("Disk Space Used")
+            @unknown default:
+                Text("Disk Space Used")
+            }
         }
         .chartPlotStyle { plotArea in
             plotArea
@@ -107,8 +118,19 @@ struct UnifiedStorageView: View {
 #endif
                 .cornerRadius(8)
         }
-        .chartLegend(.visible)
-        .frame(height: 80)
+        .chartLegend(chartLegendVisibility)
+        .frame(height: sizeClass == .compact ? 40 : 80)
+    }
+    
+    private var chartLegendVisibility: Visibility {
+        switch sizeClass {
+        case .compact:
+                .hidden
+        case .regular:
+                .visible
+        @unknown default:
+                .visible
+        }
     }
 }
 

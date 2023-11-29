@@ -10,12 +10,22 @@ import DestructiveActions
 
 struct GeneralPreferencesView: View {
     
+    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
     @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
     
     @State private var isPresentingResetStorageDataAlert = false
     
     var body: some View {
         Form {
+            Section {
+                LabeledContent("Menu Bar") {
+                    Toggle("Show in Menu Bar (compact view)", isOn: $showMenuBarExtra)
+                }
+            }
+            
+            Spacer(minLength: 24)
+                .frame(height: 24)
+            
             Section {
                 Picker("Deletion Behavior:", selection: $deletionBehaviour) {
                     ForEach(DeletionBehaviour.allCases) { value in

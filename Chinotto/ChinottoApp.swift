@@ -11,8 +11,19 @@ import CoreSimulatorUI
 
 @main
 struct ChinottoApp: App {
+    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
+
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra(
+            "Chinotto Menu Bar App",
+            systemImage: "chart.bar.doc.horizontal",
+            isInserted: $showMenuBarExtra
+        ) {
+            ChinottoMenuBarApp()
+        }
+        .menuBarExtraStyle(.window)
+        
+        Window("", id: "Main Window") {
             ContentView()
                 .frame(maxWidth: 1440)
         }

@@ -9,7 +9,7 @@ import SwiftUI
 
 /// Shows the storage consumed for each directory, separately.
 struct DirectoriesStorageView: View {
-    
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Binding var viewModels: [StorageViewModel]
     
     init(viewModels: Binding<[StorageViewModel]>) {
