@@ -1,0 +1,4 @@
+// Replace placeholder values with your own.
+// [2023.11] How to find your development team id: https://developer.apple.com/help/account/manage-your-team/locate-your-team-id/
+DEVELOPMENT_TEAM = abcde12345
+BUNDLE_ID_PREFIX = com.example
