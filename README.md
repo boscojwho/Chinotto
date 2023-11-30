@@ -1,6 +1,7 @@
 **Warning**
 - *Chinotto is currently in active development (alpha build, not feature-complete).*
 - *Chinotto currently does not run in an App Sandbox.*
+- *Built for Xcode 15, may not work as expected for older Xcode versions*
 - *Use at your own risk =)*
 
 **Notes**
@@ -13,7 +14,7 @@ A sweet little tool for managing the bitter taste of Xcode using up your Mac's s
 
 ## Instructions
 1. Checkout latest commit on `/main` branch.
-2. Go to the project's "Chinotto" target > Signing to change to your own Team for code-signing.
+2. Go to the project's `Chinotto.xcconfig` (DEBUG configuration) file, and replace placeholder values with your own Team ID and bundle id prefix for code-signing.
 3. Build and run via Xcode 15 on macOS 14.0 (or higher).
 4. Click the "Calculate" button on "All Directories" or on an individual directory.
 5. That's it!
@@ -34,6 +35,7 @@ A sweet little tool for managing the bitter taste of Xcode using up your Mac's s
 
 ## Contribute!
 Feel free to suggest new features, file bug reports, or provide feedback in the issues tracker 😀
+- Remember: Go to the project's `Chinotto.xcconfig` (DEBUG configuration) file, and replace placeholder values with your own Team ID and bundle id prefix for code-signing.
 
 ## Why?
 One of the pain points of using macOS is seeing half of your Mac's storage consumed by some unknown force called "System Data". Apple does provide some tools in System Settings to help manage this issue, but it could be much better, especially for Xcode users.
