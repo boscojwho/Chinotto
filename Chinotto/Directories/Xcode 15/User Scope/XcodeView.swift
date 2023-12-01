@@ -31,6 +31,37 @@ struct XcodeView: View {
                 Section("Description") {
                     Text("Xcode.app related directories.")
                 }
+                
+                ForEach(Xcode_User.allCases) { value in
+                    Section {
+                        GroupBox {
+                            VStack {
+                                HStack {
+                                    Text("/\(value.dirName)")
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                    Button("Show in Finder") {
+                                        let url = URL(filePath: value.dirPath, directoryHint: .isDirectory)
+                                        NSWorkspace.shared.activateFileViewerSelecting([url])
+                                    }
+                                    if value == .userData {
+                                        Button("Inspect code snippets...") {
+                                            
+                                        }
+                                        .tint(.accentColor)
+                                        .buttonStyle(.borderedProminent)
+                                    }
+                                }
+                                Divider()
+                                HStack {
+                                    Text("\(value.dirDescription)")
+                                        .fontWeight(.medium)
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                }
             }
             .listStyle(.inset)
         }

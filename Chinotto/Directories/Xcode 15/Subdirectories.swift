@@ -91,3 +91,30 @@ enum CoreSimulator_System: CoreSimulator, CaseIterable, Identifiable {
         }
     }
 }
+
+enum Xcode_User: CaseIterable, Identifiable {
+    /// `~/Xcode/UserData`
+    case userData
+    
+    var id: String { dirName }
+    
+    var dirName: String {
+        switch self {
+        case .userData:
+            return "UserData"
+        }
+    }
+    var dirPath: String {
+        "\(Self.basePath)/\(dirName)"
+    }
+    var dirDescription: String {
+        switch self {
+        case .userData:
+            return ""
+        }
+    }
+        
+    static var basePath: String {
+        "/Users/\(NSUserName())/Library/Developer/Xcode"
+    }
+}
