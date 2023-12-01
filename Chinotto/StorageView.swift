@@ -105,7 +105,8 @@ final class StorageViewModel: Identifiable {
     private(set) var fileSizeMetadata: [SizeMetadata] = []
     
     /// - Parameter initial: If `true`, only calculates size if not yet calculated.
-    func calculateSize(initial: Bool, recalculate: Bool, shallowMetadata: Bool = false) {
+    @MainActor
+    func calculateSize(initial: Bool, recalculate: Bool, shallowMetadata: Bool = false) async {
         defer { performedInitialLoad = true }
         
         if initial, performedInitialLoad == true {
@@ -149,7 +150,7 @@ final class StorageViewModel: Identifiable {
                 )
             }
         #else
-        self.dirSize = URL.directorySize(
+        self.dirSize = await URL.directorySize(
             url: .init(filePath: directory.userPath, directoryHint: .isDirectory)
         )
         #endif
@@ -226,7 +227,7 @@ struct StorageView: View {
     
     private func reload() {
         Task(priority: .userInitiated) {
-            viewModel.calculateSize(initial: false, recalculate: true)
+            await viewModel.calculateSize(initial: false, recalculate: true)
         }
     }
     

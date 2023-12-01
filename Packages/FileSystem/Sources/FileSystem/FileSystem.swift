@@ -145,4 +145,13 @@ public extension URL {
         
         return size
     }
+    
+    static func directorySize(url: URL) async -> Int {
+        await withCheckedContinuation { continuation in
+            Task(priority: .userInitiated) {
+                let dirSize = directorySize(url: url)
+                continuation.resume(returning: dirSize)
+            }
+        }
+    }
 }

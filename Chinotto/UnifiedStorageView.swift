@@ -64,7 +64,7 @@ struct UnifiedStorageView: View {
             await withTaskGroup(of: Void.self, returning: Void.self) { taskGroup in
                 viewModels.forEach { viewModel in
                     taskGroup.addTask(priority: .userInitiated) {
-                        viewModel.calculateSize(initial: false, recalculate: true)
+                        await viewModel.calculateSize(initial: false, recalculate: true)
                     }
                 }
             }
