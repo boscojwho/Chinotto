@@ -298,7 +298,18 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "删除选择的 (%lld)..."
+            "value" : "删除选择的 (%lld) 个设备..."
+          }
+        }
+      }
+    },
+    "Deleted items are moved to Trash, where you may recover items, if needed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除项目将被移到废纸篓，你可以在哪里恢复需要的项目"
           }
         }
       }
@@ -444,7 +455,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果下载完成，但是 Xcode 无法安装 Simulator 运行环境 (例如: 储存空间不足)，你可能需要手动安装 Simulator\n\n在下载好的 .dmg 文件上运行 `xcrun simctl runtime add` 来手动安装\n\n使用 Xcode Download 页面内置的重试按钮会重新下载整个文件，这是不必要的费时操作"
+            "value" : "如果下载完成，但 Xcode 无法安装 Simulator 运行环境 (例如: 储存空间不足)，你可能需要手动安装 Simulator\n\n在下载好的 .dmg 文件上运行 \"`xcrun simctl runtime add`\" 来手动安装\n\n使用 Xcode Download 页面内置的重试按钮会重新下载整个文件，这是不必要的费时操作"
           }
         }
       }
@@ -509,6 +520,17 @@
         }
       }
     },
+    "Move to Trash" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移到废纸篓"
+          }
+        }
+      }
+    },
     "Never" : {
       "localizations" : {
         "zh-Hans" : {
@@ -535,6 +557,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开应用..."
+          }
+        }
+      }
+    },
+    "Permanently Delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "永久删除"
           }
         }
       }
@@ -637,7 +670,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xcode 下载 Simulator 镜像时会保存在这里"
+            "value" : "Xcode 下载的 Simulator 镜像会保存在这里"
           }
         }
       }
@@ -669,6 +702,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "提示"
+          }
+        }
+      }
+    },
+    "Warning: Recovery is not possible with this option. Deleted items are permanently removed from file system." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "警告: 该选项无法恢复，删除的项目将永久从文件系统上移除"
           }
         }
       }
