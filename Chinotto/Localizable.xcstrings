@@ -602,6 +602,17 @@
         }
       }
     },
+    "Select a directory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择目录"
+          }
+        }
+      }
+    },
     "Show in Finder" : {
       "extractionState" : "manual",
       "localizations" : {
