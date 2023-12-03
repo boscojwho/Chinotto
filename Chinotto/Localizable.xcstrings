@@ -121,7 +121,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "%1$@ - %2$lld"
           }
         }
@@ -187,8 +187,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : ""
+            "state" : "translated",
+            "value" : "你确定要删除\n\"^[%lld 设备吗](inflect: true)\"?"
           }
         }
       }
@@ -377,8 +377,8 @@
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : ""
+            "state" : "translated",
+            "value" : "已使用的磁盘空间 - ^[正在显示 %lld 个设备](inflect: true)"
           }
         }
       }
@@ -393,8 +393,8 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : ""
+            "state" : "translated",
+            "value" : "已使用的磁盘空间 - 正在计算 %2$lld 中的第 %1$lld 个设备"
           }
         }
       }
@@ -600,6 +600,17 @@
         }
       }
     },
+    "Temporary files associated with any simulators are stored here. This directory doesn't appear to contain anything of much permanent interest." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "和所有 Simulator 相关联的临时文件都在这里储存，这个目录似乎不包含太多永久储存的文件"
+          }
+        }
+      }
+    },
     "This includes disk usage statistics that may take some time to calculate." : {
       "localizations" : {
         "zh-Hans" : {
@@ -610,12 +621,34 @@
         }
       }
     },
+    "This is where all the simulator devices that have been downloaded are stored, and typically consumes the most storage space." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是所有下载的 Simulator 被储存的位置，而且一般占最多储存空间"
+          }
+        }
+      }
+    },
     "This is where simulator images are stored when downloaded via Xcode." : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xcode 下载 Simulator 镜像时会保存在这里"
+          }
+        }
+      }
+    },
+    "This is where the Dynamic Linker for various simulator runtimes are stored (e.g. iOS, watchOS, tvOS)." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是储存各种 Simulator 运行环境 Dynamic Linker 的位置 (例如: iOS、watchOS、tvOS)"
           }
         }
       }
