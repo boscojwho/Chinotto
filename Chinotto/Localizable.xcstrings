@@ -136,6 +136,9 @@
         }
       }
     },
+    "Dismiss" : {
+
+    },
     "Double-click to select a device" : {
 
     },
@@ -163,6 +166,9 @@
     "Last Updated: Never" : {
 
     },
+    "Launch app on login" : {
+
+    },
     "Manually managing this directory is not recommended." : {
 
     },
@@ -176,6 +182,12 @@
 
     },
     "Open App..." : {
+
+    },
+    "Open at Login" : {
+
+    },
+    "Open Login Items..." : {
 
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {

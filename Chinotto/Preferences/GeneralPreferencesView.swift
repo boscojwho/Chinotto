@@ -7,9 +7,12 @@
 
 import SwiftUI
 import DestructiveActions
+import ServiceManagement
 
 struct GeneralPreferencesView: View {
     
+    @State private var openAtLogin = false
+    @State private var openAtLoginError: Error?
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
     @AppStorage("preferences.general.deletionBehaviour") var deletionBehaviour: DeletionBehaviour = .moveToTrash
     
@@ -20,6 +23,26 @@ struct GeneralPreferencesView: View {
             Section {
                 LabeledContent("Menu Bar") {
                     Toggle("Show in Menu Bar (compact view)", isOn: $showMenuBarExtra)
+                }
+                
+                LabeledContent("Open at Login") {
+                    Toggle("Launch app on login", isOn: $openAtLogin)
+                }
+                .onChange(of: openAtLogin) {
+                    if openAtLogin {
+                        do {
+                            try SMAppService.mainApp.register()
+                        } catch {
+                            openAtLoginError = error
+                        }
+                    } else {
+                        SMAppService.mainApp.unregister { error in
+                            openAtLoginError = error
+                        }
+                    }
+                }
+                Button("Manage \"Login Items\"...") {
+                    SMAppService.openSystemSettingsLoginItems()
                 }
             }
             
@@ -64,6 +87,13 @@ struct GeneralPreferencesView: View {
                 .frame(maxWidth: 320)
             }
         }
+        .alert("", isPresented: .init(get: {
+            openAtLoginError != nil
+        }, set: { _ in
+            // no-op
+        }), presenting: openAtLoginError, actions: { error in
+            Button("Dismiss", role: .cancel) { }
+        })
         .alert("Are you sure you want to reset storage data?", isPresented: $isPresentingResetStorageDataAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Reset", role: .destructive) {
