@@ -24,7 +24,7 @@ struct AppPreferencesView: View {
                 }
                 .tag(Tabs.general)
         }
-        .frame(width: 480, height: 320)
+        .frame(minWidth: 480, minHeight: 320)
     }
 }
 

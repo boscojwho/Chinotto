@@ -11,6 +11,7 @@ import CoreSimulatorUI
 
 @main
 struct ChinottoApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
 
     var body: some Scene {
@@ -56,6 +57,6 @@ struct ChinottoApp: App {
         }
         .defaultPosition(.center)
         .defaultSize(width: 480, height: 720)
-        .windowResizability(.contentSize)
+        .windowResizability(.contentMinSize)
     }
 }

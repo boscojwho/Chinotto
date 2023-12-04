@@ -145,7 +145,13 @@
     "Downloads" : {
 
     },
+    "Error" : {
+
+    },
     "General" : {
+
+    },
+    "Hide windows on launch" : {
 
     },
     "Home" : {
@@ -169,6 +175,9 @@
     "Launch app on login" : {
 
     },
+    "Manage \"Login Items\"..." : {
+
+    },
     "Manually managing this directory is not recommended." : {
 
     },
@@ -187,7 +196,7 @@
     "Open at Login" : {
 
     },
-    "Open Login Items..." : {
+    "Previously opened windows will not be restored on launch." : {
 
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
