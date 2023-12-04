@@ -151,7 +151,7 @@
     "General" : {
 
     },
-    "Hide windows on launch" : {
+    "Hide windows when app launches on login" : {
 
     },
     "Home" : {

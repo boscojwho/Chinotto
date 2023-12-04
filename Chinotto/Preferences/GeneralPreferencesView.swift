@@ -45,7 +45,7 @@ struct GeneralPreferencesView: View {
                             }
                         }
                     }
-                    Toggle("Hide windows on launch", isOn: $hideWindowsOnLaunch)
+                    Toggle("Hide windows when app launches on login", isOn: $hideWindowsOnLaunch)
                         .disabled(openAtLogin == false)
                     
                     if hideWindowsOnLaunch, openAtLogin {
