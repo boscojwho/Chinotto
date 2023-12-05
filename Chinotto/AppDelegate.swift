@@ -10,14 +10,6 @@ import AppKit
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    private var openAtLogin: Bool {
-        UserDefaults.standard.bool(forKey: "openAtLogin")
-    }
-    
-    private var hideWindowsOnLaunch: Bool {
-        UserDefaults.standard.bool(forKey: "hideWindowsOnLaunch")
-    }
-    
     func applicationDidFinishLaunching(_ notification: Notification) {
         LoginItemBehaviour.hideWindowsOnDidFinishLaunching(
             NSApplication.shared.windows,
