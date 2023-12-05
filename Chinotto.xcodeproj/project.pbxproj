@@ -11,6 +11,7 @@
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
+		E44DD0FA2B1DCE4A0066487D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */; };
 		E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */ = {isa = PBXBuildFile; productRef = E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */; };
 		E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */; };
 		E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475191C2B03A2E800C360DD /* Subdirectories.swift */; };
@@ -22,6 +23,7 @@
 		E47519292B03AB1800C360DD /* _CoreSimulatorUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47519282B03AB1800C360DD /* _CoreSimulatorUserView.swift */; };
 		E4934CDE2B0D9BE000B4A527 /* AppPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4934CDD2B0D9BE000B4A527 /* AppPreferencesView.swift */; };
 		E4934CE02B0D9BEE00B4A527 /* GeneralPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4934CDF2B0D9BEE00B4A527 /* GeneralPreferencesView.swift */; };
+		E49397AC2B1EB880001204B6 /* LoginItemBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49397AB2B1EB880001204B6 /* LoginItemBehaviour.swift */; };
 		E49C418F2B0C551E001100EC /* FileSystemUI in Frameworks */ = {isa = PBXBuildFile; productRef = E49C418E2B0C551E001100EC /* FileSystemUI */; };
 		E49C41922B0C5616001100EC /* FileSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E49C41912B0C5616001100EC /* FileSystem */; };
 		E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A30A882B00D24700BE5444 /* ChinottoApp.swift */; };
@@ -66,6 +68,7 @@
 		E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoriesStorageView.swift; sourceTree = "<group>"; };
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorDevicesView.swift; sourceTree = "<group>"; };
 		E466741E2B04CCC100782359 /* CoreSimulatorTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreSimulatorTools; path = Packages/CoreSimulatorTools; sourceTree = "<group>"; };
 		E475191C2B03A2E800C360DD /* Subdirectories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subdirectories.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		E4934CDF2B0D9BEE00B4A527 /* GeneralPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesView.swift; sourceTree = "<group>"; };
 		E49397852B194E29001204B6 /* Chinotto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Chinotto.xcconfig; sourceTree = "<group>"; };
 		E49397862B194ED5001204B6 /* Chinotto-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Chinotto-release.xcconfig"; sourceTree = "<group>"; };
+		E49397AB2B1EB880001204B6 /* LoginItemBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemBehaviour.swift; sourceTree = "<group>"; };
 		E49C418D2B0C54D5001100EC /* FileSystemUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FileSystemUI; path = Packages/FileSystemUI; sourceTree = "<group>"; };
 		E49C41902B0C55CB001100EC /* FileSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FileSystem; path = Packages/FileSystem; sourceTree = "<group>"; };
 		E4A30A852B00D24700BE5444 /* Chinotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chinotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				E4A30A882B00D24700BE5444 /* ChinottoApp.swift */,
+				E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */,
+				E49397AB2B1EB880001204B6 /* LoginItemBehaviour.swift */,
 				E4E10D3B2B16CE7A00126C53 /* ChinottoMenuBarApp.swift */,
 				E4F8ECCC2B083F440075AB04 /* XcodeVersion.swift */,
 				E4A30A8A2B00D24700BE5444 /* ContentView.swift */,
@@ -430,8 +436,10 @@
 				E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */,
 				E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */,
 				E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */,
+				E44DD0FA2B1DCE4A0066487D /* AppDelegate.swift in Sources */,
 				E4F8ECCD2B083F440075AB04 /* XcodeVersion.swift in Sources */,
 				E4E10D3C2B16CE7A00126C53 /* ChinottoMenuBarApp.swift in Sources */,
+				E49397AC2B1EB880001204B6 /* LoginItemBehaviour.swift in Sources */,
 				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,
 				E475191D2B03A2E800C360DD /* Subdirectories.swift in Sources */,
 				E47519212B03AA5F00C360DD /* _CoreSimulatorUserCachesView.swift in Sources */,

@@ -410,6 +410,9 @@
         }
       }
     },
+    "Dismiss" : {
+
+    },
     "Double-click to select a device" : {
       "localizations" : {
         "zh-Hans" : {
@@ -430,6 +433,9 @@
         }
       }
     },
+    "Error" : {
+
+    },
     "General" : {
       "localizations" : {
         "zh-Hans" : {
@@ -439,6 +445,9 @@
           }
         }
       }
+    },
+    "Hide windows when app launches on login" : {
+
     },
     "Home" : {
       "localizations" : {
@@ -499,6 +508,12 @@
           }
         }
       }
+    },
+    "Launch app on login" : {
+
+    },
+    "Manage \"Login Items\"..." : {
+
     },
     "Manually managing this directory is not recommended." : {
       "localizations" : {
@@ -571,6 +586,12 @@
           }
         }
       }
+    },
+    "Open at Login" : {
+
+    },
+    "Previously opened windows will not be restored on launch." : {
+
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
       "localizations" : {

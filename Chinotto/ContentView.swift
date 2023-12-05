@@ -71,6 +71,14 @@ struct ContentView: View {
                 }
             }
             .navigationSplitViewColumnWidth(min: 200, ideal: 240)
+            .toolbar {
+                ToolbarItem {
+                    SettingsLink {
+                        Image(systemName: "gear")
+                            .buttonBorderShape(.roundedRectangle)
+                    }
+                }
+            }
         } detail: {
             if let selectedDir {
                 makeSelectedDirectoryView(selectedDir)
