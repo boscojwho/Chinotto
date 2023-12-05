@@ -2,37 +2,114 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "_CoreSimulatorSystemCachesView" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "_CoreSimulatorSystemCachesView"
+          }
+        }
+      }
     },
     "_CoreSimulatorSystemView" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "_CoreSimulatorSystemView"
+          }
+        }
+      }
     },
     "_CoreSimulatorUserCachesView" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "_CoreSimulatorUserCachesView"
+          }
+        }
+      }
     },
     "[%@]" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "[%@]"
+          }
+        }
+      }
     },
     "/%@" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/%@"
+          }
+        }
+      }
     },
     "/CoreSimulator" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/CoreSimulator"
+          }
+        }
+      }
     },
     "/Developer (System)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/Developer (系统)"
+          }
+        }
+      }
     },
     "/Developer (User)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/Developer (用户)"
+          }
+        }
+      }
     },
     "%.1f GB" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.1f GB"
+          }
+        }
+      }
     },
     "%@" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@ - %lld" : {
       "localizations" : {
@@ -41,11 +118,24 @@
             "state" : "new",
             "value" : "%1$@ - %2$lld"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ - %2$lld"
+          }
         }
       }
     },
     "%@ ago" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 前"
+          }
+        }
+      }
     },
     "%@ of %@" : {
       "localizations" : {
@@ -54,77 +144,255 @@
             "state" : "new",
             "value" : "%1$@ of %2$@"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ 中的 %1$@"
+          }
         }
       }
     },
     "All Directories" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有目录"
+          }
+        }
+      }
     },
     "All Directories (%lld files)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有目录 (%lld 个文件)"
+          }
+        }
+      }
     },
     "Are you sure you want to reset storage data?" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你确定要重置储存数据吗?"
+          }
+        }
+      }
     },
     "Are you sure you wish to permanently delete\n\"^[%lld device](inflect: true)\"?" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你确定要删除\n\"^[%lld 设备吗](inflect: true)\"?"
+          }
+        }
+      }
     },
     "By Directory" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按目录"
+          }
+        }
+      }
     },
     "Calculate" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算"
+          }
+        }
+      }
     },
     "Calculating..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算中..."
+          }
+        }
+      }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
     },
     "Chinotto" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chinotto"
+          }
+        }
+      }
     },
     "Chinotto Menu Bar App" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chinotto 菜单栏应用"
+          }
+        }
+      }
     },
     "Core Simulator (Devices)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Core Simulator (设备)"
+          }
+        }
+      }
     },
     "Data Category" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据分类"
+          }
+        }
+      }
     },
     "Date Added" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加日期"
+          }
+        }
+      }
     },
     "Delete" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除"
+          }
+        }
+      }
     },
     "Delete selected (%lld)..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除选择的 (%lld) 个设备..."
+          }
+        }
+      }
+    },
+    "Deleted items are moved to Trash, where you may recover items, if needed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除项目将被移到废纸篓，你可以在哪里恢复需要的项目"
+          }
+        }
+      }
     },
     "Deletion Behavior:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除选项: "
+          }
+        }
+      }
     },
     "Description" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
+          }
+        }
+      }
     },
     "Device Inspector" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设备查看器"
+          }
+        }
+      }
     },
     "Device Kind" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设备类型"
+          }
+        }
+      }
     },
     "Device Name" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设备名称"
+          }
+        }
+      }
     },
     "Directory Size" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目录大小"
+          }
+        }
+      }
     },
     "Disk Space Used" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "磁盘空间使用"
+          }
+        }
+      }
     },
     "Disk Space Used - ^[Showing %lld device](inflect: true)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已使用的磁盘空间 - ^[正在显示 %lld 个设备](inflect: true)"
+          }
+        }
+      }
     },
     "Disk Space Used - Calculating %lld ^[of %lld device](inflect: true)" : {
       "localizations" : {
@@ -133,95 +401,382 @@
             "state" : "new",
             "value" : "Disk Space Used - Calculating %1$lld ^[of %2$lld device](inflect: true)"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已使用的磁盘空间 - 正在计算 %2$lld 中的第 %1$lld 个设备"
+          }
         }
       }
     },
     "Double-click to select a device" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "双击以选择设备"
+          }
+        }
+      }
     },
     "Downloads" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载"
+          }
+        }
+      }
     },
     "General" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
+          }
+        }
+      }
     },
     "Home" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主页"
+          }
+        }
+      }
     },
     "If download finishes, but Xcode is unable to install a simulator runtime (e.g. due to insufficient storage), you may wish to manually install the simulator, instead.\n\nRun \"`xcrun simctl runtime add`\" on the downloaded .dmg file here to do so.\n\nUsing Xcode's built-in reload button in the Download panel causes it to re-download the entire file, which is unnecessarily time-consuming." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果下载完成，但 Xcode 无法安装 Simulator 运行环境 (例如: 储存空间不足)，你可能需要手动安装 Simulator\n\n在下载好的 .dmg 文件上运行 \"`xcrun simctl runtime add`\" 来手动安装\n\n使用 Xcode Download 页面内置的重试按钮会重新下载整个文件，这是不必要的费时操作"
+          }
+        }
+      }
     },
     "Inspect Devices..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检查设备"
+          }
+        }
+      }
     },
     "Last Boot Time" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上次启动时间"
+          }
+        }
+      }
     },
     "Last Updated: %@" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上次更新: %@"
+          }
+        }
+      }
     },
     "Last Updated: Never" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上次更新: 从未"
+          }
+        }
+      }
     },
     "Manually managing this directory is not recommended." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不推荐手动管理该目录"
+          }
+        }
+      }
     },
     "Menu Bar" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "菜单栏"
+          }
+        }
+      }
+    },
+    "Move to Trash" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移到废纸篓"
+          }
+        }
+      }
     },
     "Never" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从未"
+          }
+        }
+      }
     },
     "Never Booted" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从未启动"
+          }
+        }
+      }
     },
     "Open App..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开应用..."
+          }
+        }
+      }
+    },
+    "Permanently Delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "永久删除"
+          }
+        }
+      }
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推荐: 使用 Xcode 内置工具来管理 Toolchains (Xcode > Toolchains > Manage Toolchains...)"
+          }
+        }
+      }
     },
     "Reset" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置"
+          }
+        }
+      }
     },
     "Reset Storage Data..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置储存数据..."
+          }
+        }
+      }
+    },
+    "Select a directory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择目录"
+          }
+        }
+      }
     },
     "Show in Finder" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在访达中显示"
+          }
+        }
+      }
     },
     "Show in Menu Bar (compact view)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在菜单栏显示 (紧凑视图)"
+          }
+        }
+      }
     },
     "Size" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大小"
+          }
+        }
+      }
+    },
+    "Temporary files associated with any simulators are stored here. This directory doesn't appear to contain anything of much permanent interest." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "和所有 Simulator 相关联的临时文件都在这里储存，这个目录似乎不包含太多永久储存的文件"
+          }
+        }
+      }
     },
     "This includes disk usage statistics that may take some time to calculate." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这包括需要一些时间计算的磁盘使用数据"
+          }
+        }
+      }
+    },
+    "This is where all the simulator devices that have been downloaded are stored, and typically consumes the most storage space." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是所有下载的 Simulator 被储存的位置，而且一般占最多储存空间"
+          }
+        }
+      }
     },
     "This is where simulator images are stored when downloaded via Xcode." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode 下载的 Simulator 镜像会保存在这里"
+          }
+        }
+      }
+    },
+    "This is where the Dynamic Linker for various simulator runtimes are stored (e.g. iOS, watchOS, tvOS)." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这是储存各种 Simulator 运行环境 Dynamic Linker 的位置 (例如: iOS、watchOS、tvOS)"
+          }
+        }
+      }
     },
     "This operation cannot be reversed.\n\nYou may wish to backup test data associated with this device before proceeding." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这个操作将无法撤销\n\n你可能希望在继续前备份和该设备关联的测试数据"
+          }
+        }
+      }
     },
     "Tip" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提示"
+          }
+        }
+      }
+    },
+    "Warning: Recovery is not possible with this option. Deleted items are permanently removed from file system." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "警告: 该选项无法恢复，删除的项目将永久从文件系统上移除"
+          }
+        }
+      }
     },
     "Xcode" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode"
+          }
+        }
+      }
     },
     "Xcode Playground Devices (XCPGDevices)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode Playground 设备 (XCPGDevices)"
+          }
+        }
+      }
     },
     "Xcode Playground Devices." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode Playground 设备"
+          }
+        }
+      }
     },
     "Xcode Test Devices." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode 测试设备"
+          }
+        }
+      }
     },
     "Xcode.app related directories." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xcode.app 相关目录"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
