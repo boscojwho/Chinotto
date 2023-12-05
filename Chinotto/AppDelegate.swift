@@ -19,16 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        for window in NSApplication.shared.windows {
-            if openAtLogin == true,
-               hideWindowsOnLaunch == true,
-               let isDefaultLaunch = notification.userInfo?[NSApplication.launchIsDefaultUserInfoKey] as? Bool,
-               isDefaultLaunch == false {
-                /// Menu bar app window and menu bar item window aren't restorable.
-                if window.isRestorable {
-                    window.close()
-                }
-            }
-        }
+        LoginItemBehaviour.hideWindowsOnDidFinishLaunching(
+            NSApplication.shared.windows,
+            notification
+        )
     }
 }
