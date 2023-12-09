@@ -411,7 +411,14 @@
       }
     },
     "Dismiss" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
+          }
+        }
+      }
     },
     "Double-click to select a device" : {
       "localizations" : {
@@ -434,7 +441,14 @@
       }
     },
     "Error" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误"
+          }
+        }
+      }
     },
     "General" : {
       "localizations" : {
@@ -447,7 +461,14 @@
       }
     },
     "Hide windows when app launches on login" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在应用于登录时启动后不显示窗口"
+          }
+        }
+      }
     },
     "Home" : {
       "localizations" : {
@@ -510,10 +531,24 @@
       }
     },
     "Launch app on login" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在登录时启动应用"
+          }
+        }
+      }
     },
     "Manage \"Login Items\"..." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "管理\"登录项\"..."
+          }
+        }
+      }
     },
     "Manually managing this directory is not recommended." : {
       "localizations" : {
@@ -576,6 +611,16 @@
         }
       }
     },
+    "Open at Login" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录时启动"
+          }
+        }
+      }
+    },
     "Permanently Delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -587,11 +632,15 @@
         }
       }
     },
-    "Open at Login" : {
-
-    },
     "Previously opened windows will not be restored on launch." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先前打开的窗口将不会在启动后恢复"
+          }
+        }
+      }
     },
     "Recommended: Manage Toolchains using Xcode's built-in tool (Xcode > Toolchains > Manage Toolchains...)." : {
       "localizations" : {
