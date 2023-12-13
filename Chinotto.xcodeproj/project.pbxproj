@@ -11,6 +11,7 @@
 		E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */; };
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
+		E449C5862B295B3F00E3BCF4 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = E449C5852B295B3F00E3BCF4 /* Views */; };
 		E44DD0FA2B1DCE4A0066487D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */; };
 		E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */ = {isa = PBXBuildFile; productRef = E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */; };
 		E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */; };
@@ -68,6 +69,7 @@
 		E4205D572B020F390026D4A0 /* DirectoriesStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoriesStorageView.swift; sourceTree = "<group>"; };
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E449C5842B29547800E3BCF4 /* Views */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Views; sourceTree = SOURCE_ROOT; };
 		E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorDevicesView.swift; sourceTree = "<group>"; };
 		E466741E2B04CCC100782359 /* CoreSimulatorTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreSimulatorTools; path = Packages/CoreSimulatorTools; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				E49C41922B0C5616001100EC /* FileSystem in Frameworks */,
 				E4F8ECD32B08546A0075AB04 /* DestructiveActions in Frameworks */,
 				E4F8ECD02B0848270075AB04 /* CoreSimulatorUI in Frameworks */,
+				E449C5862B295B3F00E3BCF4 /* Views in Frameworks */,
 				E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */,
 				E49C418F2B0C551E001100EC /* FileSystemUI in Frameworks */,
 			);
@@ -185,6 +188,7 @@
 				E4F8ECD12B0851CD0075AB04 /* DestructiveActions */,
 				E4F8ECCE2B0846D30075AB04 /* CoreSimulatorUI */,
 				E466741E2B04CCC100782359 /* CoreSimulatorTools */,
+				E449C5842B29547800E3BCF4 /* Views */,
 				E4A30A872B00D24700BE5444 /* Chinotto */,
 				E4A30A9B2B00D24800BE5444 /* ChinottoTests */,
 				E4A30AA52B00D24800BE5444 /* ChinottoUITests */,
@@ -306,6 +310,7 @@
 				E4F8ECD22B08546A0075AB04 /* DestructiveActions */,
 				E49C418E2B0C551E001100EC /* FileSystemUI */,
 				E49C41912B0C5616001100EC /* FileSystem */,
+				E449C5852B295B3F00E3BCF4 /* Views */,
 			);
 			productName = Chinotto;
 			productReference = E4A30A852B00D24700BE5444 /* Chinotto.app */;
@@ -779,6 +784,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E449C5852B295B3F00E3BCF4 /* Views */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Views;
+		};
 		E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreSimulatorTools;

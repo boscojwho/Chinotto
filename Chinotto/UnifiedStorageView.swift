@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+import Views
 
 /// Shows storage consumed for all directories in a unified view.
 struct UnifiedStorageView: View {
@@ -27,20 +28,10 @@ struct UnifiedStorageView: View {
                     let storage = viewModels.reduce(0) { $0 + $1.dirSize }
                     Text("\(ByteCountFormatter.string(fromByteCount: Int64(storage), countStyle: .decimal)) of \(ByteCountFormatter.string(fromByteCount: Int64(viewModels.first?.volumeTotalCapacity ?? 0), countStyle: .decimal))")
                     
-                    Button {
-                        reload()
-                    } label: {
-                        HStack {
-                            if isReloading {
-                                Text("Calculating...")
-                                ProgressView()
-                                    .controlSize(.small)
-                            } else {
-                                Text("Calculate")
-                                Image(systemName: "arrow.clockwise")
-                            }
-                        }
-                    }
+                    CleanButton(
+                        loading: $isReloading,
+                        action: reload
+                    )
                     .disabled(isReloading)
                 }
                 

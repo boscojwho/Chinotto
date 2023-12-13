@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+import Views
 
 @Observable
 final class StorageViewModel: Identifiable {
@@ -202,20 +203,22 @@ struct StorageView: View {
                             HStack {
                                 if viewModel.isCalculating {
                                     if sizeClass == .regular {
-                                        Text("Calculating...")
+                                        Text("Cleaning...")
                                     }
                                     ProgressView()
                                         .controlSize(.small)
                                 } else {
                                     if sizeClass == .regular {
-                                        Text("Calculate")
+                                        Text("Clean")
                                     } else {
                                         lastUpdated()
                                     }
-                                    Image(systemName: "arrow.clockwise")
+                                    Image(systemName: "bubbles.and.sparkles")
                                 }
                             }
                         }
+                        .tint(.green)
+                        .buttonStyle(.borderedProminent)
                         .disabled(viewModel.isCalculating)
                     }
                     
