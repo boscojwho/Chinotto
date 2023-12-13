@@ -13,6 +13,8 @@
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
 		E449C5862B295B3F00E3BCF4 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = E449C5852B295B3F00E3BCF4 /* Views */; };
 		E449C5882B29638A00E3BCF4 /* CleanStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */; };
+		E449C58B2B296D3D00E3BCF4 /* CleanStorageRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449C58A2B296D3D00E3BCF4 /* CleanStorageRootView.swift */; };
+		E449C58F2B296E3400E3BCF4 /* _XcodeCleanStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449C58E2B296E3400E3BCF4 /* _XcodeCleanStorageView.swift */; };
 		E44DD0FA2B1DCE4A0066487D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */; };
 		E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */ = {isa = PBXBuildFile; productRef = E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */; };
 		E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */; };
@@ -72,6 +74,8 @@
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E449C5842B29547800E3BCF4 /* Views */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Views; sourceTree = SOURCE_ROOT; };
 		E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStorageView.swift; sourceTree = "<group>"; };
+		E449C58A2B296D3D00E3BCF4 /* CleanStorageRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStorageRootView.swift; sourceTree = "<group>"; };
+		E449C58E2B296E3400E3BCF4 /* _XcodeCleanStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _XcodeCleanStorageView.swift; sourceTree = "<group>"; };
 		E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorDevicesView.swift; sourceTree = "<group>"; };
 		E466741E2B04CCC100782359 /* CoreSimulatorTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreSimulatorTools; path = Packages/CoreSimulatorTools; sourceTree = "<group>"; };
@@ -144,6 +148,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E449C5892B296D2800E3BCF4 /* Clean */ = {
+			isa = PBXGroup;
+			children = (
+				E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */,
+				E449C58E2B296E3400E3BCF4 /* _XcodeCleanStorageView.swift */,
+				E449C58A2B296D3D00E3BCF4 /* CleanStorageRootView.swift */,
+			);
+			path = Clean;
+			sourceTree = "<group>";
+		};
 		E45A70A72B04CD6200AC8C3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				E4A30A882B00D24700BE5444 /* ChinottoApp.swift */,
-				E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */,
 				E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */,
 				E49397AB2B1EB880001204B6 /* LoginItemBehaviour.swift */,
 				E4E10D3B2B16CE7A00126C53 /* ChinottoMenuBarApp.swift */,
@@ -224,6 +237,7 @@
 				E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */,
 				E4205D552B01FE8D0026D4A0 /* StorageView.swift */,
 				E4F8ECC82B06F8050075AB04 /* CoreSimulatorsRootView.swift */,
+				E449C5892B296D2800E3BCF4 /* Clean */,
 				E4934CDC2B0D9BD100B4A527 /* Preferences */,
 				E475191A2B03A2CF00C360DD /* Directories */,
 				E4A30A8E2B00D24800BE5444 /* Assets.xcassets */,
@@ -443,9 +457,11 @@
 				E4A30AB62B00D32800BE5444 /* Directories.swift in Sources */,
 				E475191F2B03A8ED00C360DD /* CachesView.swift in Sources */,
 				E4205D582B020F390026D4A0 /* DirectoriesStorageView.swift in Sources */,
+				E449C58B2B296D3D00E3BCF4 /* CleanStorageRootView.swift in Sources */,
 				E4F8ECBB2B0453220075AB04 /* DeveloperDiskImagesView.swift in Sources */,
 				E44DD0FA2B1DCE4A0066487D /* AppDelegate.swift in Sources */,
 				E4F8ECCD2B083F440075AB04 /* XcodeVersion.swift in Sources */,
+				E449C58F2B296E3400E3BCF4 /* _XcodeCleanStorageView.swift in Sources */,
 				E4E10D3C2B16CE7A00126C53 /* ChinottoMenuBarApp.swift in Sources */,
 				E49397AC2B1EB880001204B6 /* LoginItemBehaviour.swift in Sources */,
 				E4F8ECC12B0453DF0075AB04 /* XCPGDevicesView.swift in Sources */,

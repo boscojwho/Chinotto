@@ -9,9 +9,9 @@ import SwiftUI
 import FileSystem
 
 public struct AnyDirectory {
-    let root: URL
-    let contents: [URL]
-    let contentSizes: [URL: Int]
+    public let root: URL
+    public let contents: [URL]
+    public let contentSizes: [URL: Int]
 }
 
 @Observable

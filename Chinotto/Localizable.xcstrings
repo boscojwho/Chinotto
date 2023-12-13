@@ -127,6 +127,26 @@
         }
       }
     },
+    "%@ (%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$lld"
+          }
+        }
+      }
+    },
+    "%@ (%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$lld)"
+          }
+        }
+      }
+    },
     "%@ ago" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -264,6 +284,9 @@
 
     },
     "Cleaning..." : {
+
+    },
+    "Contents" : {
 
     },
     "Core Simulator (Devices)" : {

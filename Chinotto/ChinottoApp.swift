@@ -53,16 +53,7 @@ struct ChinottoApp: App {
         }
         
         WindowGroup(Text("Clean Storage..."), id: "CleanStorage", for: Directories.self) { value in
-            if let dir = value.wrappedValue {
-                switch dir {
-                case .coreSimulator:
-                    CoreSimulatorsRootView()
-                default:
-                    CleanStorageView(directory: value)
-                }
-            } else {
-                CleanStorageView(directory: value)
-            }
+            CleanStorageRootView(directory: value)
         }
         .defaultPosition(.bottomLeading)
         .defaultSize(width: 1080, height: 720)
