@@ -13,12 +13,13 @@ import FileSystem
 /// A non-exhaustive list of top-level directories in `/Developer`.
 enum Directories: CaseIterable, Identifiable, Codable {
     case coreSimulator
-    case developerDiskImages
-    case toolchains
     
     case xcode
     case xcPGDevices
     case xcTestDevices
+    
+    case developerDiskImages
+    case toolchains
     
     var id: String { dirName }
     

@@ -164,6 +164,7 @@
       }
     },
     "All Directories (%lld files)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
