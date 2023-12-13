@@ -13,11 +13,11 @@ struct ChinottoMenuBarApp: View {
     
     @State private var directories: [StorageViewModel] = [
         .init(directory: .coreSimulator),
-        .init(directory: .developerDiskImages),
-        .init(directory: .toolchains),
+        .init(directory: .xcode),
         .init(directory: .xcPGDevices),
         .init(directory: .xcTestDevices),
-        .init(directory: .xcode),
+        .init(directory: .developerDiskImages),
+        .init(directory: .toolchains),
     ]
     
     var body: some View {
