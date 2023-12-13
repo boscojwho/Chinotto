@@ -36,6 +36,8 @@ struct _CoreSimulatorUserView: View {
                                         Button("Inspect Devices...") {
                                             openWindow(id: "CoreSimulators", value: value)
                                         }
+                                        .tint(.accentColor)
+                                        .buttonStyle(.borderedProminent)
                                     } else {
                                         Button("Show in Finder") {
                                             let url = URL(filePath: value.dirPath, directoryHint: .isDirectory)
