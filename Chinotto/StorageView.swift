@@ -173,7 +173,7 @@ final class StorageViewModel: Identifiable {
 }
 
 struct StorageView: View {
-    
+    @Environment(\.openWindow) private var openWindow
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Bindable var viewModel: StorageViewModel
 
@@ -231,6 +231,9 @@ struct StorageView: View {
     private func reload() {
         Task(priority: .userInitiated) {
             await viewModel.calculateSize(initial: false, recalculate: true)
+            Task { @MainActor in
+                openWindow(id: "CleanStorage", value: viewModel.directory)
+            }
         }
     }
     

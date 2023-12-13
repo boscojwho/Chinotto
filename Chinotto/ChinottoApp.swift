@@ -52,6 +52,11 @@ struct ChinottoApp: App {
             CoreSimDeviceInspectView(device: value)
         }
         
+        WindowGroup(Text("Clean Storage..."), id: "CleanStorage", for: Directories.self) { value in
+            Text("\(value.wrappedValue?.dirName ?? "")")
+        }
+        .defaultPosition(.bottomLeading)
+        
         Settings {
             AppPreferencesView()
         }

@@ -12,6 +12,7 @@
 		E4205D5A2B02211D0026D4A0 /* UnifiedStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */; };
 		E4205D5C2B0227890026D4A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */; };
 		E449C5862B295B3F00E3BCF4 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = E449C5852B295B3F00E3BCF4 /* Views */; };
+		E449C5882B29638A00E3BCF4 /* CleanStorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */; };
 		E44DD0FA2B1DCE4A0066487D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */; };
 		E45A70A92B04CD6200AC8C3B /* CoreSimulatorTools in Frameworks */ = {isa = PBXBuildFile; productRef = E45A70A82B04CD6200AC8C3B /* CoreSimulatorTools */; };
 		E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */; };
@@ -70,6 +71,7 @@
 		E4205D592B02211D0026D4A0 /* UnifiedStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStorageView.swift; sourceTree = "<group>"; };
 		E4205D5B2B0227890026D4A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E449C5842B29547800E3BCF4 /* Views */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Views; sourceTree = SOURCE_ROOT; };
+		E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStorageView.swift; sourceTree = "<group>"; };
 		E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46674172B04BF3300782359 /* _CoreSimulatorDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _CoreSimulatorDevicesView.swift; sourceTree = "<group>"; };
 		E466741E2B04CCC100782359 /* CoreSimulatorTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CoreSimulatorTools; path = Packages/CoreSimulatorTools; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				E4A30A882B00D24700BE5444 /* ChinottoApp.swift */,
+				E449C5872B29638A00E3BCF4 /* CleanStorageView.swift */,
 				E44DD0F92B1DCE4A0066487D /* AppDelegate.swift */,
 				E49397AB2B1EB880001204B6 /* LoginItemBehaviour.swift */,
 				E4E10D3B2B16CE7A00126C53 /* ChinottoMenuBarApp.swift */,
@@ -451,6 +454,7 @@
 				E4934CE02B0D9BEE00B4A527 /* GeneralPreferencesView.swift in Sources */,
 				E46674182B04BF3300782359 /* _CoreSimulatorDevicesView.swift in Sources */,
 				E4F8ECBD2B0453C70075AB04 /* ToolchainsView.swift in Sources */,
+				E449C5882B29638A00E3BCF4 /* CleanStorageView.swift in Sources */,
 				E4934CDE2B0D9BE000B4A527 /* AppPreferencesView.swift in Sources */,
 				E4F8ECBF2B0453D10075AB04 /* XcodeView.swift in Sources */,
 				E4A30A892B00D24700BE5444 /* ChinottoApp.swift in Sources */,
