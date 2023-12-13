@@ -260,7 +260,7 @@
     "Clean" : {
 
     },
-    "Clean Storage" : {
+    "Clean Storage..." : {
 
     },
     "Cleaning..." : {
@@ -472,9 +472,6 @@
           }
         }
       }
-    },
-    "Hello, World!" : {
-
     },
     "Hide windows when app launches on login" : {
       "localizations" : {
