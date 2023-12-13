@@ -22,8 +22,7 @@ struct UnifiedStorageView: View {
         GroupBox {
             VStack {
                 HStack {
-                    let files = viewModels.reduce(0) { $0 + $1.dirFileCount }
-                    Text("All Directories (\(files) files)")
+                    Text("All Directories")
                     Spacer()
                     let storage = viewModels.reduce(0) { $0 + $1.dirSize }
                     Text("\(ByteCountFormatter.string(fromByteCount: Int64(storage), countStyle: .decimal)) of \(ByteCountFormatter.string(fromByteCount: Int64(viewModels.first?.volumeTotalCapacity ?? 0), countStyle: .decimal))")

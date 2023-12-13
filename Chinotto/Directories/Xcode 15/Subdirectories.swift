@@ -20,8 +20,8 @@ protocol CoreSimulator {
 
 /// `/Users/{username}/Library/Developer/CoreSimulator`
 enum CoreSimulator_User: CoreSimulator, CaseIterable, Identifiable, Codable {
-    case caches
     case devices
+    case caches
     case temp
     
     var id: String { dirName }
