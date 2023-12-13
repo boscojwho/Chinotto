@@ -348,7 +348,7 @@ struct StorageView: View {
                     .font(.headline)
                     .fontWeight(.regular)
             } else {
-                Text("\(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .relative) ago")
+                Text("\(Date(timeIntervalSinceReferenceDate: viewModel.lastUpdated), style: .offset)")
                     .font(.headline)
                     .fontWeight(.regular)
             }
