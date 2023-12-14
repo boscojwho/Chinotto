@@ -129,13 +129,18 @@ struct _CoreSimulatorDevicesView: View {
                         GroupBox {
                             HStack {
                                 Spacer()
-                                Text("\(ByteCountFormatter.string(fromByteCount: Int64(selectedDevicesSize), countStyle: .file))")
-                                Button("Delete selected (\(selectedDevices.count))...", role: .destructive) {
-                                    isPresentingDeleteDeviceAlert = true
+                                
+                                ShellCommandActionButton(shellCommand: XCRun.Simctl.DeleteUnavailable())
+                                
+                                GroupBox {
+                                    Text("\(ByteCountFormatter.string(fromByteCount: Int64(selectedDevicesSize), countStyle: .file))")
+                                    Button("Delete selected (\(selectedDevices.count))...", role: .destructive) {
+                                        isPresentingDeleteDeviceAlert = true
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .tint(.red)
+                                    .disabled(selectedDevices.isEmpty)
                                 }
-                                .buttonStyle(.borderedProminent)
-                                .tint(.red)
-                                .disabled(selectedDevices.isEmpty)
                             }
                             .frame(height: 36)
                             .padding(.horizontal, 12)
